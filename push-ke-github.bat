@@ -10,7 +10,7 @@ echo Jika muncul jendela browser login GitHub:
 echo Silakan klik tombol hijau "Authorize GitCredentialManager" / Login.
 echo.
 
-git push -u origin main --force
+git push -u origin main --tags --force
 
 echo.
 echo ========================================================

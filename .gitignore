@@ -4,6 +4,8 @@ node_modules/
 .env.*
 dist/
 */dist/
+backups/
+*.zip
 *.log
 .DS_Store
 Thumbs.db

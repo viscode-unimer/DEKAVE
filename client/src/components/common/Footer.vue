@@ -77,7 +77,7 @@ const { t } = useI18n();
       </div>
 
       <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-3">
-        <p>© {{ new Date().getFullYear() }} DKV — UKM Desain Komunikasi Visual Universitas Merangin. All rights reserved.</p>
+        <p>© {{ new Date().getFullYear() }} DKV — UKM Desain Komunikasi Visual Universitas Merangin. <span class="text-accent font-medium">v0.5</span></p>
         <RouterLink to="/admin/login" class="hover:text-accent transition-colors">
           Login Admin
         </RouterLink>
