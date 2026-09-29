@@ -79,9 +79,9 @@ const { t } = useI18n();
 
       <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-3">
         <p>© {{ new Date().getFullYear() }} DKV — UKM Desain Komunikasi Visual Universitas Merangin. <span class="text-accent font-medium">v0.5</span></p>
-        <RouterLink to="/admin/login" class="hover:text-accent transition-colors">
-          Login Admin
-        </RouterLink>
+        <p class="text-gray-400">
+          Developed by <span class="text-accent font-semibold">XXaverius</span>
+        </p>
       </div>
     </div>
   </footer>

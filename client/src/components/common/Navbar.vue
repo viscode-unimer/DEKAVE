@@ -3,8 +3,7 @@ import { ref, computed } from 'vue';
 import { useRouter, useRoute, RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useThemeStore } from '../../stores/theme';
-import { useAuthStore } from '../../stores/auth';
-import { Sun, Moon, LayoutDashboard, Lock, Menu, X } from 'lucide-vue-next';
+import { Sun, Moon, LayoutDashboard, Menu, X } from 'lucide-vue-next';
 
 const { t, locale } = useI18n();
 const themeStore = useThemeStore();
@@ -98,15 +97,6 @@ const isActive = (path) => route.path === path;
               Keluar
             </button>
           </div>
-          <RouterLink
-            v-else
-            to="/admin/login"
-            class="hidden sm:flex items-center gap-1.5 text-xs text-accent font-semibold border border-accent hover:bg-accent hover:text-white px-3 py-1.5 rounded-full transition-all duration-200"
-            title="Halaman Login Admin"
-          >
-            <Lock :size="13" />
-            <span>Login Admin</span>
-          </RouterLink>
 
           <!-- Mobile Menu Button -->
           <button
@@ -136,25 +126,15 @@ const isActive = (path) => route.path === path;
         {{ link.label }}
       </RouterLink>
 
-      <!-- Admin Link on Mobile -->
-      <div class="pt-3 border-t border-gray-200 dark:border-gray-700 mt-2">
+      <!-- Admin Link on Mobile (only if logged in) -->
+      <div v-if="authStore.isAuthenticated()" class="pt-3 border-t border-gray-200 dark:border-gray-700 mt-2">
         <RouterLink
-          v-if="authStore.isAuthenticated()"
           to="/admin/dashboard"
           @click="mobileOpen = false"
           class="flex items-center gap-2 py-2 text-sm font-semibold text-accent"
         >
           <LayoutDashboard :size="16" />
           <span>Dashboard Admin</span>
-        </RouterLink>
-        <RouterLink
-          v-else
-          to="/admin/login"
-          @click="mobileOpen = false"
-          class="flex items-center gap-2 py-2 text-sm font-semibold text-accent"
-        >
-          <Lock :size="16" />
-          <span>Login Admin</span>
         </RouterLink>
       </div>
     </div>
