@@ -36,9 +36,9 @@ onMounted(async () => {
   <PublicLayout>
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center bg-gradient-to-br from-primary via-secondary to-surface overflow-hidden">
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full filter blur-3xl"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gold rounded-full filter blur-3xl"></div>
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute top-20 left-10 w-80 h-80 bg-sky rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-royal rounded-full filter blur-3xl"></div>
       </div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div class="max-w-3xl">
@@ -199,7 +199,7 @@ onMounted(async () => {
     </section>
 
     <!-- CTA Join CAMAVIS -->
-    <section class="py-20 bg-gradient-to-r from-accent to-pink-700 text-white">
+    <section class="py-20 bg-gradient-to-r from-blue-700 via-royal to-sky-500 text-white">
       <div class="max-w-4xl mx-auto px-4 text-center">
         <h2 class="font-heading text-4xl md:text-5xl font-bold mb-4">Bergabung sebagai CAMAVIS?</h2>
         <p class="text-lg opacity-90 mb-8">
@@ -207,7 +207,7 @@ onMounted(async () => {
         </p>
         <RouterLink
           to="/camavis"
-          class="bg-white text-accent font-bold px-8 py-3 rounded-full hover:bg-gray-100 transition-colors text-lg"
+          class="bg-white text-royal hover:text-blue-700 font-bold px-8 py-3 rounded-full hover:bg-sky-50 transition-all text-lg shadow-xl shadow-blue-900/30"
         >
           Daftar Sekarang
         </RouterLink>

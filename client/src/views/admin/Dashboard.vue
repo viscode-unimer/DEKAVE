@@ -63,7 +63,7 @@ onMounted(async () => {
 
 const cards = computed(() => {
   const base = [
-    { key: 'portfolios', label: 'admin.total_portfolios', icon: Palette, color: 'from-accent to-pink-700' },
+    { key: 'portfolios', label: 'admin.total_portfolios', icon: Palette, color: 'from-blue-600 to-sky-400' },
     { key: 'events', label: 'admin.total_events', icon: Calendar, color: 'from-blue-500 to-blue-700' },
     { key: 'blogs', label: 'admin.total_blogs', icon: FileText, color: 'from-green-500 to-green-700' },
     { key: 'members', label: 'admin.total_members', icon: Users, color: 'from-purple-500 to-purple-700' },

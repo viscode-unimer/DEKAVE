@@ -25,22 +25,22 @@ const { t } = useI18n();
               <p class="italic text-accent font-semibold text-lg">"Ideas Become Reality, Visuals Become Stories"</p>
             </div>
           </div>
-          <div class="bg-gradient-to-br from-secondary to-surface rounded-3xl p-8 text-white">
+          <div class="bg-gradient-to-br from-secondary to-surface rounded-3xl p-8 text-white shadow-xl border border-blue-900/40">
             <div class="grid grid-cols-2 gap-6">
               <div class="text-center">
-                <div class="text-4xl font-bold text-accent font-heading">50+</div>
+                <div class="text-4xl font-bold text-sky font-heading">50+</div>
                 <div class="text-sm text-gray-300 mt-1">Anggota Aktif</div>
               </div>
               <div class="text-center">
-                <div class="text-4xl font-bold text-gold font-heading">100+</div>
+                <div class="text-4xl font-bold text-sky-300 font-heading">100+</div>
                 <div class="text-sm text-gray-300 mt-1">Karya</div>
               </div>
               <div class="text-center">
-                <div class="text-4xl font-bold text-accent font-heading">20+</div>
+                <div class="text-4xl font-bold text-sky font-heading">20+</div>
                 <div class="text-sm text-gray-300 mt-1">Event</div>
               </div>
               <div class="text-center">
-                <div class="text-4xl font-bold text-gold font-heading">5+</div>
+                <div class="text-4xl font-bold text-sky-300 font-heading">5+</div>
                 <div class="text-sm text-gray-300 mt-1">Prestasi</div>
               </div>
             </div>
@@ -49,11 +49,11 @@ const { t } = useI18n();
 
         <!-- Vision Mission -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-gray-50 dark:bg-secondary rounded-2xl p-8 border-t-4 border-accent">
+          <div class="bg-gray-50 dark:bg-secondary rounded-2xl p-8 border-t-4 border-royal shadow-md">
             <h3 class="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">{{ t('about.vision') }}</h3>
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed">{{ t('about.vision_text') }}</p>
           </div>
-          <div class="bg-gray-50 dark:bg-secondary rounded-2xl p-8 border-t-4 border-gold">
+          <div class="bg-gray-50 dark:bg-secondary rounded-2xl p-8 border-t-4 border-sky shadow-md">
             <h3 class="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">{{ t('about.mission') }}</h3>
             <ul class="space-y-3">
               <li
