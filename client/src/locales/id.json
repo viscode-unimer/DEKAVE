@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "portfolio": "Portfolio",
+    "event": "Event",
+    "blog": "Blog",
+    "member": "Anggota",
+    "camavis": "Daftar CAMAVIS",
+    "contact": "Kontak"
+  },
+  "home": {
+    "hero_title": "Ideas Become Reality,",
+    "hero_subtitle": "Visuals Become Stories",
+    "hero_desc": "UKM Desain Komunikasi Visual Universitas Merangin — tempat kreativitas bertemu dengan tujuan.",
+    "hero_cta": "Lihat Portfolio",
+    "hero_join": "Gabung CAMAVIS",
+    "featured_portfolio": "Portfolio Unggulan",
+    "latest_events": "Event Terbaru",
+    "latest_blogs": "Artikel Terbaru",
+    "see_all": "Lihat Semua"
+  },
+  "about": {
+    "title": "Tentang DKV",
+    "subtitle": "Mengenal UKM DKV Universitas Merangin",
+    "desc": "DKV adalah unit kegiatan mahasiswa yang berfokus pada Desain Komunikasi Visual di Universitas Merangin. Kami percaya bahwa setiap ide besar layak untuk diceritakan secara visual.",
+    "vision": "Visi",
+    "mission": "Misi",
+    "vision_text": "Menjadi UKM desain terdepan yang melahirkan kreator visual berkualitas dan berdampak.",
+    "mission_items": [
+      "Mengembangkan kreativitas mahasiswa di bidang desain komunikasi visual",
+      "Memfasilitasi anggota untuk berkarya dan berkompetisi",
+      "Membangun komunitas desainer yang solid dan kolaboratif",
+      "Menghubungkan anggota dengan industri kreatif"
+    ],
+    "org_structure": "Struktur Organisasi"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Karya-karya terbaik dari anggota DKV",
+    "filter_all": "Semua",
+    "no_data": "Belum ada portfolio."
+  },
+  "event": {
+    "title": "Event & Kegiatan",
+    "subtitle": "Kegiatan terbaru dari DKV",
+    "no_data": "Belum ada event.",
+    "date": "Tanggal",
+    "location": "Lokasi",
+    "type": "Kategori"
+  },
+  "blog": {
+    "title": "Blog & Artikel",
+    "subtitle": "Tips, inspirasi, dan cerita dari dunia desain",
+    "no_data": "Belum ada artikel.",
+    "read_more": "Baca Selengkapnya",
+    "by": "Oleh"
+  },
+  "member": {
+    "title": "Anggota DKV",
+    "subtitle": "Kenali para kreator di balik DKV",
+    "no_data": "Belum ada data anggota."
+  },
+  "camavis": {
+    "title": "Daftar CAMAVIS",
+    "subtitle": "Calon Mahasiswa Viscode — Bergabunglah dengan keluarga DKV",
+    "desc": "Tertarik dengan dunia desain? Daftarkan dirimu sebagai CAMAVIS dan jadilah bagian dari komunitas kreatif terbaik di Universitas Merangin.",
+    "form_title": "Formulir Pendaftaran CAMAVIS",
+    "full_name": "Nama Lengkap",
+    "nickname": "Nama Panggilan",
+    "nim": "NIM",
+    "faculty": "Fakultas",
+    "major": "Program Studi",
+    "phone": "No. HP / WhatsApp",
+    "instagram": "Akun Instagram",
+    "email": "Email",
+    "motivation": "Motivasi Bergabung",
+    "portfolio_link": "Link Portfolio (Opsional)",
+    "submit": "Kirim Pendaftaran",
+    "submitting": "Mengirim...",
+    "success_title": "Pendaftaran Berhasil! 🎉",
+    "success_desc": "Terima kasih telah mendaftar sebagai CAMAVIS! Tim kami akan segera menghubungimu."
+  },
+  "contact": {
+    "title": "Hubungi Kami",
+    "subtitle": "Ada pertanyaan? Kami siap membantu",
+    "name": "Nama",
+    "email": "Email",
+    "message": "Pesan",
+    "send": "Kirim Pesan",
+    "follow_us": "Ikuti Kami"
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "back": "Kembali",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "edit": "Edit",
+    "add": "Tambah",
+    "search": "Cari",
+    "confirm_delete": "Apakah kamu yakin ingin menghapus ini?"
+  },
+  "admin": {
+    "login_title": "Admin DKV",
+    "email": "Email",
+    "password": "Password",
+    "login": "Masuk",
+    "logout": "Keluar",
+    "dashboard": "Dashboard",
+    "total_portfolios": "Total Portfolio",
+    "total_events": "Total Event",
+    "total_blogs": "Total Artikel",
+    "total_members": "Total Anggota",
+    "total_camavis": "Total CAMAVIS",
+    "pending_camavis": "CAMAVIS Pending",
+    "accepted": "Diterima",
+    "rejected": "Ditolak",
+    "pending": "Pending"
+  }
+}

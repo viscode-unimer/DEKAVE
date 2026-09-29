@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "portfolio": "Portfolio",
+    "event": "Events",
+    "blog": "Blog",
+    "member": "Members",
+    "camavis": "Join CAMAVIS",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero_title": "Ideas Become Reality,",
+    "hero_subtitle": "Visuals Become Stories",
+    "hero_desc": "UKM Desain Komunikasi Visual at Universitas Merangin — where creativity meets purpose.",
+    "hero_cta": "View Portfolio",
+    "hero_join": "Join CAMAVIS",
+    "featured_portfolio": "Featured Portfolio",
+    "latest_events": "Latest Events",
+    "latest_blogs": "Latest Articles",
+    "see_all": "See All"
+  },
+  "about": {
+    "title": "About DKV",
+    "subtitle": "Get to know UKM DKV Universitas Merangin",
+    "desc": "DKV is a student activity unit focused on Visual Communication Design at Universitas Merangin. We believe every great idea deserves to be told visually.",
+    "vision": "Vision",
+    "mission": "Mission",
+    "vision_text": "To be a leading design UKM that produces high-quality and impactful visual creators.",
+    "mission_items": [
+      "Develop students' creativity in visual communication design",
+      "Facilitate members to create and compete",
+      "Build a solid and collaborative designer community",
+      "Connect members with the creative industry"
+    ],
+    "org_structure": "Organizational Structure"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "The best works from DKV members",
+    "filter_all": "All",
+    "no_data": "No portfolios yet."
+  },
+  "event": {
+    "title": "Events & Activities",
+    "subtitle": "Latest activities from DKV",
+    "no_data": "No events yet.",
+    "date": "Date",
+    "location": "Location",
+    "type": "Category"
+  },
+  "blog": {
+    "title": "Blog & Articles",
+    "subtitle": "Tips, inspiration, and stories from the design world",
+    "no_data": "No articles yet.",
+    "read_more": "Read More",
+    "by": "By"
+  },
+  "member": {
+    "title": "DKV Members",
+    "subtitle": "Meet the creators behind DKV",
+    "no_data": "No member data yet."
+  },
+  "camavis": {
+    "title": "Register as CAMAVIS",
+    "subtitle": "Calon Mahasiswa Viscode — Join the DKV family",
+    "desc": "Interested in the world of design? Register as a CAMAVIS and become part of the best creative community at Universitas Merangin.",
+    "form_title": "CAMAVIS Registration Form",
+    "full_name": "Full Name",
+    "nickname": "Nickname",
+    "nim": "Student ID (NIM)",
+    "faculty": "Faculty",
+    "major": "Study Program",
+    "phone": "Phone / WhatsApp",
+    "instagram": "Instagram Account",
+    "email": "Email",
+    "motivation": "Motivation to Join",
+    "portfolio_link": "Portfolio Link (Optional)",
+    "submit": "Submit Registration",
+    "submitting": "Submitting...",
+    "success_title": "Registration Successful! 🎉",
+    "success_desc": "Thank you for registering as CAMAVIS! Our team will contact you soon."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a question? We're here to help",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "follow_us": "Follow Us"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "confirm_delete": "Are you sure you want to delete this?"
+  },
+  "admin": {
+    "login_title": "DKV Admin",
+    "email": "Email",
+    "password": "Password",
+    "login": "Sign In",
+    "logout": "Sign Out",
+    "dashboard": "Dashboard",
+    "total_portfolios": "Total Portfolios",
+    "total_events": "Total Events",
+    "total_blogs": "Total Articles",
+    "total_members": "Total Members",
+    "total_camavis": "Total CAMAVIS",
+    "pending_camavis": "Pending CAMAVIS",
+    "accepted": "Accepted",
+    "rejected": "Rejected",
+    "pending": "Pending"
+  }
+}
