@@ -6,6 +6,7 @@ import { useAuthStore } from '../../stores/auth';
 import LoadingSpinner from '../../components/common/LoadingSpinner.vue';
 import api from '../../utils/api';
 import { formatDateShort } from '../../utils/formatDate';
+import { Plus, ShieldCheck, PenTool } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const toast = useToast();
@@ -121,7 +122,7 @@ onMounted(fetchUsers);
         </p>
       </div>
       <button @click="openCreate" class="btn-accent flex items-center gap-2 self-start sm:self-auto">
-        <span>➕</span>
+        <Plus :size="16" />
         <span>Tambah Contributor</span>
       </button>
     </div>
@@ -129,7 +130,9 @@ onMounted(fetchUsers);
     <!-- Role Info Card -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
       <div class="bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800/40 rounded-2xl p-4 flex items-start gap-3">
-        <span class="text-2xl">👑</span>
+        <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/60 text-purple-600 dark:text-purple-300 flex items-center justify-center flex-shrink-0">
+          <ShieldCheck :size="20" />
+        </div>
         <div class="text-xs">
           <strong class="text-purple-900 dark:text-purple-200 block text-sm mb-1">Superadmin (Tingkat Tertinggi)</strong>
           <span class="text-purple-700 dark:text-purple-300">
@@ -138,7 +141,9 @@ onMounted(fetchUsers);
         </div>
       </div>
       <div class="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800/40 rounded-2xl p-4 flex items-start gap-3">
-        <span class="text-2xl">✏️</span>
+        <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/60 text-blue-600 dark:text-blue-300 flex items-center justify-center flex-shrink-0">
+          <PenTool :size="20" />
+        </div>
         <div class="text-xs">
           <strong class="text-blue-900 dark:text-blue-200 block text-sm mb-1">Contributor (Pengelola Konten)</strong>
           <span class="text-blue-700 dark:text-blue-300">
@@ -260,15 +265,17 @@ onMounted(fetchUsers);
             <td class="px-5 py-3.5">
               <span
                 v-if="u.role === 'superadmin'"
-                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
               >
-                <span>👑</span> Superadmin
+                <ShieldCheck :size="12" />
+                <span>Superadmin</span>
               </span>
               <span
                 v-else
-                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
               >
-                <span>✏️</span> Contributor
+                <PenTool :size="12" />
+                <span>Contributor</span>
               </span>
             </td>
             <td class="px-5 py-3.5 text-gray-500 dark:text-gray-400 text-xs">

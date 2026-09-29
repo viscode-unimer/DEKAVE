@@ -4,6 +4,7 @@ import { useRouter, RouterLink } from 'vue-router';
 import { useAuthStore } from '../../stores/auth';
 import { useToast } from 'vue-toastification';
 import { useI18n } from 'vue-i18n';
+import { Loader2, ArrowLeft } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const router = useRouter();
@@ -75,7 +76,7 @@ const handleLogin = async () => {
             :disabled="loading"
             class="btn-accent w-full py-3 text-base disabled:opacity-60 flex items-center justify-center gap-2"
           >
-            <span v-if="loading" class="animate-spin">⏳</span>
+            <Loader2 v-if="loading" :size="18" class="animate-spin" />
             <span>{{ loading ? 'Memverifikasi...' : t('admin.login') }}</span>
           </button>
         </form>
@@ -84,9 +85,9 @@ const handleLogin = async () => {
         <div class="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700 text-center">
           <RouterLink
             to="/"
-            class="text-sm text-gray-500 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors inline-flex items-center gap-1"
+            class="text-sm text-gray-500 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors inline-flex items-center gap-1.5"
           >
-            <span>←</span>
+            <ArrowLeft :size="15" />
             <span>Kembali ke Halaman Utama</span>
           </RouterLink>
         </div>

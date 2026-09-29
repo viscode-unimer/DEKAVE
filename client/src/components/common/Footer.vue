@@ -1,6 +1,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
 import { RouterLink } from 'vue-router';
+import { Lock } from 'lucide-vue-next';
 const { t } = useI18n();
 </script>
 
@@ -70,7 +71,7 @@ const { t } = useI18n();
             to="/admin/login"
             class="inline-flex items-center gap-1.5 text-xs text-accent hover:underline border border-accent/40 px-3 py-1.5 rounded-lg hover:bg-accent/10 transition-colors"
           >
-            <span>🔐</span>
+            <Lock :size="13" />
             <span>Portal Admin DKV</span>
           </RouterLink>
         </div>

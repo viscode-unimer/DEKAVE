@@ -6,6 +6,7 @@ import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
 import { formatDateShort } from '../utils/formatDate';
+import { FileText } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const blogs = ref([]);
@@ -49,7 +50,9 @@ onMounted(async () => {
                 :alt="blog.title"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div v-else class="w-full h-full flex items-center justify-center text-5xl">✍️</div>
+              <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+                <FileText :size="40" class="opacity-40" />
+              </div>
             </div>
             <div class="p-6">
               <div class="flex flex-wrap gap-1 mb-3">

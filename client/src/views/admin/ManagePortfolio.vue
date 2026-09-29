@@ -4,6 +4,7 @@ import { useToast } from 'vue-toastification';
 import { useI18n } from 'vue-i18n';
 import LoadingSpinner from '../../components/common/LoadingSpinner.vue';
 import api from '../../utils/api';
+import { Image, Star } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const toast = useToast();
@@ -207,13 +208,18 @@ onMounted(fetchPortfolios);
             :alt="item.title"
             class="w-full h-full object-cover"
           />
-          <div v-else class="w-full h-full flex items-center justify-center text-4xl">🎨</div>
+          <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+            <Image :size="32" class="opacity-40" />
+          </div>
         </div>
         <div class="p-3">
           <span class="text-xs text-accent font-bold uppercase">{{ item.category }}</span>
           <p class="font-semibold text-gray-900 dark:text-white text-sm truncate">{{ item.title }}</p>
           <p class="text-xs text-gray-400">{{ item.creator }}</p>
-          <span v-if="item.isFeatured" class="text-xs text-gold font-semibold">★ Featured</span>
+          <span v-if="item.isFeatured" class="inline-flex items-center gap-1 text-xs text-gold font-semibold mt-0.5">
+            <Star :size="12" class="fill-gold" />
+            <span>Featured</span>
+          </span>
           <div class="flex gap-2 mt-3">
             <button
               @click="openEdit(item)"

@@ -6,6 +6,7 @@ import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
 import { formatDate } from '../utils/formatDate';
+import { Calendar, MapPin } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const events = ref([]);
@@ -49,16 +50,24 @@ onMounted(async () => {
                 :alt="event.title"
                 class="w-full h-full object-cover"
               />
-              <div v-else class="w-full h-full flex items-center justify-center text-5xl">📅</div>
+              <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+                <Calendar :size="40" class="opacity-40" />
+              </div>
             </div>
             <div class="p-6">
               <span class="inline-block text-xs bg-accent/10 text-accent px-2 py-1 rounded-full font-bold mb-3">
                 {{ event.type }}
               </span>
               <h3 class="font-heading text-xl font-bold text-gray-900 dark:text-white mb-2">{{ event.title }}</h3>
-              <div class="space-y-1 text-sm text-gray-500 dark:text-gray-400">
-                <p>📅 {{ formatDate(event.date) }}</p>
-                <p>📍 {{ event.location }}</p>
+              <div class="space-y-1.5 text-sm text-gray-500 dark:text-gray-400">
+                <p class="flex items-center gap-2">
+                  <Calendar :size="14" class="text-accent flex-shrink-0" />
+                  <span>{{ formatDate(event.date) }}</span>
+                </p>
+                <p class="flex items-center gap-2">
+                  <MapPin :size="14" class="text-accent flex-shrink-0" />
+                  <span>{{ event.location }}</span>
+                </p>
               </div>
             </div>
           </RouterLink>

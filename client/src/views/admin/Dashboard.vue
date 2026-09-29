@@ -4,6 +4,17 @@ import { useI18n } from 'vue-i18n';
 import { useAuthStore } from '../../stores/auth';
 import { RouterLink } from 'vue-router';
 import api from '../../utils/api';
+import {
+  Palette,
+  Calendar,
+  FileText,
+  Users,
+  GraduationCap,
+  Clock,
+  ShieldCheck,
+  PenTool,
+  Globe,
+} from 'lucide-vue-next';
 
 const { t } = useI18n();
 const auth = useAuthStore();
@@ -52,12 +63,12 @@ onMounted(async () => {
 
 const cards = computed(() => {
   const base = [
-    { key: 'portfolios', label: 'admin.total_portfolios', icon: '🎨', color: 'from-accent to-pink-700' },
-    { key: 'events', label: 'admin.total_events', icon: '📅', color: 'from-blue-500 to-blue-700' },
-    { key: 'blogs', label: 'admin.total_blogs', icon: '✍️', color: 'from-green-500 to-green-700' },
-    { key: 'members', label: 'admin.total_members', icon: '👥', color: 'from-purple-500 to-purple-700' },
-    { key: 'camavis', label: 'admin.total_camavis', icon: '🎓', color: 'from-yellow-400 to-yellow-600' },
-    { key: 'pending', label: 'admin.pending_camavis', icon: '⏳', color: 'from-orange-400 to-orange-600' },
+    { key: 'portfolios', label: 'admin.total_portfolios', icon: Palette, color: 'from-accent to-pink-700' },
+    { key: 'events', label: 'admin.total_events', icon: Calendar, color: 'from-blue-500 to-blue-700' },
+    { key: 'blogs', label: 'admin.total_blogs', icon: FileText, color: 'from-green-500 to-green-700' },
+    { key: 'members', label: 'admin.total_members', icon: Users, color: 'from-purple-500 to-purple-700' },
+    { key: 'camavis', label: 'admin.total_camavis', icon: GraduationCap, color: 'from-yellow-400 to-yellow-600' },
+    { key: 'pending', label: 'admin.pending_camavis', icon: Clock, color: 'from-orange-400 to-orange-600' },
   ];
 
   return base;
@@ -82,7 +93,8 @@ const cards = computed(() => {
           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold"
           :class="isSuperadmin ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800' : 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800'"
         >
-          <span>{{ isSuperadmin ? '👑' : '✏️' }}</span>
+          <ShieldCheck v-if="isSuperadmin" :size="14" />
+          <PenTool v-else :size="14" />
           <span>{{ isSuperadmin ? 'Level: Superadmin' : 'Level: Contributor' }}</span>
         </span>
       </div>
@@ -95,7 +107,9 @@ const cards = computed(() => {
         :key="card.key"
         :class="`bg-gradient-to-br ${card.color} rounded-2xl p-5 text-white shadow`"
       >
-        <div class="text-3xl mb-2">{{ card.icon }}</div>
+        <div class="mb-3 opacity-90">
+          <component :is="card.icon" :size="24" />
+        </div>
         <div class="text-3xl font-bold font-heading">{{ stats[card.key] }}</div>
         <div class="text-xs opacity-80 mt-1">{{ t(card.label) }}</div>
       </div>
@@ -105,7 +119,7 @@ const cards = computed(() => {
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div class="lg:col-span-2 bg-white dark:bg-secondary rounded-2xl p-6 shadow border border-gray-100 dark:border-gray-700">
         <h2 class="font-heading text-lg font-bold text-gray-900 dark:text-white mb-2">
-          Selamat datang, {{ auth.user?.username || 'Pengurus' }} 👋
+          Selamat datang, {{ auth.user?.username || 'Pengurus' }}
         </h2>
         <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
           Anda login sebagai <strong class="text-accent">{{ isSuperadmin ? 'Superadmin' : 'Contributor' }}</strong>.
@@ -120,14 +134,14 @@ const cards = computed(() => {
             to="/admin/users"
             class="text-xs bg-purple-600 hover:bg-purple-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5"
           >
-            <span>🛡️</span>
+            <ShieldCheck :size="15" />
             <span>Kelola Tim & Contributor ({{ stats.contributors }})</span>
           </RouterLink>
           <RouterLink
             to="/admin/camavis"
             class="text-xs bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5"
           >
-            <span>🎓</span>
+            <GraduationCap :size="15" />
             <span>Review CAMAVIS ({{ stats.pending }} Pending)</span>
           </RouterLink>
         </div>
@@ -136,22 +150,22 @@ const cards = computed(() => {
       <div class="bg-gradient-to-br from-secondary to-primary rounded-2xl p-6 text-white shadow border border-gray-800">
         <h3 class="font-heading text-base font-bold text-accent mb-2">Hierarki Hak Akses</h3>
         <ul class="text-xs space-y-3 text-gray-300">
-          <li class="flex items-start gap-2">
-            <span>👑</span>
+          <li class="flex items-start gap-2.5">
+            <ShieldCheck :size="16" class="text-purple-400 mt-0.5 flex-shrink-0" />
             <div>
               <strong class="text-white block">Superadmin</strong>
               <span>Akses penuh + manajemen akun contributor</span>
             </div>
           </li>
-          <li class="flex items-start gap-2">
-            <span>✏️</span>
+          <li class="flex items-start gap-2.5">
+            <PenTool :size="16" class="text-blue-400 mt-0.5 flex-shrink-0" />
             <div>
               <strong class="text-white block">Contributor</strong>
               <span>Dibuat superadmin, mengelola konten</span>
             </div>
           </li>
-          <li class="flex items-start gap-2">
-            <span>🌐</span>
+          <li class="flex items-start gap-2.5">
+            <Globe :size="16" class="text-green-400 mt-0.5 flex-shrink-0" />
             <div>
               <strong class="text-white block">User / Pengunjung</strong>
               <span>Tanpa login, registrasi CAMAVIS publik</span>

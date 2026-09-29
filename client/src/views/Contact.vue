@@ -3,6 +3,7 @@ import { reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useToast } from 'vue-toastification';
 import PublicLayout from '../components/common/PublicLayout.vue';
+import { MapPin, Mail, Instagram, Youtube, Palette } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const toast = useToast();
@@ -67,21 +68,36 @@ const handleSubmit = async () => {
               </h3>
               <div class="space-y-3">
                 <a href="#" class="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-accent transition-colors">
-                  <span class="text-2xl">📸</span><span>Instagram</span>
+                  <div class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-accent">
+                    <Instagram :size="16" />
+                  </div>
+                  <span>Instagram</span>
                 </a>
                 <a href="#" class="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-accent transition-colors">
-                  <span class="text-2xl">▶️</span><span>YouTube</span>
+                  <div class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-accent">
+                    <Youtube :size="16" />
+                  </div>
+                  <span>YouTube</span>
                 </a>
                 <a href="#" class="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-accent transition-colors">
-                  <span class="text-2xl">🎨</span><span>Behance</span>
+                  <div class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-accent">
+                    <Palette :size="16" />
+                  </div>
+                  <span>Behance</span>
                 </a>
               </div>
             </div>
             <div class="bg-gray-50 dark:bg-secondary rounded-2xl p-6">
               <h3 class="font-heading text-lg font-bold text-gray-900 dark:text-white mb-3">Informasi</h3>
-              <div class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                <p>📍 Universitas Merangin</p>
-                <p>✉️ dekave@merangin.ac.id</p>
+              <div class="space-y-2.5 text-sm text-gray-600 dark:text-gray-300">
+                <p class="flex items-center gap-2.5">
+                  <MapPin :size="16" class="text-accent flex-shrink-0" />
+                  <span>Universitas Merangin</span>
+                </p>
+                <p class="flex items-center gap-2.5">
+                  <Mail :size="16" class="text-accent flex-shrink-0" />
+                  <span>dekave@merangin.ac.id</span>
+                </p>
               </div>
             </div>
           </div>

@@ -4,6 +4,19 @@ import { RouterView, RouterLink, useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '../../stores/auth';
 import { useThemeStore } from '../../stores/theme';
 import { useI18n } from 'vue-i18n';
+import {
+  LayoutDashboard,
+  Palette,
+  Calendar,
+  FileText,
+  Users,
+  GraduationCap,
+  ShieldCheck,
+  LogOut,
+  Sun,
+  Moon,
+  ExternalLink,
+} from 'lucide-vue-next';
 
 const { t } = useI18n();
 const auth = useAuthStore();
@@ -16,16 +29,16 @@ const isSuperadmin = computed(() => auth.user?.role === 'superadmin');
 
 const navItems = computed(() => {
   const base = [
-    { to: '/admin/dashboard', label: 'Dashboard', icon: '📊' },
-    { to: '/admin/portfolio', label: 'Portfolio', icon: '🎨' },
-    { to: '/admin/event', label: 'Event', icon: '📅' },
-    { to: '/admin/blog', label: 'Blog', icon: '✍️' },
-    { to: '/admin/member', label: 'Anggota', icon: '👥' },
-    { to: '/admin/camavis', label: 'CAMAVIS', icon: '🎓' },
+    { to: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { to: '/admin/portfolio', label: 'Portfolio', icon: Palette },
+    { to: '/admin/event', label: 'Event', icon: Calendar },
+    { to: '/admin/blog', label: 'Blog', icon: FileText },
+    { to: '/admin/member', label: 'Anggota', icon: Users },
+    { to: '/admin/camavis', label: 'CAMAVIS', icon: GraduationCap },
   ];
 
   if (isSuperadmin.value) {
-    base.push({ to: '/admin/users', label: 'Kelola Tim / Contributor', icon: '🛡️' });
+    base.push({ to: '/admin/users', label: 'Kelola Tim / Contributor', icon: ShieldCheck });
   }
 
   return base;
@@ -79,7 +92,7 @@ const isActive = (path) => route.path.startsWith(path);
               : 'text-gray-300 hover:bg-gray-700 hover:text-white'
           ]"
         >
-          <span class="text-lg flex-shrink-0">{{ item.icon }}</span>
+          <component :is="item.icon" :size="18" class="flex-shrink-0" />
           <span v-if="sidebarOpen" class="truncate">{{ item.label }}</span>
         </RouterLink>
       </nav>
@@ -97,14 +110,14 @@ const isActive = (path) => route.path.startsWith(path);
             class="inline-block mt-1 text-[10px] font-bold px-2 py-0.5 rounded-full"
             :class="isSuperadmin ? 'bg-purple-900/60 text-purple-300' : 'bg-blue-900/60 text-blue-300'"
           >
-            {{ isSuperadmin ? '👑 Superadmin' : '✏️ Contributor' }}
+            {{ isSuperadmin ? 'Superadmin' : 'Contributor' }}
           </span>
         </div>
         <button
           @click="handleLogout"
           class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-red-500/20 hover:text-red-400 transition-colors w-full"
         >
-          <span class="text-lg flex-shrink-0">🚪</span>
+          <LogOut :size="18" class="flex-shrink-0" />
           <span v-if="sidebarOpen">{{ t('admin.logout') }}</span>
         </button>
       </div>
@@ -120,17 +133,19 @@ const isActive = (path) => route.path.startsWith(path);
         <div class="flex items-center gap-3">
           <button
             @click="themeStore.toggle"
-            class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 text-sm"
+            class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 text-sm text-gray-600 dark:text-gray-300 hover:text-accent hover:border-accent transition-colors"
+            title="Toggle Tema"
           >
-            {{ themeStore.isDark ? '☀️' : '🌙' }}
+            <Sun v-if="themeStore.isDark" :size="15" />
+            <Moon v-else :size="15" />
           </button>
           <RouterLink
             to="/"
             target="_blank"
-            class="text-xs text-gray-500 dark:text-gray-400 hover:text-accent border border-gray-300 dark:border-gray-600 px-3 py-1 rounded-full transition-colors flex items-center gap-1"
+            class="text-xs text-gray-500 dark:text-gray-400 hover:text-accent border border-gray-300 dark:border-gray-600 px-3 py-1.5 rounded-full transition-colors flex items-center gap-1.5"
           >
             <span>Lihat Website</span>
-            <span>↗</span>
+            <ExternalLink :size="12" />
           </RouterLink>
         </div>
       </header>

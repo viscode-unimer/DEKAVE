@@ -4,6 +4,7 @@ import { useToast } from 'vue-toastification';
 import { useI18n } from 'vue-i18n';
 import LoadingSpinner from '../../components/common/LoadingSpinner.vue';
 import api from '../../utils/api';
+import { User } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const toast = useToast();
@@ -198,7 +199,9 @@ onMounted(fetchMembers);
       >
         <div class="w-16 h-16 mx-auto rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 mb-2">
           <img v-if="m.photo" :src="m.photo" :alt="m.name" class="w-full h-full object-cover" />
-          <div v-else class="w-full h-full flex items-center justify-center text-2xl">👤</div>
+          <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+            <User :size="24" class="opacity-40" />
+          </div>
         </div>
         <p class="font-semibold text-xs text-gray-900 dark:text-white truncate">{{ m.name }}</p>
         <p class="text-xs text-accent">{{ m.position }}</p>

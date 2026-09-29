@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n';
 import LoadingSpinner from '../../components/common/LoadingSpinner.vue';
 import api from '../../utils/api';
 import { formatDateShort } from '../../utils/formatDate';
+import { Check, X, Clock } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const toast = useToast();
@@ -185,21 +186,25 @@ onMounted(fetchCamavis);
             <div class="flex gap-2">
               <button
                 @click="updateStatus(selected._id, 'accepted')"
-                class="flex-1 bg-green-500 hover:bg-green-600 text-white text-xs font-bold py-2 rounded-lg transition-colors"
+                class="flex-1 bg-green-500 hover:bg-green-600 text-white text-xs font-bold py-2 rounded-lg transition-colors flex items-center justify-center gap-1"
               >
-                ✓ Terima
+                <Check :size="14" />
+                <span>Terima</span>
               </button>
               <button
                 @click="updateStatus(selected._id, 'rejected')"
-                class="flex-1 bg-red-500 hover:bg-red-600 text-white text-xs font-bold py-2 rounded-lg transition-colors"
+                class="flex-1 bg-red-500 hover:bg-red-600 text-white text-xs font-bold py-2 rounded-lg transition-colors flex items-center justify-center gap-1"
               >
-                ✗ Tolak
+                <X :size="14" />
+                <span>Tolak</span>
               </button>
               <button
                 @click="updateStatus(selected._id, 'pending')"
-                class="flex-1 bg-yellow-400 hover:bg-yellow-500 text-white text-xs font-bold py-2 rounded-lg transition-colors"
+                class="flex-1 bg-yellow-400 hover:bg-yellow-500 text-white text-xs font-bold py-2 rounded-lg transition-colors flex items-center justify-center gap-1"
+                title="Kembalikan ke Pending"
               >
-                ⏳
+                <Clock :size="14" />
+                <span>Pending</span>
               </button>
             </div>
           </div>

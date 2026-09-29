@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n';
 import { useToast } from 'vue-toastification';
 import PublicLayout from '../components/common/PublicLayout.vue';
 import api from '../utils/api';
+import { CheckCircle2 } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const toast = useToast();
@@ -55,7 +56,9 @@ const handleSubmit = async () => {
     <!-- Success State -->
     <section v-if="submitted" class="py-20">
       <div class="max-w-lg mx-auto px-4 text-center">
-        <div class="text-7xl mb-6">🎉</div>
+        <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+          <CheckCircle2 :size="44" />
+        </div>
         <h2 class="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-4">
           {{ t('camavis.success_title') }}
         </h2>

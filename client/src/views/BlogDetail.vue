@@ -6,6 +6,7 @@ import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
 import { formatDate } from '../utils/formatDate';
+import { FileText } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const route = useRoute();
@@ -42,7 +43,9 @@ onMounted(async () => {
               :alt="blog.title"
               class="w-full h-full object-cover"
             />
-            <div v-else class="w-full h-full flex items-center justify-center text-8xl">✍️</div>
+            <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+              <FileText :size="64" class="opacity-40" />
+            </div>
           </div>
 
           <div class="flex flex-wrap gap-2 mb-4">

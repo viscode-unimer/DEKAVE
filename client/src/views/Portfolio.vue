@@ -5,6 +5,7 @@ import { RouterLink } from 'vue-router';
 import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
+import { Image } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const portfolios = ref([]);
@@ -83,7 +84,9 @@ onMounted(fetchPortfolios);
                 :alt="item.title"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div v-else class="w-full h-full flex items-center justify-center text-gray-400 text-4xl">🎨</div>
+              <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+                <Image :size="36" class="opacity-40" />
+              </div>
             </div>
             <div class="p-4">
               <span class="text-xs text-accent font-bold uppercase">{{ item.category }}</span>

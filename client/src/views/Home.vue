@@ -6,6 +6,7 @@ import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
 import { formatDateShort } from '../utils/formatDate';
+import { Image, Calendar, FileText } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const featuredPortfolios = ref([]);
@@ -92,7 +93,9 @@ onMounted(async () => {
                 :alt="item.title"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div v-else class="w-full h-full flex items-center justify-center text-gray-400 text-4xl">🎨</div>
+              <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+                <Image :size="36" class="opacity-40" />
+              </div>
             </div>
             <div class="p-5">
               <span class="text-xs text-accent font-semibold uppercase tracking-wide">{{ item.category }}</span>
@@ -130,7 +133,9 @@ onMounted(async () => {
                 :alt="event.title"
                 class="w-full h-full object-cover"
               />
-              <div v-else class="w-full h-full flex items-center justify-center text-4xl">📅</div>
+              <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+                <Calendar :size="36" class="opacity-40" />
+              </div>
             </div>
             <div class="p-5">
               <span class="inline-block text-xs bg-accent/10 text-accent px-2 py-1 rounded-full font-semibold mb-2">
@@ -170,7 +175,9 @@ onMounted(async () => {
                 :alt="blog.title"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div v-else class="w-full h-full flex items-center justify-center text-4xl">✍️</div>
+              <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+                <FileText :size="36" class="opacity-40" />
+              </div>
             </div>
             <div class="p-5">
               <h3 class="font-heading text-lg font-bold text-gray-900 dark:text-white line-clamp-2">

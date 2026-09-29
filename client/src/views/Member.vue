@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n';
 import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
+import { User } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const members = ref([]);
@@ -42,7 +43,9 @@ onMounted(async () => {
                 :alt="member.name"
                 class="w-full h-full object-cover"
               />
-              <div v-else class="w-full h-full flex items-center justify-center text-3xl">👤</div>
+              <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+                <User :size="32" class="opacity-40" />
+              </div>
             </div>
             <p class="font-semibold text-gray-900 dark:text-white text-sm">{{ member.name }}</p>
             <p class="text-xs text-accent font-semibold">{{ member.position }}</p>

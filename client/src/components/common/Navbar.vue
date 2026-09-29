@@ -4,6 +4,7 @@ import { useRouter, useRoute, RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useThemeStore } from '../../stores/theme';
 import { useAuthStore } from '../../stores/auth';
+import { Sun, Moon, LayoutDashboard, Lock, Menu, X } from 'lucide-vue-next';
 
 const { t, locale } = useI18n();
 const themeStore = useThemeStore();
@@ -76,17 +77,17 @@ const isActive = (path) => route.path === path;
             class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-accent hover:text-accent transition-colors"
             title="Toggle Mode Gelap / Terang"
           >
-            <span v-if="themeStore.isDark">☀️</span>
-            <span v-else>🌙</span>
+            <Sun v-if="themeStore.isDark" :size="16" />
+            <Moon v-else :size="16" />
           </button>
 
           <!-- Admin Button (Authenticated vs Guest) -->
           <div v-if="authStore.isAuthenticated()" class="hidden sm:flex items-center gap-2">
             <RouterLink
               to="/admin/dashboard"
-              class="text-xs bg-accent text-white font-semibold px-3 py-1.5 rounded-full hover:bg-accent-hover transition-colors flex items-center gap-1"
+              class="text-xs bg-accent text-white font-semibold px-3 py-1.5 rounded-full hover:bg-accent-hover transition-colors flex items-center gap-1.5"
             >
-              <span>📊</span>
+              <LayoutDashboard :size="14" />
               <span>Dashboard</span>
             </RouterLink>
             <button
@@ -103,7 +104,7 @@ const isActive = (path) => route.path === path;
             class="hidden sm:flex items-center gap-1.5 text-xs text-accent font-semibold border border-accent hover:bg-accent hover:text-white px-3 py-1.5 rounded-full transition-all duration-200"
             title="Halaman Login Admin"
           >
-            <span>🔐</span>
+            <Lock :size="13" />
             <span>Login Admin</span>
           </RouterLink>
 
@@ -113,7 +114,8 @@ const isActive = (path) => route.path === path;
             class="lg:hidden w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200"
             aria-label="Menu"
           >
-            <span class="text-lg">{{ mobileOpen ? '✕' : '☰' }}</span>
+            <X v-if="mobileOpen" :size="18" />
+            <Menu v-else :size="18" />
           </button>
         </div>
       </div>
@@ -142,7 +144,8 @@ const isActive = (path) => route.path === path;
           @click="mobileOpen = false"
           class="flex items-center gap-2 py-2 text-sm font-semibold text-accent"
         >
-          <span>📊</span> Dashboard Admin
+          <LayoutDashboard :size="16" />
+          <span>Dashboard Admin</span>
         </RouterLink>
         <RouterLink
           v-else
@@ -150,7 +153,8 @@ const isActive = (path) => route.path === path;
           @click="mobileOpen = false"
           class="flex items-center gap-2 py-2 text-sm font-semibold text-accent"
         >
-          <span>🔐</span> Login Admin
+          <Lock :size="16" />
+          <span>Login Admin</span>
         </RouterLink>
       </div>
     </div>

@@ -6,6 +6,7 @@ import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
 import { formatDate } from '../utils/formatDate';
+import { Calendar } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const route = useRoute();
@@ -42,7 +43,9 @@ onMounted(async () => {
               :alt="event.title"
               class="w-full h-full object-cover"
             />
-            <div v-else class="w-full h-full flex items-center justify-center text-8xl">📅</div>
+            <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+              <Calendar :size="64" class="opacity-40" />
+            </div>
           </div>
 
           <span class="inline-block bg-accent/10 text-accent text-sm font-bold px-3 py-1 rounded-full mb-4">

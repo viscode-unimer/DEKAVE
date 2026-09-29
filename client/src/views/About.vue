@@ -49,13 +49,11 @@ const { t } = useI18n();
 
         <!-- Vision Mission -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-gray-50 dark:bg-secondary rounded-2xl p-8">
-            <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center text-2xl mb-4">🎯</div>
+          <div class="bg-gray-50 dark:bg-secondary rounded-2xl p-8 border-t-4 border-accent">
             <h3 class="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">{{ t('about.vision') }}</h3>
-            <p class="text-gray-600 dark:text-gray-300">{{ t('about.vision_text') }}</p>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">{{ t('about.vision_text') }}</p>
           </div>
-          <div class="bg-gray-50 dark:bg-secondary rounded-2xl p-8">
-            <div class="w-12 h-12 bg-gold rounded-xl flex items-center justify-center text-2xl mb-4">🚀</div>
+          <div class="bg-gray-50 dark:bg-secondary rounded-2xl p-8 border-t-4 border-gold">
             <h3 class="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">{{ t('about.mission') }}</h3>
             <ul class="space-y-3">
               <li
