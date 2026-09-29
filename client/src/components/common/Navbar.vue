@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 import { useRouter, useRoute, RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useThemeStore } from '../../stores/theme';
+import { useAuthStore } from '../../stores/auth';
 import { Sun, Moon, LayoutDashboard, Menu, X } from 'lucide-vue-next';
 
 const { t, locale } = useI18n();
