@@ -1,7 +1,21 @@
 <script setup>
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import PublicLayout from '../components/common/PublicLayout.vue';
-const { t } = useI18n();
+
+const { t, tm } = useI18n();
+
+const missionItems = computed(() => {
+  const items = tm('about.mission_items');
+  if (Array.isArray(items) && items.length > 0) return items;
+  return [
+    'Membangun unit kegiatan yang aktif dan kolaboratif untuk saling berbagi ilmu serta pengalaman di bidang DKV.',
+    'Meningkatkan kualitas serta daya saing anggota melalui kompetisi, pameran, dan proyek kreatif.',
+    'Menjalin kerja sama dengan pihak eksternal, termasuk industri kreatif, untuk membuka peluang magang dan proyek bersama.',
+    'Mendorong inovasi dan eksplorasi desain yang tidak hanya estetis, tetapi juga memiliki nilai komunikasi yang kuat.',
+    'Menjadi wadah bagi mahasiswa untuk menyalurkan minat dan bakat di bidang desain grafis, animasi, fotografi, videografi dan media interaktif.'
+  ];
+});
 </script>
 
 <template>
@@ -57,7 +71,7 @@ const { t } = useI18n();
             <h3 class="font-heading text-2xl font-bold text-gray-900 dark:text-white mb-4">{{ t('about.mission') }}</h3>
             <ul class="space-y-3">
               <li
-                v-for="(item, i) in t('about.mission_items')"
+                v-for="(item, i) in missionItems"
                 :key="i"
                 class="flex gap-3 text-gray-600 dark:text-gray-300"
               >
