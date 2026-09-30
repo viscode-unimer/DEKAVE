@@ -11,11 +11,15 @@ const { t } = useI18n();
 const portfolios = ref([]);
 const loading = ref(true);
 const activeFilter = ref('');
-const categories = ['Desain', 'Photography', 'Videography', 'Public Relation'];
+const categories = ['Desain Grafis & Poster', 'Fotografi & Dokumentasi', 'Videografi & Sinematik', 'Konten Media & Publikasi'];
 
 // Color palettes for Inspomcp signature touch
 const getPaletteForCategory = (cat) => {
   const map = {
+    'Desain Grafis & Poster': ['#0284C7', '#38BDF8', '#0EA5E9', '#0369A1'],
+    'Fotografi & Dokumentasi': ['#F59E0B', '#FBBF24', '#D97706', '#78350F'],
+    'Videografi & Sinematik': ['#6366F1', '#818CF8', '#4F46E5', '#312E81'],
+    'Konten Media & Publikasi': ['#10B981', '#34D399', '#059669', '#064E3B'],
     'Desain': ['#0284C7', '#38BDF8', '#0EA5E9', '#0369A1'],
     'Photography': ['#F59E0B', '#FBBF24', '#D97706', '#78350F'],
     'Videography': ['#6366F1', '#818CF8', '#4F46E5', '#312E81'],

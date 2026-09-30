@@ -13,12 +13,12 @@ const loading = ref(true);
 const showForm = ref(false);
 const editing = ref(null);
 const saving = ref(false);
-const categories = ['Desain', 'Photography', 'Videography', 'Public Relation'];
+const categories = ['Desain Grafis & Poster', 'Fotografi & Dokumentasi', 'Videografi & Sinematik', 'Konten Media & Publikasi'];
 
 const form = reactive({
   title: '',
   description: '',
-  category: 'Desain',
+  category: 'Desain Grafis & Poster',
   creator: '',
   tags: '',
   isFeatured: false,
@@ -42,7 +42,7 @@ const openCreate = () => {
   Object.assign(form, {
     title: '',
     description: '',
-    category: 'Desain',
+    category: 'Desain Grafis & Poster',
     creator: '',
     tags: '',
     isFeatured: false,

@@ -1,0 +1,115 @@
+[
+  {
+    "_id": "6abbbf1b30848b55704bfabb",
+    "title": "Identitas Visual Festival Budaya Merangin",
+    "description": "Desain branding dan identitas visual komprehensif untuk merayakan kekayaan budaya dan tradisi lokal Merangin.",
+    "category": "Desain",
+    "images": [
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "creator": "Rian Pratama",
+    "tags": [
+      "branding",
+      "identity",
+      "culture",
+      "typography"
+    ],
+    "isFeatured": true,
+    "createdAt": "2026-09-29T13:37:31.500Z",
+    "updatedAt": "2026-09-29T13:37:31.500Z",
+    "__v": 0
+  },
+  {
+    "_id": "6abbbf1b30848b55704bfabe",
+    "title": "Eksplorasi Tipografi Geopark Merangin",
+    "description": "Karya tipografi eksperimental yang terinspirasi dari struktur batu fosil purba di Geopark Merangin.",
+    "category": "Desain",
+    "images": [
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "creator": "Dewi Lestari",
+    "tags": [
+      "typography",
+      "geopark",
+      "design"
+    ],
+    "isFeatured": false,
+    "createdAt": "2026-09-29T13:37:31.500Z",
+    "updatedAt": "2026-09-29T13:37:31.500Z",
+    "__v": 0
+  },
+  {
+    "_id": "6abbbf1b30848b55704bfabd",
+    "title": "Redesign UI/UX Mobile App Pariwisata Merangin",
+    "description": "Konsep antarmuka aplikasi mobile pariwisata yang ramah pengguna, modern, dan mudah dinavigasi wisatawan.",
+    "category": "Desain",
+    "images": [
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "creator": "Fikri Haikal",
+    "tags": [
+      "uiux",
+      "mobileapp",
+      "clean",
+      "modern"
+    ],
+    "isFeatured": true,
+    "createdAt": "2026-09-29T13:37:31.500Z",
+    "updatedAt": "2026-09-29T13:37:31.500Z",
+    "__v": 0
+  },
+  {
+    "_id": "6abd467b5944748e4be400c2",
+    "title": "Kampanye Media Sosial: DKV Ramah Pemula",
+    "description": "Rancangan materi feeds publikasi dan kampanye keterbukaan UKM DKV untuk seluruh mahasiswa baru Universitas Merangin.",
+    "category": "Public Relation",
+    "images": [
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "creator": "Dewi Lestari",
+    "tags": [
+      "humas",
+      "pr",
+      "campaign",
+      "medsos"
+    ],
+    "isFeatured": true,
+    "__v": 0
+  },
+  {
+    "_id": "6abd467b5944748e4be400c5",
+    "title": "Video Profil Kreatif UKM DKV Universitas Merangin",
+    "description": "Produksi video sinematik pendek berdurasi 60 detik yang memperkenalkan dinamika dan semangat berkarya keluarga DKV.",
+    "category": "Videography",
+    "images": [
+      "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "creator": "Fikri Haikal",
+    "tags": [
+      "videography",
+      "reels",
+      "cinematic",
+      "kampus"
+    ],
+    "isFeatured": true,
+    "__v": 0
+  },
+  {
+    "_id": "6abd467b5944748e4be400c8",
+    "title": "Dokumentasi Visual Hunting Senja Danau Pauh",
+    "description": "Rangkaian jepretan lanskap senja dan aktivitas nelayan lokal di Danau Pauh Merangin.",
+    "category": "Photography",
+    "images": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "creator": "Siti Nurhaliza",
+    "tags": [
+      "photography",
+      "landscape",
+      "danau",
+      "merangin"
+    ],
+    "isFeatured": true,
+    "__v": 0
+  }
+]

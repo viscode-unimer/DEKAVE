@@ -31,7 +31,7 @@ const latestBlogs = ref([]);
 const loading = ref(true);
 const activeFilter = ref('All');
 
-const categories = ['All', 'Desain', 'Photography', 'Videography', 'Public Relation'];
+const categories = ['All', 'Desain Grafis & Poster', 'Fotografi & Dokumentasi', 'Videografi & Sinematik', 'Konten Media & Publikasi'];
 
 onMounted(async () => {
   try {

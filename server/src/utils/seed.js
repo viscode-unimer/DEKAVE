@@ -38,7 +38,7 @@ const seedData = async () => {
         {
           title: 'Poster & Identitas Festival Budaya Merangin',
           description: 'Desain poster promosi dan materi visual komprehensif untuk merayakan kekayaan budaya dan tradisi lokal Merangin.',
-          category: 'Desain',
+          category: 'Desain Grafis & Poster',
           images: [
             'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80',
           ],
@@ -49,7 +49,7 @@ const seedData = async () => {
         {
           title: 'Dokumentasi Visual Hunting Senja Danau Pauh',
           description: 'Rangkaian jepretan lanskap senja dan aktivitas nelayan lokal di Danau Pauh Merangin.',
-          category: 'Photography',
+          category: 'Fotografi & Dokumentasi',
           images: [
             'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
           ],
@@ -60,7 +60,7 @@ const seedData = async () => {
         {
           title: 'Video Profil Kreatif UKM DKV Universitas Merangin',
           description: 'Produksi video sinematik pendek berdurasi 60 detik yang memperkenalkan dinamika dan semangat berkarya keluarga DKV.',
-          category: 'Videography',
+          category: 'Videografi & Sinematik',
           images: [
             'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
           ],
@@ -71,7 +71,7 @@ const seedData = async () => {
         {
           title: 'Kampanye Media Sosial: DKV Ramah Pemula',
           description: 'Rancangan materi feeds publikasi dan kampanye keterbukaan UKM DKV untuk seluruh mahasiswa baru Universitas Merangin.',
-          category: 'Public Relation',
+          category: 'Konten Media & Publikasi',
           images: [
             'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
           ],
