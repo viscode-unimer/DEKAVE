@@ -434,7 +434,7 @@ const samplePalettes = [
         <div class="flex items-center justify-between mb-12">
           <div>
             <span class="text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-sky font-semibold block mb-2">
-              ✦ AGENDA & WORKSHOP
+              ✦ AGENDA & ACARA
             </span>
             <h2 class="section-title">{{ t('home.latest_events') }}</h2>
           </div>
