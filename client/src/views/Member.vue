@@ -13,7 +13,7 @@ const activeDivision = ref('Semua');
 
 const divisions = ['Semua', 'Desain', 'Photography', 'Videography', 'Public Relation'];
 
-// Verified real member data from UKM DEKAVE
+// Verified real member data from UKM DKV
 const defaultMembers = [
   {
     _id: 'leader-mutia-chandra',
@@ -113,7 +113,7 @@ const filteredMembers = computed(() => {
             <div
               v-if="member.position?.toLowerCase().includes('ketua')"
               class="absolute top-3 right-3 text-amber-500"
-              title="Ketua UKM DEKAVE"
+              title="Ketua UKM DKV"
             >
               <Crown :size="16" />
             </div>
@@ -170,7 +170,7 @@ const filteredMembers = computed(() => {
                 <span>@{{ member.instagram.replace('@', '') }}</span>
               </a>
               <span v-else class="text-[11px] font-mono text-slate-400 dark:text-gray-600">
-                DEKAVE Member
+                DKV Member
               </span>
             </div>
           </div>

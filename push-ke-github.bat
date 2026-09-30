@@ -1,9 +1,9 @@
 @echo off
-title Push DEKAVE ke GitHub
+title Push DKV ke GitHub
 cd /d "%~dp0"
 
 echo ========================================================
-echo   MENGIRIM SEMUA KODE DEKAVE KE GITHUB...
+echo   MENGIRIM SEMUA KODE DKV KE GITHUB...
 echo ========================================================
 echo.
 echo Jika muncul jendela browser login GitHub:

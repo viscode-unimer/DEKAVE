@@ -125,7 +125,7 @@ const samplePalettes = [
         </div>
 
         <!-- ======================================================== -->
-        <!-- 2. KENAPA HARUS GABUNG DEKAVE? (Ramah Pemula & Santai)   -->
+        <!-- 2. KENAPA HARUS GABUNG DKV? (Ramah Pemula & Santai)      -->
         <!-- ======================================================== -->
         <div class="mt-20 sm:mt-28 max-w-5xl mx-auto">
           <div class="text-center mb-10">
@@ -134,7 +134,7 @@ const samplePalettes = [
               <span>Ramah Pemula & Anti-Minder</span>
             </span>
             <h2 class="font-heading font-black text-2xl sm:text-4xl text-slate-900 dark:text-white tracking-tight">
-              Kenapa Harus Gabung DEKAVE?
+              Kenapa Harus Gabung DKV?
             </h2>
             <p class="text-slate-600 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mt-2">
               Kamu nggak perlu jago dulu buat gabung. Di sini tempatnya kita sama-sama mulai dari nol, saling bantu, dan berkembang bareng.
@@ -213,7 +213,7 @@ const samplePalettes = [
     </section>
 
     <!-- ======================================================== -->
-    <!-- 3. AKTIVITAS SERU DI DEKAVE (Aktivitas Nyata Mahasiswa)  -->
+    <!-- 3. AKTIVITAS SERU DI DKV (Aktivitas Nyata Mahasiswa)     -->
     <!-- ======================================================== -->
     <section class="py-20 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -222,7 +222,7 @@ const samplePalettes = [
             ✦ KEGIATAN KITA SEHARI-HARI
           </span>
           <h2 class="section-title">
-            Aktivitas Seru di DEKAVE
+            Aktivitas Seru di DKV
           </h2>
           <p class="text-slate-600 dark:text-gray-400 text-base sm:text-lg mt-3">
             Bukan teori yang kaku atau tugas yang bikin pusing — ini kegiatan nyata dan santai yang biasa kami lakukan bareng teman-teman di kampus.

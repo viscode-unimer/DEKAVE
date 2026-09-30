@@ -27,7 +27,7 @@ const missionItems = computed(() => {
       <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium border border-cyan-500/30 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 mb-6 backdrop-blur-md">
           <Sparkles :size="14" class="text-cyan-600 dark:text-cyan-400" />
-          <span>DEKAVE PHILOSOPHY & IDENTITY</span>
+          <span>DKV PHILOSOPHY & IDENTITY</span>
         </div>
         <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-6">
           {{ t('about.title') }}
@@ -53,14 +53,14 @@ const missionItems = computed(() => {
               {{ t('about.desc') }}
             </p>
             <p class="text-slate-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base mb-8">
-              Di UKM DEKAVE, kami bergerak bersama dalam 4 divisi spesialisasi: <strong class="text-sky-600 dark:text-sky font-semibold">Desain</strong>, <strong class="text-amber-600 dark:text-amber-400 font-semibold">Photography</strong>, <strong class="text-indigo-600 dark:text-indigo-400 font-semibold">Videography</strong>, dan <strong class="text-emerald-600 dark:text-emerald-400 font-semibold">Public Relation (PR)</strong>. Setiap divisi saling berkolaborasi dari tahap ide, produksi visual, hingga publikasi ke audiens kampus dan masyarakat luas.
+              Di UKM DKV, kami bergerak bersama dalam 4 divisi spesialisasi: <strong class="text-sky-600 dark:text-sky font-semibold">Desain</strong>, <strong class="text-amber-600 dark:text-amber-400 font-semibold">Photography</strong>, <strong class="text-indigo-600 dark:text-indigo-400 font-semibold">Videography</strong>, dan <strong class="text-emerald-600 dark:text-emerald-400 font-semibold">Public Relation (PR)</strong>. Setiap divisi saling berkolaborasi dari tahap ide, produksi visual, hingga publikasi ke audiens kampus dan masyarakat luas.
             </p>
             <div class="glass-card rounded-2xl p-6 border-l-4 border-l-cyan-500 relative overflow-hidden">
               <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
               <p class="italic text-cyan-800 dark:text-cyan-200 font-medium text-lg leading-snug">
                 "Ideas Become Reality, Visuals Become Stories"
               </p>
-              <span class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-2 block">Creative Studio Motto — DEKAVE</span>
+              <span class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-2 block">Creative Studio Motto — DKV</span>
             </div>
           </div>
 
@@ -146,7 +146,7 @@ const missionItems = computed(() => {
         </div>
 
         <!-- ======================================================== -->
-        <!-- 4 DIVISI UTAMA DEKAVE                                    -->
+        <!-- 4 DIVISI UTAMA DKV                                       -->
         <!-- ======================================================== -->
         <div class="pt-8 border-t border-slate-200 dark:border-white/10">
           <div class="text-center max-w-3xl mx-auto mb-12">
@@ -154,10 +154,10 @@ const missionItems = computed(() => {
               // STRUKTUR KREATIF & KELUARGA BESAR
             </span>
             <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
-              4 Divisi Utama DEKAVE
+              4 Divisi Utama DKV
             </h2>
             <p class="text-slate-600 dark:text-gray-400 text-sm sm:text-base mt-3 leading-relaxed">
-              Untuk mengasah minat dan bakat setiap anggota secara terarah, DEKAVE terbagi ke dalam empat divisi utama yang saling bersinergi dalam setiap karya dan kegiatan.
+              Untuk mengasah minat dan bakat setiap anggota secara terarah, DKV terbagi ke dalam empat divisi utama yang saling bersinergi dalam setiap karya dan kegiatan.
             </p>
           </div>
 

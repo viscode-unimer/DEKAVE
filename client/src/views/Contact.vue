@@ -51,7 +51,7 @@ const handleSubmit = async () => {
                 // GET IN TOUCH
               </span>
               <h2 class="font-heading text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6">
-                Kirim Pesan ke DEKAVE
+                Kirim Pesan ke DKV
               </h2>
 
               <form @submit.prevent="handleSubmit" class="space-y-5">
@@ -99,7 +99,7 @@ const handleSubmit = async () => {
                   </div>
                   <div>
                     <span class="text-sm font-semibold block text-slate-900 dark:text-white">Instagram</span>
-                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400">@dekave.unimer</span>
+                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400">@dkv.unimer</span>
                   </div>
                 </a>
 
@@ -109,7 +109,7 @@ const handleSubmit = async () => {
                   </div>
                   <div>
                     <span class="text-sm font-semibold block text-slate-900 dark:text-white">YouTube</span>
-                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400">DEKAVE Official</span>
+                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400">DKV Official</span>
                   </div>
                 </a>
 
@@ -119,7 +119,7 @@ const handleSubmit = async () => {
                   </div>
                   <div>
                     <span class="text-sm font-semibold block text-slate-900 dark:text-white">Behance</span>
-                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400">behance.net/dekave</span>
+                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400">behance.net/dkv</span>
                   </div>
                 </a>
               </div>
@@ -133,7 +133,7 @@ const handleSubmit = async () => {
               </p>
               <p class="flex items-center gap-3 text-sm text-slate-700 dark:text-gray-300">
                 <Mail :size="16" class="text-sky-600 dark:text-sky shrink-0" />
-                <span class="font-mono text-xs">dekave@merangin.ac.id</span>
+                <span class="font-mono text-xs">dkv@merangin.ac.id</span>
               </p>
             </div>
           </div>

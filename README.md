@@ -1,4 +1,4 @@
-# DEKAVE — UKM DKV Universitas Merangin
+# DKV — UKM DKV Universitas Merangin
 
 > *"Ideas Become Reality, Visuals Become Stories"*
 
