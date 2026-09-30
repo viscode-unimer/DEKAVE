@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import PublicLayout from '../components/common/PublicLayout.vue';
-import { Compass, Sparkles, Target, Rocket, Award, Users, Palette, Calendar, Camera, Video, Megaphone } from 'lucide-vue-next';
+import { Sparkles, Target, Rocket, Users, Palette, Camera, Video, Megaphone, HeartHandshake, Sprout, Coffee, GraduationCap } from 'lucide-vue-next';
 
 const { t, tm } = useI18n();
 
@@ -76,44 +76,82 @@ const missionItems = computed(() => {
               <p class="italic text-cyan-800 dark:text-cyan-200 font-medium text-lg leading-snug">
                 "Ideas Become Reality, Visuals Become Stories"
               </p>
-              <span class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-2 block">Creative Studio Motto — DKV</span>
+              <span class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-2 block">Motto</span>
             </div>
           </div>
 
           <div class="lg:col-span-5">
-            <div class="glass-card rounded-3xl p-8 border border-slate-200 dark:border-white/10 relative overflow-hidden">
+            <div class="glass-card rounded-3xl p-6 sm:p-7 border border-slate-200/80 dark:border-white/10 relative overflow-hidden">
               <div class="absolute top-0 right-0 w-48 h-48 bg-royal/20 rounded-full blur-3xl pointer-events-none"></div>
-              <h3 class="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-gray-400 mb-6 flex items-center gap-2">
-                <Compass :size="14" class="text-cyan-600 dark:text-cyan-400" />
-                <span>STUDIO ECOSYSTEM</span>
-              </h3>
-              <div class="grid grid-cols-2 gap-6">
-                <div class="p-4 rounded-xl bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.05]">
-                  <div class="text-3xl sm:text-4xl font-bold text-sky-600 dark:text-cyan-400 font-heading">50+</div>
-                  <div class="text-xs sm:text-sm text-slate-700 dark:text-gray-300 mt-1 flex items-center gap-1.5">
-                    <Users :size="14" class="text-sky-600 dark:text-cyan-400/80" />
-                    <span>Anggota Aktif</span>
+
+              <div class="flex items-center justify-between mb-5 pb-3 border-b border-slate-200 dark:border-white/[0.08]">
+                <h3 class="text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-cyan-400 flex items-center gap-2 font-semibold">
+                  <HeartHandshake :size="15" />
+                  <span>Nilai & Semangat DKV</span>
+                </h3>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-medium">
+                  Kekeluargaan
+                </span>
+              </div>
+
+              <div class="space-y-3.5">
+                <!-- Item 1: Saling Rangkul -->
+                <div class="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-100/70 dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/[0.05] hover:border-sky-500/40 dark:hover:border-cyan-400/30 transition-all">
+                  <div class="w-10 h-10 rounded-xl bg-sky-500/15 dark:bg-sky/20 border border-sky-500/30 dark:border-sky/30 flex items-center justify-center text-sky-600 dark:text-sky shrink-0 mt-0.5">
+                    <HeartHandshake :size="18" />
+                  </div>
+                  <div>
+                    <h4 class="font-heading font-bold text-sm text-slate-900 dark:text-white">
+                      Saling Rangkul
+                    </h4>
+                    <p class="text-slate-600 dark:text-gray-300 text-xs leading-relaxed mt-0.5">
+                      Semua divisi dan tingkatan belajar bersama tanpa sekat senioritas.
+                    </p>
                   </div>
                 </div>
-                <div class="p-4 rounded-xl bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.05]">
-                  <div class="text-3xl sm:text-4xl font-bold text-sky-600 dark:text-sky font-heading">100+</div>
-                  <div class="text-xs sm:text-sm text-slate-700 dark:text-gray-300 mt-1 flex items-center gap-1.5">
-                    <Palette :size="14" class="text-sky-600 dark:text-sky/80" />
-                    <span>Karya Kreatif</span>
+
+                <!-- Item 2: Mulai dari Nol -->
+                <div class="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-100/70 dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/[0.05] hover:border-emerald-500/40 dark:hover:border-emerald-400/30 transition-all">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/15 dark:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5">
+                    <Sprout :size="18" />
+                  </div>
+                  <div>
+                    <h4 class="font-heading font-bold text-sm text-slate-900 dark:text-white">
+                      Mulai dari Nol
+                    </h4>
+                    <p class="text-slate-600 dark:text-gray-300 text-xs leading-relaxed mt-0.5">
+                      Pintu terbuka bagi siapa saja, tidak harus sudah mahir mendesain atau memotret.
+                    </p>
                   </div>
                 </div>
-                <div class="p-4 rounded-xl bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.05]">
-                  <div class="text-3xl sm:text-4xl font-bold text-cyan-600 dark:text-cyan-300 font-heading">20+</div>
-                  <div class="text-xs sm:text-sm text-slate-700 dark:text-gray-300 mt-1 flex items-center gap-1.5">
-                    <Calendar :size="14" class="text-cyan-600 dark:text-cyan-300/80" />
-                    <span>Workshop & Event</span>
+
+                <!-- Item 3: Kumpul Produktif -->
+                <div class="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-100/70 dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/[0.05] hover:border-amber-500/40 dark:hover:border-amber-400/30 transition-all">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/15 dark:bg-amber-500/20 border border-amber-500/30 dark:border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0 mt-0.5">
+                    <Coffee :size="18" />
+                  </div>
+                  <div>
+                    <h4 class="font-heading font-bold text-sm text-slate-900 dark:text-white">
+                      Kumpul Produktif
+                    </h4>
+                    <p class="text-slate-600 dark:text-gray-300 text-xs leading-relaxed mt-0.5">
+                      Nongkrong santai sambil ngopi yang melahirkan ide dan karya visual nyata.
+                    </p>
                   </div>
                 </div>
-                <div class="p-4 rounded-xl bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.05]">
-                  <div class="text-3xl sm:text-4xl font-bold text-amber-500 dark:text-amber-300 font-heading">5+</div>
-                  <div class="text-xs sm:text-sm text-slate-700 dark:text-gray-300 mt-1 flex items-center gap-1.5">
-                    <Award :size="14" class="text-amber-500 dark:text-amber-300/80" />
-                    <span>Prestasi Visual</span>
+
+                <!-- Item 4: Lintas Fakultas -->
+                <div class="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-100/70 dark:bg-white/[0.03] border border-slate-200/70 dark:border-white/[0.05] hover:border-indigo-500/40 dark:hover:border-indigo-400/30 transition-all">
+                  <div class="w-10 h-10 rounded-xl bg-indigo-500/15 dark:bg-indigo-500/20 border border-indigo-500/30 dark:border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5">
+                    <GraduationCap :size="18" />
+                  </div>
+                  <div>
+                    <h4 class="font-heading font-bold text-sm text-slate-900 dark:text-white">
+                      Lintas Fakultas
+                    </h4>
+                    <p class="text-slate-600 dark:text-gray-300 text-xs leading-relaxed mt-0.5">
+                      Menjalin persahabatan antar mahasiswa lintas prodi di Universitas Merangin.
+                    </p>
                   </div>
                 </div>
               </div>
