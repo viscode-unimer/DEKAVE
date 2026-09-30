@@ -250,6 +250,20 @@ const anggotaNonAktifList = computed(() => {
           <div class="min-w-fit mx-auto flex flex-col items-center">
 
             <!-- ============================================== -->
+            <!-- SECTION DIVIDER: ANGGOTA AKTIF                 -->
+            <!-- ============================================== -->
+            <div class="w-full max-w-3xl sm:max-w-4xl flex items-center gap-4 my-6 px-4">
+              <div class="h-px bg-slate-300 dark:bg-slate-700/80 flex-1"></div>
+              <span class="text-[11px] sm:text-xs font-mono font-semibold tracking-widest text-slate-500 dark:text-gray-400 uppercase whitespace-nowrap">
+                ANGGOTA AKTIF
+              </span>
+              <div class="h-px bg-slate-300 dark:bg-slate-700/80 flex-1"></div>
+            </div>
+
+            <!-- Vertical line dropping from divider to top of Ketua Umum -->
+            <div class="w-0.5 h-8 bg-slate-300 dark:bg-slate-600"></div>
+
+            <!-- ============================================== -->
             <!-- LEVEL 1: KETUA UMUM                            -->
             <!-- ============================================== -->
             <div class="flex flex-col items-center">
@@ -382,9 +396,21 @@ const anggotaNonAktifList = computed(() => {
             <!-- ============================================== -->
             <!-- LEVEL 5: ANGGOTA NON AKTIF & DEMISIONER        -->
             <!-- ============================================== -->
-            <div v-if="anggotaNonAktifList.length > 0" class="flex flex-col items-center">
-              <!-- DOTTED VERTICAL CONNECTOR LINE (Matching Diagram) -->
-              <div class="w-0 h-14 border-l-2 border-dashed border-slate-400 dark:border-slate-500"></div>
+            <div v-if="anggotaNonAktifList.length > 0" class="flex flex-col items-center w-full mt-4">
+              <!-- DOTTED VERTICAL CONNECTOR LINE (From Active members down to divider) -->
+              <div class="w-0 h-10 border-l-2 border-dashed border-slate-400 dark:border-slate-500"></div>
+
+              <!-- SECTION DIVIDER: ANGGOTA NON-AKTIF -->
+              <div class="w-full max-w-3xl sm:max-w-4xl flex items-center gap-4 my-2 px-4">
+                <div class="h-px bg-slate-300 dark:bg-slate-700/80 flex-1"></div>
+                <span class="text-[11px] sm:text-xs font-mono font-semibold tracking-widest text-slate-500 dark:text-gray-400 uppercase whitespace-nowrap">
+                  ANGGOTA NON-AKTIF
+                </span>
+                <div class="h-px bg-slate-300 dark:bg-slate-700/80 flex-1"></div>
+              </div>
+
+              <!-- DOTTED VERTICAL CONNECTOR LINE (From divider down to Non-Active cards) -->
+              <div class="w-0 h-10 border-l-2 border-dashed border-slate-400 dark:border-slate-500"></div>
 
               <!-- DOTTED TREE SUB-BRANCH FOR NON-ACTIVE MEMBERS -->
               <div class="flex items-start justify-center">
