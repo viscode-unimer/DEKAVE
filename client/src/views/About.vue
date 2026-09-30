@@ -25,6 +25,22 @@ const missionItems = computed(() => {
     <section class="relative pt-36 pb-20 md:pt-44 md:pb-24 overflow-hidden">
       <div class="absolute inset-0 bg-grid-lines opacity-15 pointer-events-none"></div>
       <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Logo Showcase -->
+        <div class="flex justify-center mb-6">
+          <div class="inline-flex items-center justify-center p-4 sm:p-5 rounded-3xl bg-slate-200/60 dark:bg-white/[0.04] border border-slate-300/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:scale-105 transition-transform duration-300">
+            <img
+              src="/logo-dkv-biru.png"
+              alt="Logo DKV"
+              class="h-16 sm:h-20 w-auto object-contain dark:hidden"
+            />
+            <img
+              src="/logo-dkv-putih.png"
+              alt="Logo DKV"
+              class="h-16 sm:h-20 w-auto object-contain hidden dark:block drop-shadow-[0_0_25px_rgba(56,189,248,0.4)]"
+            />
+          </div>
+        </div>
+
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium border border-cyan-500/30 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 mb-6 backdrop-blur-md">
           <Sparkles :size="14" class="text-cyan-600 dark:text-cyan-400" />
           <span>DKV PHILOSOPHY & IDENTITY</span>

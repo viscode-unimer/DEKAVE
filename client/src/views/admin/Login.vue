@@ -32,13 +32,22 @@ const handleLogin = async () => {
       <div class="bg-white dark:bg-secondary rounded-3xl shadow-2xl p-8 border border-gray-100 dark:border-gray-700">
         <!-- Header -->
         <div class="text-center mb-8">
-          <RouterLink to="/" class="inline-block">
-            <span class="font-heading text-4xl font-bold text-accent tracking-wider">DKV</span>
+          <RouterLink to="/" class="inline-block group mb-3">
+            <img
+              src="/logo-dkv-biru.png"
+              alt="Logo DKV"
+              class="h-14 w-auto mx-auto object-contain dark:hidden group-hover:scale-105 transition-transform"
+            />
+            <img
+              src="/logo-dkv-putih.png"
+              alt="Logo DKV"
+              class="h-14 w-auto mx-auto object-contain hidden dark:block drop-shadow-[0_0_20px_rgba(56,189,248,0.4)] group-hover:scale-105 transition-transform"
+            />
           </RouterLink>
-          <h2 class="font-heading text-xl font-bold text-gray-900 dark:text-white mt-2">
+          <h2 class="font-heading text-xl font-bold text-gray-900 dark:text-white mt-1">
             Portal Admin UKM DKV
           </h2>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
             Universitas Merangin
           </p>
         </div>

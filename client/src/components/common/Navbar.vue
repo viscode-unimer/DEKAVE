@@ -47,9 +47,17 @@ const isActive = (path) => {
     >
       <!-- Brand Logo -->
       <RouterLink to="/" class="flex items-center gap-2.5 group pl-1">
-        <div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-tr from-accent via-sky to-royal text-white font-black text-sm shadow-[0_0_15px_rgba(56,189,248,0.45)] group-hover:scale-105 transition-transform">
-          <span>D</span>
-          <span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-white dark:border-[#070E22] animate-pulse"></span>
+        <div class="relative flex items-center justify-center">
+          <img
+            src="/logo-dkv-biru.png"
+            alt="Logo DKV Universitas Merangin"
+            class="h-7 sm:h-8 w-auto object-contain dark:hidden group-hover:scale-105 transition-transform"
+          />
+          <img
+            src="/logo-dkv-putih.png"
+            alt="Logo DKV Universitas Merangin"
+            class="h-7 sm:h-8 w-auto object-contain hidden dark:block group-hover:scale-105 transition-transform drop-shadow-[0_0_10px_rgba(56,189,248,0.35)]"
+          />
         </div>
         <div class="flex flex-col">
           <span class="font-heading font-extrabold text-base tracking-wider text-slate-900 dark:text-white leading-none group-hover:text-sky transition-colors flex items-center gap-1">

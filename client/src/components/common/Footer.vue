@@ -14,10 +14,17 @@ const { t } = useI18n();
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-slate-200 dark:border-white/[0.06]">
         <!-- Brand Column (5 cols) -->
         <div class="md:col-span-5 space-y-4">
-          <RouterLink to="/" class="inline-flex items-center gap-2.5 group">
-            <div class="flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-tr from-accent via-sky to-royal text-white font-black text-sm shadow-[0_0_15px_rgba(56,189,248,0.4)]">
-              D
-            </div>
+          <RouterLink to="/" class="inline-flex items-center gap-3 group">
+            <img
+              src="/logo-dkv-biru.png"
+              alt="Logo DKV Universitas Merangin"
+              class="h-9 w-auto object-contain dark:hidden group-hover:scale-105 transition-transform"
+            />
+            <img
+              src="/logo-dkv-putih.png"
+              alt="Logo DKV Universitas Merangin"
+              class="h-9 w-auto object-contain hidden dark:block group-hover:scale-105 transition-transform drop-shadow-[0_0_12px_rgba(56,189,248,0.35)]"
+            />
             <span class="font-heading font-black text-2xl tracking-wider text-slate-900 dark:text-white group-hover:text-sky transition-colors">
               DKV
             </span>
