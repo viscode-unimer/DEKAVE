@@ -68,7 +68,7 @@ const isActive = (path) => route.path.startsWith(path);
           <span class="text-[10px] bg-accent/20 text-accent font-semibold px-2 py-0.5 rounded-full uppercase">
             {{ auth.user?.role || 'Admin' }}
           </span>
-          <span class="text-[10px] text-gray-400 font-mono">v0.5</span>
+          <span class="text-[10px] text-gray-400 font-mono">v0.6</span>
         </div>
         <button
           @click="sidebarOpen = !sidebarOpen"
