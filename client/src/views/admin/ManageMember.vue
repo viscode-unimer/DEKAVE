@@ -141,9 +141,17 @@ onMounted(fetchMembers);
           <input
             v-model="form.division"
             required
+            list="division-options"
             class="input-field"
-            placeholder="Kreatif, Digital, Media..."
+            placeholder="Pilih atau ketik divisi..."
           />
+          <datalist id="division-options">
+            <option value="Desain" />
+            <option value="Photography" />
+            <option value="Videography" />
+            <option value="Public Relation" />
+            <option value="Badan Pengurus Harian" />
+          </datalist>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Angkatan *</label>

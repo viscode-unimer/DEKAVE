@@ -19,7 +19,9 @@ import {
   Lightbulb,
   Laptop,
   Coffee,
-  Compass
+  Compass,
+  Video,
+  Megaphone
 } from 'lucide-vue-next';
 
 const { t } = useI18n();
@@ -102,6 +104,23 @@ const samplePalettes = [
               <span>Eksplorasi Portofolio</span>
               <ArrowUpRight :size="18" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </RouterLink>
+          </div>
+
+          <!-- 4 Divisi Utama Quick Ribbon -->
+          <div class="mt-12 flex flex-wrap items-center justify-center gap-2 text-xs font-mono">
+            <span class="text-slate-500 dark:text-gray-400 font-semibold mr-1">4 Divisi Utama:</span>
+            <span class="px-3 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 flex items-center gap-1.5">
+              <span>🎨</span> <span>Desain</span>
+            </span>
+            <span class="px-3 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 flex items-center gap-1.5">
+              <span>📷</span> <span>Photography</span>
+            </span>
+            <span class="px-3 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 flex items-center gap-1.5">
+              <span>🎥</span> <span>Videography</span>
+            </span>
+            <span class="px-3 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 flex items-center gap-1.5">
+              <span>📢</span> <span>Public Relation (PR)</span>
+            </span>
           </div>
         </div>
 
@@ -210,18 +229,21 @@ const samplePalettes = [
           </p>
         </div>
 
-        <!-- 4 Grid Cards -->
+        <!-- 4 Grid Cards (Representing 4 Divisions) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Item 1: Belajar Bareng dari Nol -->
+          <!-- Item 1: Belajar Bareng dari Nol (Divisi Desain) -->
           <div class="glass-card p-6 sm:p-7 flex flex-col justify-between group hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-300">
             <div>
-              <div class="flex items-center justify-between mb-5">
+              <div class="flex items-center justify-between mb-4">
                 <div class="w-12 h-12 rounded-2xl bg-sky-500/15 dark:bg-sky/15 border border-sky-500/30 dark:border-sky/30 flex items-center justify-center text-sky-600 dark:text-sky group-hover:scale-110 transition-transform">
-                  <Laptop :size="24" />
+                  <Palette :size="24" />
                 </div>
                 <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-bold">01</span>
               </div>
-              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2.5">
+              <span class="text-[11px] font-mono font-semibold uppercase tracking-wider text-sky-600 dark:text-sky block mb-1">
+                🎨 Divisi Desain
+              </span>
+              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2">
                 Belajar Bareng dari Nol
               </h3>
               <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
@@ -235,16 +257,19 @@ const samplePalettes = [
             </div>
           </div>
 
-          <!-- Item 2: Hunting Foto & Dokumentasi -->
+          <!-- Item 2: Hunting Foto & Dokumentasi (Divisi Photography) -->
           <div class="glass-card p-6 sm:p-7 flex flex-col justify-between group hover:border-amber-500/50 dark:hover:border-amber-400/50 transition-all duration-300">
             <div>
-              <div class="flex items-center justify-between mb-5">
+              <div class="flex items-center justify-between mb-4">
                 <div class="w-12 h-12 rounded-2xl bg-amber-500/15 dark:bg-amber-500/20 border border-amber-500/30 dark:border-amber-500/40 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">
                   <Camera :size="24" />
                 </div>
                 <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-bold">02</span>
               </div>
-              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2.5">
+              <span class="text-[11px] font-mono font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400 block mb-1">
+                📷 Divisi Photography
+              </span>
+              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2">
                 Hunting Foto & Dokumentasi
               </h3>
               <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
@@ -258,48 +283,54 @@ const samplePalettes = [
             </div>
           </div>
 
-          <!-- Item 3: Bikin Konten & Acara Kampus -->
+          <!-- Item 3: Bikin Konten & Acara Kampus (Divisi Videography) -->
           <div class="glass-card p-6 sm:p-7 flex flex-col justify-between group hover:border-indigo-500/50 dark:hover:border-indigo-400/50 transition-all duration-300">
             <div>
-              <div class="flex items-center justify-between mb-5">
+              <div class="flex items-center justify-between mb-4">
                 <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 dark:bg-indigo-500/20 border border-indigo-500/30 dark:border-indigo-500/40 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform">
-                  <Palette :size="24" />
+                  <Video :size="24" />
                 </div>
                 <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-bold">03</span>
               </div>
-              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2.5">
+              <span class="text-[11px] font-mono font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 block mb-1">
+                🎥 Divisi Videography
+              </span>
+              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2">
                 Bikin Konten & Acara Kampus
               </h3>
               <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
-                Membantu desain poster, spanduk, banner, dan materi visual untuk event kampus serta media sosial. Karyamu langsung dilihat banyak orang!
+                Membantu produksi video kreatif, liputan event kampus, serta video pendek/reels untuk media sosial. Karyamu langsung dilihat banyak orang!
               </p>
             </div>
             <div class="pt-5 mt-6 border-t border-slate-200 dark:border-white/[0.08]">
               <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-indigo-500/10 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 dark:border-indigo-500/30">
-                Poster Event · Feeds Medsos
+                Sinematik · Reels · Event
               </span>
             </div>
           </div>
 
-          <!-- Item 4: Teman Nongkrong Positif -->
-          <div class="glass-card p-6 sm:p-7 flex flex-col justify-between group hover:border-rose-500/50 dark:hover:border-rose-400/50 transition-all duration-300">
+          <!-- Item 4: Teman Nongkrong Positif (Divisi Public Relation) -->
+          <div class="glass-card p-6 sm:p-7 flex flex-col justify-between group hover:border-emerald-500/50 dark:hover:border-emerald-400/50 transition-all duration-300">
             <div>
-              <div class="flex items-center justify-between mb-5">
-                <div class="w-12 h-12 rounded-2xl bg-rose-500/15 dark:bg-rose-500/20 border border-rose-500/30 dark:border-rose-500/40 flex items-center justify-center text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform">
-                  <Coffee :size="24" />
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 dark:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+                  <Megaphone :size="24" />
                 </div>
                 <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-bold">04</span>
               </div>
-              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2.5">
+              <span class="text-[11px] font-mono font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 block mb-1">
+                📢 Divisi Public Relation (PR)
+              </span>
+              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2">
                 Teman Nongkrong Positif
               </h3>
               <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
-                Wadah kumpul santai yang produktif untuk saling tukar ilmu, ngobrol santai sambil ngopi, dan nambah teman akrab lintas fakultas.
+                Wadah kumpul santai yang produktif untuk saling tukar ilmu, ngobrol santai sambil ngopi, jalin humas kampus, dan nambah teman akrab lintas fakultas.
               </p>
             </div>
             <div class="pt-5 mt-6 border-t border-slate-200 dark:border-white/[0.08]">
-              <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-rose-500/10 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 border border-rose-500/20 dark:border-rose-500/30">
-                Kumpul Santai · Lintas Fakultas
+              <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 dark:border-emerald-500/30">
+                Humas · Kumpul Santai · Lintas Fakultas
               </span>
             </div>
           </div>

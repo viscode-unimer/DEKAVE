@@ -21,6 +21,7 @@ const form = reactive({
   phone: '',
   instagram: '',
   email: '',
+  division: 'Desain',
   motivation: '',
   portfolioLink: '',
 });
@@ -200,6 +201,18 @@ const handleSubmit = async () => {
                   placeholder="@username"
                 />
               </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-slate-700 dark:text-gray-300 mb-2">
+                Pilihan Divisi Peminatan <span class="text-sky-600 dark:text-cyan-400">*</span>
+              </label>
+              <select v-model="form.division" required class="input-field">
+                <option value="Desain">🎨 Divisi Desain (Grafis, Poster, Ilustrasi, Layout)</option>
+                <option value="Photography">📷 Divisi Photography (Kamera, Framing, Hunting Foto)</option>
+                <option value="Videography">🎥 Divisi Videography (Video Kreatif, Reels, Sinematik)</option>
+                <option value="Public Relation">📢 Divisi Public Relation / PR (Humas & Media Sosial)</option>
+              </select>
             </div>
 
             <div>

@@ -10,6 +10,7 @@ const camavisSchema = new mongoose.Schema({
   instagram: { type: String, required: true },
   email: { type: String, required: true, lowercase: true, trim: true },
   motivation: { type: String, required: true },
+  division: { type: String, default: 'Desain' },
   portfolioLink: { type: String, default: '' },
   status: { type: String, enum: ['pending', 'accepted', 'rejected'], default: 'pending' },
   submittedAt: { type: Date, default: Date.now },

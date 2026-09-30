@@ -2,12 +2,12 @@ const Camavis = require('../models/Camavis');
 
 const submitCamavis = async (req, res, next) => {
   try {
-    const { fullName, nickname, nim, faculty, major, phone, instagram, email, motivation, portfolioLink } = req.body;
+    const { fullName, nickname, nim, faculty, major, phone, instagram, email, motivation, division, portfolioLink } = req.body;
     const existing = await Camavis.findOne({ $or: [{ nim }, { email }] });
     if (existing) {
       return res.status(400).json({ success: false, message: 'NIM or email already registered' });
     }
-    const camavis = await Camavis.create({ fullName, nickname, nim, faculty, major, phone, instagram, email, motivation, portfolioLink });
+    const camavis = await Camavis.create({ fullName, nickname, nim, faculty, major, phone, instagram, email, motivation, division, portfolioLink });
     res.status(201).json({ success: true, message: 'Registration submitted successfully! We will contact you soon.', data: camavis });
   } catch (error) { next(error); }
 };
