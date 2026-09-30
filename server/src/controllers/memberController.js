@@ -7,8 +7,9 @@ const getMembers = async (req, res, next) => {
     const filter = {};
     if (division) filter.division = division;
     if (year) filter.year = year;
-    if (active !== undefined) filter.isActive = active === 'true';
-    else filter.isActive = true;
+    if (active !== undefined && active !== 'all') {
+      filter.isActive = active === 'true';
+    }
     const members = await Member.find(filter).sort({ position: 1, name: 1 });
     res.json({ success: true, data: members });
   } catch (error) { next(error); }
