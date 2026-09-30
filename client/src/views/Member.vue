@@ -206,6 +206,17 @@ const allAnggotaAktif = computed(() => {
   });
 });
 
+// Chunk active members into rows of up to 5 cards (to prevent 6-card cutoff)
+const CHUNK_SIZE = 5;
+const anggotaAktifRows = computed(() => {
+  const rows = [];
+  const list = allAnggotaAktif.value;
+  for (let i = 0; i < list.length; i += CHUNK_SIZE) {
+    rows.push(list.slice(i, i + CHUNK_SIZE));
+  }
+  return rows;
+});
+
 // Level 5: Anggota Non Aktif / Demisioner / Founder
 const anggotaNonAktifList = computed(() => {
   return members.value.filter((m) => {
@@ -371,26 +382,34 @@ const anggotaNonAktifList = computed(() => {
             <!-- ============================================== -->
             <!-- LEVEL 4: ANGGOTA AKTIF                         -->
             <!-- ============================================== -->
-            <div class="flex items-start justify-center">
-              <div
-                v-for="(m, idx) in allAnggotaAktif"
-                :key="m._id"
-                class="flex flex-col items-center relative px-2.5 sm:px-3"
-              >
-                <!-- Top horizontal bar across Anggota cards -->
-                <div
-                  v-if="allAnggotaAktif.length > 1"
-                  class="absolute top-0 h-0.5 bg-slate-300 dark:bg-slate-600"
-                  :class="[
-                    idx === 0 ? 'left-1/2 right-0' : '',
-                    idx === allAnggotaAktif.length - 1 ? 'left-0 right-1/2' : '',
-                    idx > 0 && idx < allAnggotaAktif.length - 1 ? 'left-0 right-0' : ''
-                  ]"
-                ></div>
-                <!-- Drop line touching top of Anggota card -->
-                <div class="w-0.5 h-8 bg-slate-300 dark:bg-slate-600"></div>
-                <MemberCard :member="m" />
-              </div>
+            <div class="flex flex-col items-center">
+              <template v-for="(row, rIdx) in anggotaAktifRows" :key="rIdx">
+                <!-- Connector line between multiple rows of Anggota -->
+                <div v-if="rIdx > 0" class="w-0.5 h-10 bg-slate-300 dark:bg-slate-600"></div>
+
+                <!-- Row of Active Members (Max 5 cards per row) -->
+                <div class="flex items-start justify-center">
+                  <div
+                    v-for="(m, idx) in row"
+                    :key="m._id"
+                    class="flex flex-col items-center relative px-2 sm:px-2.5"
+                  >
+                    <!-- Top horizontal bar across Anggota cards in this row -->
+                    <div
+                      v-if="row.length > 1"
+                      class="absolute top-0 h-0.5 bg-slate-300 dark:bg-slate-600"
+                      :class="[
+                        idx === 0 ? 'left-1/2 right-0' : '',
+                        idx === row.length - 1 ? 'left-0 right-1/2' : '',
+                        idx > 0 && idx < row.length - 1 ? 'left-0 right-0' : ''
+                      ]"
+                    ></div>
+                    <!-- Drop line touching top of Anggota card -->
+                    <div class="w-0.5 h-8 bg-slate-300 dark:bg-slate-600"></div>
+                    <MemberCard :member="m" />
+                  </div>
+                </div>
+              </template>
             </div>
 
             <!-- ============================================== -->
