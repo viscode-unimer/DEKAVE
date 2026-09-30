@@ -31,7 +31,7 @@ onMounted(async () => {
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <RouterLink
           to="/event"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider text-gray-300 hover:text-white bg-white/[0.04] border border-white/[0.08] hover:border-cyan-400/40 transition-all duration-300 mb-8"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider text-slate-700 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white bg-slate-100/80 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] hover:border-sky-500/40 dark:hover:border-cyan-400/40 transition-all duration-300 mb-8 shadow-sm"
         >
           <ArrowLeft :size="14" />
           <span>{{ t('common.back') }} to Events</span>
@@ -39,57 +39,57 @@ onMounted(async () => {
 
         <LoadingSpinner v-if="loading" />
 
-        <div v-else-if="event" class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 space-y-8">
-          <div class="rounded-2xl overflow-hidden aspect-video bg-slate-900 border border-white/[0.05]">
+        <div v-else-if="event" class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-white/10 space-y-8">
+          <div class="rounded-2xl overflow-hidden aspect-video bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/[0.05]">
             <img
               v-if="event.poster"
               :src="event.poster"
               :alt="event.title"
               class="w-full h-full object-cover"
             />
-            <div v-else class="w-full h-full flex items-center justify-center text-8xl text-gray-500">
+            <div v-else class="w-full h-full flex items-center justify-center text-8xl text-slate-400 dark:text-gray-500">
               <Calendar :size="80" class="opacity-40" />
             </div>
           </div>
 
           <div>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider font-semibold bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 mb-4">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider font-semibold bg-sky-500/10 dark:bg-cyan-500/10 border border-sky-500/30 dark:border-cyan-400/30 text-sky-700 dark:text-cyan-300 mb-4">
               <Tag :size="12" />
               {{ event.type }}
             </span>
-            <h1 class="font-heading text-3xl sm:text-5xl font-bold text-white mb-6">
+            <h1 class="font-heading text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               {{ event.title }}
             </h1>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] mb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-5 rounded-2xl bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] mb-8">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-400/20 flex items-center justify-center text-cyan-300 shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-sky-500/10 dark:bg-cyan-500/10 border border-sky-500/20 dark:border-cyan-400/20 flex items-center justify-center text-sky-600 dark:text-cyan-300 shrink-0">
                   <Calendar :size="20" />
                 </div>
                 <div>
-                  <span class="text-xs font-mono text-gray-400 uppercase tracking-wider block">{{ t('event.date') }}</span>
-                  <p class="font-semibold text-white text-sm sm:text-base">{{ formatDate(event.date) }}</p>
+                  <span class="text-xs font-mono text-slate-500 dark:text-gray-400 uppercase tracking-wider block">{{ t('event.date') }}</span>
+                  <p class="font-semibold text-slate-900 dark:text-white text-sm sm:text-base">{{ formatDate(event.date) }}</p>
                 </div>
               </div>
 
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-royal/20 border border-sky/20 flex items-center justify-center text-sky shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-royal/10 dark:bg-royal/20 border border-royal/20 dark:border-sky/20 flex items-center justify-center text-royal dark:text-sky shrink-0">
                   <MapPin :size="20" />
                 </div>
                 <div>
-                  <span class="text-xs font-mono text-gray-400 uppercase tracking-wider block">{{ t('event.location') }}</span>
-                  <p class="font-semibold text-white text-sm sm:text-base">{{ event.location }}</p>
+                  <span class="text-xs font-mono text-slate-500 dark:text-gray-400 uppercase tracking-wider block">{{ t('event.location') }}</span>
+                  <p class="font-semibold text-slate-900 dark:text-white text-sm sm:text-base">{{ event.location }}</p>
                 </div>
               </div>
             </div>
 
-            <div class="text-gray-300 leading-relaxed text-base sm:text-lg whitespace-pre-line">
+            <div class="text-slate-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg whitespace-pre-line">
               {{ event.description }}
             </div>
           </div>
         </div>
 
-        <div v-else class="text-center text-gray-400 py-20">
+        <div v-else class="text-center text-slate-500 dark:text-gray-400 py-20">
           <p class="text-lg">Event tidak ditemukan.</p>
         </div>
       </div>

@@ -32,7 +32,7 @@ onMounted(async () => {
         <!-- Back Capsule -->
         <RouterLink
           to="/portfolio"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider text-gray-300 hover:text-white bg-white/[0.04] border border-white/[0.08] hover:border-cyan-400/40 transition-all duration-300 mb-8"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider text-slate-700 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white bg-slate-100/80 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] hover:border-sky-500/40 dark:hover:border-cyan-400/40 transition-all duration-300 mb-8 shadow-sm"
         >
           <ArrowLeft :size="14" />
           <span>{{ t('common.back') }} to Portfolio</span>
@@ -42,8 +42,8 @@ onMounted(async () => {
 
         <div v-else-if="portfolio" class="space-y-8">
           <!-- Main Showcase View -->
-          <div class="glass-card rounded-3xl p-4 sm:p-6 border border-white/10 relative overflow-hidden">
-            <div class="rounded-2xl overflow-hidden aspect-video bg-slate-900 mb-4 border border-white/[0.05]">
+          <div class="glass-card rounded-3xl p-4 sm:p-6 border border-slate-200/80 dark:border-white/10 relative overflow-hidden">
+            <div class="rounded-2xl overflow-hidden aspect-video bg-slate-100 dark:bg-slate-900 mb-4 border border-slate-200 dark:border-white/[0.05]">
               <img
                 :src="portfolio.images[activeImg]"
                 :alt="portfolio.title"
@@ -59,7 +59,7 @@ onMounted(async () => {
                 @click="activeImg = i"
                 :class="[
                   'shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-300',
-                  i === activeImg ? 'border-cyan-400 shadow-md shadow-cyan-500/20 scale-105' : 'border-white/10 opacity-70 hover:opacity-100'
+                  i === activeImg ? 'border-sky-500 dark:border-cyan-400 shadow-md scale-105' : 'border-slate-200 dark:border-white/10 opacity-70 hover:opacity-100'
                 ]"
               >
                 <img :src="img" class="w-full h-full object-cover" />
@@ -68,42 +68,42 @@ onMounted(async () => {
           </div>
 
           <!-- Metadata Box -->
-          <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10">
-            <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
+          <div class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-white/10">
+            <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-white/[0.08]">
               <div class="flex flex-wrap items-center gap-3">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider font-semibold bg-cyan-500/10 border border-cyan-400/30 text-cyan-300">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider font-semibold bg-sky-500/10 dark:bg-cyan-500/10 border border-sky-500/30 dark:border-cyan-400/30 text-sky-700 dark:text-cyan-300">
                   <Layers :size="12" />
                   {{ portfolio.category }}
                 </span>
                 <span
                   v-for="tag in portfolio.tags"
                   :key="tag"
-                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-mono text-gray-300 bg-white/[0.04] border border-white/[0.08]"
+                  class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-mono text-slate-600 dark:text-gray-300 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08]"
                 >
-                  <Tag :size="11" class="text-cyan-400/60" />
+                  <Tag :size="11" class="text-sky-500 dark:text-cyan-400/60" />
                   #{{ tag }}
                 </span>
               </div>
 
-              <div class="flex items-center gap-2 text-xs font-mono text-gray-400">
-                <User :size="14" class="text-cyan-400" />
-                <span>Created by <strong class="text-white">{{ portfolio.creator }}</strong></span>
+              <div class="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-gray-400">
+                <User :size="14" class="text-sky-600 dark:text-cyan-400" />
+                <span>Created by <strong class="text-slate-900 dark:text-white">{{ portfolio.creator }}</strong></span>
               </div>
             </div>
 
             <!-- Title & Description -->
             <div class="mt-8">
-              <h1 class="font-heading text-3xl sm:text-5xl font-bold text-white mb-6">
+              <h1 class="font-heading text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6">
                 {{ portfolio.title }}
               </h1>
-              <p class="text-gray-300 leading-relaxed text-base sm:text-lg whitespace-pre-line">
+              <p class="text-slate-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg whitespace-pre-line">
                 {{ portfolio.description }}
               </p>
             </div>
           </div>
         </div>
 
-        <div v-else class="text-center text-gray-400 py-20">
+        <div v-else class="text-center text-slate-500 dark:text-gray-400 py-20">
           <p class="text-lg">Portfolio tidak ditemukan.</p>
         </div>
       </div>
