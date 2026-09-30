@@ -155,6 +155,9 @@ const filteredMembers = computed(() => {
                 <span class="text-[11px] font-mono text-slate-500 dark:text-gray-400">
                   Divisi {{ member.division }}
                 </span>
+                <span v-if="member.major" class="text-[11px] font-mono text-slate-400 dark:text-gray-500">
+                  {{ member.major }}
+                </span>
               </div>
             </div>
 

@@ -5,7 +5,8 @@ const memberSchema = new mongoose.Schema({
   position: { type: String, required: true },
   division: { type: String, required: true },
   photo: { type: String },
-  year: { type: Number, required: true },
+  major: { type: String, default: '' },
+  year: { type: Number, required: false },
   instagram: { type: String },
   isActive: { type: Boolean, default: true },
 }, { timestamps: true });

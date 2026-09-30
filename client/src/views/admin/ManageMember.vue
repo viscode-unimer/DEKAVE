@@ -18,7 +18,7 @@ const form = reactive({
   name: '',
   position: '',
   division: '',
-  year: new Date().getFullYear(),
+  major: '',
   instagram: '',
   isActive: true,
   photo: null,
@@ -42,7 +42,7 @@ const openCreate = () => {
     name: '',
     position: '',
     division: '',
-    year: new Date().getFullYear(),
+    major: '',
     instagram: '',
     isActive: true,
     photo: null,
@@ -56,7 +56,7 @@ const openEdit = (m) => {
     name: m.name,
     position: m.position,
     division: m.division,
-    year: m.year,
+    major: m.major || (m.year ? String(m.year) : ''),
     instagram: m.instagram || '',
     isActive: m.isActive,
     photo: null,
@@ -71,7 +71,7 @@ const handleSave = async () => {
     fd.append('name', form.name);
     fd.append('position', form.position);
     fd.append('division', form.division);
-    fd.append('year', form.year);
+    fd.append('major', form.major);
     fd.append('instagram', form.instagram);
     fd.append('isActive', form.isActive);
     if (form.photo) fd.append('photo', form.photo);
@@ -128,7 +128,7 @@ onMounted(fetchMembers);
           <input v-model="form.name" required class="input-field" placeholder="Nama lengkap" />
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Jabatan *</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Kedudukan *</label>
           <input
             v-model="form.position"
             required
@@ -154,13 +154,12 @@ onMounted(fetchMembers);
           </datalist>
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Angkatan *</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Program Studi *</label>
           <input
-            v-model.number="form.year"
-            type="number"
+            v-model="form.major"
             required
             class="input-field"
-            placeholder="2024"
+            placeholder="Contoh: Desain Komunikasi Visual, Sistem Informasi..."
           />
         </div>
         <div>
@@ -212,8 +211,9 @@ onMounted(fetchMembers);
           </div>
         </div>
         <p class="font-semibold text-xs text-gray-900 dark:text-white truncate">{{ m.name }}</p>
-        <p class="text-xs text-accent">{{ m.position }}</p>
+        <p class="text-xs text-accent font-medium">{{ m.position }}</p>
         <p class="text-xs text-gray-400">{{ m.division }}</p>
+        <p v-if="m.major" class="text-[11px] text-gray-500 dark:text-gray-400 truncate mt-0.5">{{ m.major }}</p>
         <div class="flex gap-1 mt-3">
           <button
             @click="openEdit(m)"
