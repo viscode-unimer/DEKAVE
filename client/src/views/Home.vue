@@ -113,21 +113,6 @@ const samplePalettes = [
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Hero Header Center Column -->
         <div class="max-w-4xl mx-auto text-center">
-          <!-- Live Admission Pill Badge -->
-          <RouterLink
-            to="/camavis"
-            class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.04] hover:bg-slate-100 dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/10 hover:border-sky-500/40 dark:hover:border-sky/40 backdrop-blur-xl mb-8 group transition-all duration-300 shadow-sm"
-          >
-            <span class="flex h-2 w-2 relative">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-sky"></span>
-            </span>
-            <span class="text-xs font-mono text-slate-700 dark:text-gray-300 tracking-wide">Penerimaan Anggota Baru (CAMAVIS)</span>
-            <span class="text-xs text-sky-600 dark:text-sky font-semibold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
-              Daftar <ArrowRight :size="12" />
-            </span>
-          </RouterLink>
-
           <!-- Massive Editorial Display Typography -->
           <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.03] text-slate-900 dark:text-white mb-6">
             Ideas Become
@@ -145,17 +130,11 @@ const samplePalettes = [
             Ruang eksplorasi tanpa batas untuk kreator visual, desainer identitas, dan perancang masa depan.
           </p>
 
-          <!-- Dual Call to Action Buttons -->
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <!-- Call to Action Button -->
+          <div class="flex items-center justify-center">
             <RouterLink to="/portfolio" class="btn-accent px-8 py-3.5 text-sm sm:text-base font-bold shadow-lg shadow-sky-500/20 group">
               <span>Eksplorasi Portofolio</span>
               <ArrowUpRight :size="18" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </RouterLink>
-
-            <RouterLink to="/camavis" class="btn-glass px-8 py-3.5 text-sm sm:text-base font-semibold group">
-              <Sparkles :size="16" class="text-sky-600 dark:text-sky" />
-              <span>Gabung CAMAVIS</span>
-              <ArrowRight :size="16" class="group-hover:translate-x-1 transition-transform" />
             </RouterLink>
           </div>
         </div>

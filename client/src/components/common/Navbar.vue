@@ -4,7 +4,7 @@ import { useRouter, useRoute, RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useThemeStore } from '../../stores/theme';
 import { useAuthStore } from '../../stores/auth';
-import { Sun, Moon, LayoutDashboard, Menu, X, ArrowUpRight, Sparkles } from 'lucide-vue-next';
+import { Sun, Moon, LayoutDashboard, Menu, X } from 'lucide-vue-next';
 
 const { t, locale } = useI18n();
 const themeStore = useThemeStore();
@@ -96,15 +96,6 @@ const isActive = (path) => {
           <Moon v-else :size="15" class="text-sky-600" />
         </button>
 
-        <!-- Join CAMAVIS Quick CTA Pill (Desktop) -->
-        <RouterLink
-          to="/camavis"
-          class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full text-white bg-gradient-to-r from-accent via-sky to-royal hover:shadow-[0_0_20px_rgba(56,189,248,0.5)] transition-all duration-300 group"
-        >
-          <Sparkles :size="12" class="text-cyan-200 animate-spin" style="animation-duration: 6s;" />
-          <span>CAMAVIS</span>
-          <ArrowUpRight :size="13" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-        </RouterLink>
 
         <!-- Admin Logged In Quick Access -->
         <div v-if="authStore.isAuthenticated()" class="hidden sm:flex items-center gap-1.5 bg-sky-100 dark:bg-sky-950/60 border border-sky-300 dark:border-sky-500/30 px-2.5 py-1 rounded-full">
