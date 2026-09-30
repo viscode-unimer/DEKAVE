@@ -11,17 +11,15 @@ import {
   ArrowUpRight,
   ArrowRight,
   Palette,
-  Layers,
-  Video,
   Camera,
-  Award,
   Users,
   Calendar,
   FileText,
-  Compass,
   CheckCircle2,
-  Flame,
-  LayoutGrid
+  Lightbulb,
+  Laptop,
+  Coffee,
+  Compass
 } from 'lucide-vue-next';
 
 const { t } = useI18n();
@@ -32,38 +30,6 @@ const loading = ref(true);
 const activeFilter = ref('All');
 
 const categories = ['All', 'Branding', 'Illustration', 'UI/UX', 'Photography', 'Motion'];
-
-const activeHeroTab = ref(0);
-const heroFeatures = [
-  {
-    tag: 'Branding',
-    title: 'Visual Identity System',
-    desc: 'Perancangan identitas visual kohesif, filosofis, dan berdaya saing industri.',
-    colors: ['#0A1329', '#0284C7', '#38BDF8', '#F0F9FF'],
-    badge: 'Logo & Typography',
-  },
-  {
-    tag: 'UI/UX',
-    title: 'Digital Experience',
-    desc: 'Arsitektur informasi, wireframing interaktif, dan prototyping antarmuka modern.',
-    colors: ['#030712', '#2563EB', '#60A5FA', '#DBEAFE'],
-    badge: 'Figma & Prototype',
-  },
-  {
-    tag: 'Motion',
-    title: 'Motion & 3D Story',
-    desc: 'Animasi kinetik, visual storytelling dinamis, dan komposisi 3D photorealistic.',
-    colors: ['#0F172A', '#818CF8', '#C084FC', '#FAF5FF'],
-    badge: '60 FPS · Cinema 4D',
-  },
-  {
-    tag: 'Editorial',
-    title: 'Photography & Art',
-    desc: 'Eksplorasi visual framing, pencahayaan dramatis, dan komposisi editorial magazine.',
-    colors: ['#18181B', '#F59E0B', '#FDE68A', '#FEF3C7'],
-    badge: 'RAW · Editorial',
-  }
-];
 
 onMounted(async () => {
   try {
@@ -140,246 +106,201 @@ const samplePalettes = [
         </div>
 
         <!-- ======================================================== -->
-        <!-- Interactive 4-Pillars Creative Showcase Deck (Inspomcp)  -->
+        <!-- 2. KENAPA HARUS GABUNG DEKAVE? (Ramah Pemula & Santai)   -->
         <!-- ======================================================== -->
-        <div class="mt-16 sm:mt-24 max-w-5xl mx-auto">
-          <!-- Showcase Header Tabs -->
-          <div class="flex items-center justify-between gap-2 overflow-x-auto pb-4 mb-4 scrollbar-none">
-            <div class="flex items-center gap-2 mx-auto bg-slate-200/80 dark:bg-[#070E22]/90 border border-slate-300/80 dark:border-white/10 rounded-full p-1.5 backdrop-blur-xl shadow-sm">
-              <button
-                v-for="(feat, idx) in heroFeatures"
-                :key="feat.tag"
-                @click="activeHeroTab = idx"
-                class="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 flex items-center gap-1.5"
-                :class="activeHeroTab === idx
-                  ? 'bg-gradient-to-r from-accent to-sky text-white shadow-[0_0_15px_rgba(56,189,248,0.4)]'
-                  : 'text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5'"
-              >
-                <span>{{ feat.tag }}</span>
-              </button>
-            </div>
+        <div class="mt-20 sm:mt-28 max-w-5xl mx-auto">
+          <div class="text-center mb-10">
+            <span class="inline-flex items-center gap-1.5 text-xs font-mono px-3.5 py-1 rounded-full bg-sky-500/15 dark:bg-sky/15 text-sky-700 dark:text-sky border border-sky-500/30 dark:border-sky/30 uppercase tracking-widest font-semibold mb-3">
+              <Lightbulb :size="13" />
+              <span>Ramah Pemula & Anti-Minder</span>
+            </span>
+            <h2 class="font-heading font-black text-2xl sm:text-4xl text-slate-900 dark:text-white tracking-tight">
+              Kenapa Harus Gabung DEKAVE?
+            </h2>
+            <p class="text-slate-600 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mt-2">
+              Kamu nggak perlu jago dulu buat gabung. Di sini tempatnya kita sama-sama mulai dari nol, saling bantu, dan berkembang bareng.
+            </p>
           </div>
 
-          <!-- Active Showcase Glass Display Card -->
-          <div class="glass-card p-6 sm:p-10 border border-slate-200/80 dark:border-white/10 bg-white/90 dark:bg-gradient-to-br dark:from-[#09122A]/90 dark:via-[#070D1E]/95 dark:to-[#060A18]/90 shadow-xl">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <!-- Left description (5 cols) -->
-              <div class="lg:col-span-5 space-y-4">
-                <span class="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1 rounded-full bg-sky-500/15 dark:bg-sky/15 text-sky-700 dark:text-sky border border-sky-500/30 dark:border-sky/30">
-                  <Flame :size="13" />
-                  <span>{{ heroFeatures[activeHeroTab].badge }}</span>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1: Laptop -->
+            <div class="glass-card p-6 sm:p-7 flex flex-col justify-between border-t-2 border-t-amber-400 hover:border-amber-400/60 transition-all duration-300 group">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/15 dark:bg-amber-500/20 border border-amber-500/30 dark:border-amber-500/40 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-5 group-hover:scale-110 transition-transform">
+                  <Laptop :size="24" />
+                </div>
+                <span class="text-xs font-mono text-amber-600 dark:text-amber-400 font-semibold uppercase tracking-wider block mb-1">
+                  💡 Nggak Punya Laptop Bagus?
                 </span>
-                <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-white">
-                  {{ heroFeatures[activeHeroTab].title }}
+                <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2">
+                  Bisa Mulai dari Mana Saja
                 </h3>
-                <p class="text-slate-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
-                  {{ heroFeatures[activeHeroTab].desc }}
+                <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
+                  Nggak masalah sama sekali! Banyak karya visual bisa dirintis pakai HP, atau belajar bareng gantian memakai laptop di sekretariat.
                 </p>
-
-                <!-- Color Palette Swatches (Inspomcp Signature) -->
-                <div class="pt-2">
-                  <span class="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-gray-400 block mb-2">Color DNA:</span>
-                  <div class="flex items-center gap-2">
-                    <span
-                      v-for="(hex, ci) in heroFeatures[activeHeroTab].colors"
-                      :key="ci"
-                      class="h-6 w-12 rounded-lg border border-slate-300 dark:border-white/15 shadow-sm transition-transform hover:scale-110 flex items-center justify-center text-[9px] font-mono text-slate-700 dark:text-white/80"
-                      :style="{ backgroundColor: hex }"
-                      :title="hex"
-                    >
-                      {{ hex.slice(1, 4) }}
-                    </span>
-                  </div>
-                </div>
-
-                <div class="pt-2">
-                  <RouterLink to="/portfolio" class="inline-flex items-center gap-1 text-xs font-semibold text-sky-600 dark:text-sky hover:underline">
-                    <span>Lihat showcase kategori ini</span>
-                    <ArrowRight :size="13" />
-                  </RouterLink>
-                </div>
               </div>
-
-              <!-- Right Interactive Visual Preview (7 cols) -->
-              <div class="lg:col-span-7">
-                <div class="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-slate-100/90 dark:bg-[#050916] aspect-[16/10] p-6 flex flex-col justify-between group shadow-xl">
-                  <!-- Top Bar Mockup -->
-                  <div class="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-3">
-                    <div class="flex items-center gap-1.5">
-                      <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
-                      <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
-                      <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-                    </div>
-                    <span class="text-[11px] font-mono text-slate-500 dark:text-gray-500">dkv.merangin.ac.id/showcase/{{ heroFeatures[activeHeroTab].tag.toLowerCase() }}</span>
-                    <span class="text-[11px] font-mono text-sky-600 dark:text-sky font-semibold">ACTIVE</span>
-                  </div>
-
-                  <!-- Middle Visual Artwork Preview -->
-                  <div class="my-auto py-6 flex flex-col items-center justify-center text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-accent to-sky flex items-center justify-center text-white mb-4 shadow-[0_0_30px_rgba(56,189,248,0.5)] transform group-hover:scale-110 transition-transform duration-500">
-                      <Palette v-if="activeHeroTab === 0" :size="30" />
-                      <Layers v-else-if="activeHeroTab === 1" :size="30" />
-                      <Video v-else-if="activeHeroTab === 2" :size="30" />
-                      <Camera v-else :size="30" />
-                    </div>
-                    <h4 class="font-heading font-black text-xl text-slate-900 dark:text-white tracking-wide">
-                      {{ heroFeatures[activeHeroTab].title }}
-                    </h4>
-                    <p class="text-xs text-slate-600 dark:text-gray-400 max-w-sm mt-1">
-                      Karya original mahasiswa DKV Universitas Merangin berstandar kurasi industri visual.
-                    </p>
-                  </div>
-
-                  <!-- Bottom Detail Ribbon -->
-                  <div class="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-white/10 text-xs text-slate-500 dark:text-gray-400 font-mono">
-                    <span>STATUS: FEATURED</span>
-                    <span class="text-sky-600 dark:text-sky font-semibold">UKM DKV CREATIVE DECK</span>
-                  </div>
-                </div>
+              <div class="pt-5 mt-5 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between text-xs font-mono text-slate-500 dark:text-gray-400">
+                <span>Alat Bukan Halangan</span>
+                <span class="text-amber-600 dark:text-amber-400 font-semibold">100% Terbuka</span>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- ======================================================== -->
-        <!-- 2. STUDIO METRICS RIBBON (Inspomcp / GSAP Counter)       -->
-        <!-- ======================================================== -->
-        <div class="mt-16 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="glass-card p-5 text-center border-t-2 border-t-sky group">
-            <div class="text-3xl sm:text-4xl font-black font-heading text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky transition-colors">
-              50+
+            <!-- Card 2: Gambar -->
+            <div class="glass-card p-6 sm:p-7 flex flex-col justify-between border-t-2 border-t-sky hover:border-sky/60 transition-all duration-300 group">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-sky-500/15 dark:bg-sky/15 border border-sky-500/30 dark:border-sky/30 flex items-center justify-center text-sky-600 dark:text-sky mb-5 group-hover:scale-110 transition-transform">
+                  <Palette :size="24" />
+                </div>
+                <span class="text-xs font-mono text-sky-600 dark:text-sky font-semibold uppercase tracking-wider block mb-1">
+                  🎨 Nggak Bisa Gambar?
+                </span>
+                <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2">
+                  DKV Itu Luas Banget
+                </h3>
+                <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
+                  Tenang! Desain komunikasi visual bukan cuma soal jago menggambar manual. Ada fotografi, tata letak tulisan (layout), susun paduan warna, dan ide cerita kreatif.
+                </p>
+              </div>
+              <div class="pt-5 mt-5 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between text-xs font-mono text-slate-500 dark:text-gray-400">
+                <span>Eksplorasi Minat</span>
+                <span class="text-sky-600 dark:text-sky font-semibold">Bebas Berkarya</span>
+              </div>
             </div>
-            <div class="text-xs text-slate-500 dark:text-gray-400 font-medium mt-1">Kreator & Desainer Aktif</div>
-          </div>
 
-          <div class="glass-card p-5 text-center border-t-2 border-t-accent group">
-            <div class="text-3xl sm:text-4xl font-black font-heading text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky transition-colors">
-              100+
+            <!-- Card 3: Mentor Teman Sebaya -->
+            <div class="glass-card p-6 sm:p-7 flex flex-col justify-between border-t-2 border-t-emerald-400 hover:border-emerald-400/60 transition-all duration-300 group">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 dark:bg-emerald-500/20 border border-emerald-500/30 dark:border-emerald-500/40 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
+                  <Users :size="24" />
+                </div>
+                <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold uppercase tracking-wider block mb-1">
+                  🤝 Mentor Teman Sebaya
+                </span>
+                <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2">
+                  Belajar Santai Bareng Teman
+                </h3>
+                <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
+                  Didampingi teman sebaya dan senior yang ramah tanpa takut dihakimi atau minder. Tanyakan apa saja, kita belajar bareng selangkah demi selangkah.
+                </p>
+              </div>
+              <div class="pt-5 mt-5 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between text-xs font-mono text-slate-500 dark:text-gray-400">
+                <span>Lingkungan Positif</span>
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Saling Rangkul</span>
+              </div>
             </div>
-            <div class="text-xs text-slate-500 dark:text-gray-400 font-medium mt-1">Portofolio Visual Terkurasi</div>
-          </div>
-
-          <div class="glass-card p-5 text-center border-t-2 border-t-royal group">
-            <div class="text-3xl sm:text-4xl font-black font-heading text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky transition-colors">
-              20+
-            </div>
-            <div class="text-xs text-slate-500 dark:text-gray-400 font-medium mt-1">Workshop & Pameran Desain</div>
-          </div>
-
-          <div class="glass-card p-5 text-center border-t-2 border-t-cyan-500 group">
-            <div class="text-3xl sm:text-4xl font-black font-heading text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky transition-colors">
-              5+
-            </div>
-            <div class="text-xs text-slate-500 dark:text-gray-400 font-medium mt-1">Penghargaan Karya Visual</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- 3. BENTO GRID: 4 PILAR KREATIF (GSAP / NeedMCP style)    -->
+    <!-- 3. AKTIVITAS SERU DI DEKAVE (Aktivitas Nyata Mahasiswa)  -->
     <!-- ======================================================== -->
     <section class="py-20 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mb-12">
           <span class="text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-sky font-semibold block mb-2">
-            ✦ DISIPLIN VISUAL KREATIF
+            ✦ KEGIATAN KITA SEHARI-HARI
           </span>
           <h2 class="section-title">
-            Fokus Eksplorasi Karya di DKV
+            Aktivitas Seru di DEKAVE
           </h2>
           <p class="text-slate-600 dark:text-gray-400 text-base sm:text-lg mt-3">
-            Setiap anggota diarahkan untuk menguasai kompetensi visual mendalam sesuai minat dan potensi industri masa depan.
+            Bukan teori yang kaku atau tugas yang bikin pusing — ini kegiatan nyata dan santai yang biasa kami lakukan bareng teman-teman di kampus.
           </p>
         </div>
 
-        <!-- Bento Grid Layout -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Bento Card 1 (Wide 2 Cols) -->
-          <div class="md:col-span-2 glass-card p-8 sm:p-10 flex flex-col justify-between group">
+        <!-- 4 Grid Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Item 1: Belajar Bareng dari Nol -->
+          <div class="glass-card p-6 sm:p-7 flex flex-col justify-between group hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-300">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-sky-500/15 dark:bg-sky/15 border border-sky-500/30 dark:border-sky/30 flex items-center justify-center text-sky-600 dark:text-sky mb-6 group-hover:scale-110 transition-transform">
-                <Palette :size="24" />
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-sky-500/15 dark:bg-sky/15 border border-sky-500/30 dark:border-sky/30 flex items-center justify-center text-sky-600 dark:text-sky group-hover:scale-110 transition-transform">
+                  <Laptop :size="24" />
+                </div>
+                <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-bold">01</span>
               </div>
-              <span class="text-xs font-mono text-sky-600 dark:text-sky uppercase tracking-wider font-semibold">Identitas Visual</span>
-              <h3 class="font-heading font-black text-2xl sm:text-3xl text-slate-900 dark:text-white mt-1 mb-3">
-                Branding & Typography Design
-              </h3>
-              <p class="text-slate-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed max-w-xl">
-                Menciptakan narasi merek melalui sistem visual utuh: tipografi khusus, logo adaptif, panduan identitas (brand guideline), hingga kemasan produk yang memikat pasar.
-              </p>
-            </div>
-            <div class="pt-8 flex items-center justify-between border-t border-slate-200 dark:border-white/[0.08] mt-6">
-              <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-semibold">01 / BRAND IDENTITY</span>
-              <RouterLink to="/portfolio" class="text-xs font-semibold text-sky-600 dark:text-sky hover:underline flex items-center gap-1">
-                Eksplorasi Karya <ArrowUpRight :size="13" />
-              </RouterLink>
-            </div>
-          </div>
-
-          <!-- Bento Card 2 (1 Col) -->
-          <div class="glass-card p-8 flex flex-col justify-between group">
-            <div>
-              <div class="w-12 h-12 rounded-2xl bg-royal/15 dark:bg-royal/20 border border-royal/30 dark:border-royal/40 flex items-center justify-center text-royal mb-6 group-hover:scale-110 transition-transform">
-                <Layers :size="24" />
-              </div>
-              <span class="text-xs font-mono text-sky-600 dark:text-sky uppercase tracking-wider font-semibold">Digital Product</span>
-              <h3 class="font-heading font-black text-2xl text-slate-900 dark:text-white mt-1 mb-3">
-                UI/UX Design
+              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2.5">
+                Belajar Bareng dari Nol
               </h3>
               <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
-                Riset perilaku pengguna, wireframing, dan desain antarmuka aplikasi web & mobile modern yang fungsional dan intuitif.
+                Tidak perlu jago menggambar atau desain dulu, yang penting mau belajar bareng pakai laptop atau HP (Canva, Photoshop, Corel, dll).
               </p>
             </div>
-            <div class="pt-8 flex items-center justify-between border-t border-slate-200 dark:border-white/[0.08] mt-6">
-              <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-semibold">02 / INTERACTION</span>
-              <RouterLink to="/portfolio" class="text-xs font-semibold text-sky-600 dark:text-sky hover:underline flex items-center gap-1">
-                Lihat UI <ArrowUpRight :size="13" />
-              </RouterLink>
+            <div class="pt-5 mt-6 border-t border-slate-200 dark:border-white/[0.08]">
+              <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-sky-500/10 dark:bg-sky/10 text-sky-700 dark:text-sky border border-sky-500/20 dark:border-sky/20">
+                Canva · Photoshop · Corel
+              </span>
             </div>
           </div>
 
-          <!-- Bento Card 3 (1 Col) -->
-          <div class="glass-card p-8 flex flex-col justify-between group">
+          <!-- Item 2: Hunting Foto & Dokumentasi -->
+          <div class="glass-card p-6 sm:p-7 flex flex-col justify-between group hover:border-amber-500/50 dark:hover:border-amber-400/50 transition-all duration-300">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 dark:bg-indigo-500/20 border border-indigo-500/30 dark:border-indigo-500/40 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-6 group-hover:scale-110 transition-transform">
-                <Video :size="24" />
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/15 dark:bg-amber-500/20 border border-amber-500/30 dark:border-amber-500/40 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">
+                  <Camera :size="24" />
+                </div>
+                <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-bold">02</span>
               </div>
-              <span class="text-xs font-mono text-sky-600 dark:text-sky uppercase tracking-wider font-semibold">Visual in Motion</span>
-              <h3 class="font-heading font-black text-2xl text-slate-900 dark:text-white mt-1 mb-3">
-                Motion & Videografi
+              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2.5">
+                Hunting Foto & Dokumentasi
               </h3>
               <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
-                Eksplorasi animasi 2D/3D, motion graphic untuk periklanan, sinematografi kampus, serta video pendek berstandar profesional.
+                Hunting foto santai di sekitar kampus dan keindahan alam Merangin, serta belajar mengabadikan momen kegiatan mahasiswa dengan sudut pandang menarik.
               </p>
             </div>
-            <div class="pt-8 flex items-center justify-between border-t border-slate-200 dark:border-white/[0.08] mt-6">
-              <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-semibold">03 / MOTION</span>
-              <RouterLink to="/portfolio" class="text-xs font-semibold text-sky-600 dark:text-sky hover:underline flex items-center gap-1">
-                Lihat Motion <ArrowUpRight :size="13" />
-              </RouterLink>
+            <div class="pt-5 mt-6 border-t border-slate-200 dark:border-white/[0.08]">
+              <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-amber-500/10 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-500/20 dark:border-amber-500/30">
+                Outdoor · Alam Merangin
+              </span>
             </div>
           </div>
 
-          <!-- Bento Card 4 (Wide 2 Cols) -->
-          <div class="md:col-span-2 glass-card p-8 sm:p-10 flex flex-col justify-between group">
+          <!-- Item 3: Bikin Konten & Acara Kampus -->
+          <div class="glass-card p-6 sm:p-7 flex flex-col justify-between group hover:border-indigo-500/50 dark:hover:border-indigo-400/50 transition-all duration-300">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-cyan-500/15 dark:bg-cyan-500/20 border border-cyan-500/30 dark:border-cyan-500/40 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
-                <Camera :size="24" />
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 dark:bg-indigo-500/20 border border-indigo-500/30 dark:border-indigo-500/40 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform">
+                  <Palette :size="24" />
+                </div>
+                <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-bold">03</span>
               </div>
-              <span class="text-xs font-mono text-sky-600 dark:text-sky uppercase tracking-wider font-semibold">Art & Photography</span>
-              <h3 class="font-heading font-black text-2xl sm:text-3xl text-slate-900 dark:text-white mt-1 mb-3">
-                Creative Photography & Digital Illustration
+              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2.5">
+                Bikin Konten & Acara Kampus
               </h3>
-              <p class="text-slate-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed max-w-xl">
-                Penguasaan framing lensa, portrait studio, jurnalistik visual, serta seni lukis digital (digital painting) untuk pameran tahunan.
+              <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
+                Membantu desain poster, spanduk, banner, dan materi visual untuk event kampus serta media sosial. Karyamu langsung dilihat banyak orang!
               </p>
             </div>
-            <div class="pt-8 flex items-center justify-between border-t border-slate-200 dark:border-white/[0.08] mt-6">
-              <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-semibold">04 / ART & PHOTO</span>
-              <RouterLink to="/portfolio" class="text-xs font-semibold text-sky-600 dark:text-sky hover:underline flex items-center gap-1">
-                Eksplorasi Seni <ArrowUpRight :size="13" />
-              </RouterLink>
+            <div class="pt-5 mt-6 border-t border-slate-200 dark:border-white/[0.08]">
+              <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-indigo-500/10 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 dark:border-indigo-500/30">
+                Poster Event · Feeds Medsos
+              </span>
+            </div>
+          </div>
+
+          <!-- Item 4: Teman Nongkrong Positif -->
+          <div class="glass-card p-6 sm:p-7 flex flex-col justify-between group hover:border-rose-500/50 dark:hover:border-rose-400/50 transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-rose-500/15 dark:bg-rose-500/20 border border-rose-500/30 dark:border-rose-500/40 flex items-center justify-center text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform">
+                  <Coffee :size="24" />
+                </div>
+                <span class="text-xs font-mono text-slate-400 dark:text-gray-500 font-bold">04</span>
+              </div>
+              <h3 class="font-heading font-bold text-xl text-slate-900 dark:text-white mb-2.5">
+                Teman Nongkrong Positif
+              </h3>
+              <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
+                Wadah kumpul santai yang produktif untuk saling tukar ilmu, ngobrol santai sambil ngopi, dan nambah teman akrab lintas fakultas.
+              </p>
+            </div>
+            <div class="pt-5 mt-6 border-t border-slate-200 dark:border-white/[0.08]">
+              <span class="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-rose-500/10 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 border border-rose-500/20 dark:border-rose-500/30">
+                Kumpul Santai · Lintas Fakultas
+              </span>
             </div>
           </div>
         </div>
@@ -558,14 +479,17 @@ const samplePalettes = [
     <!-- ======================================================== -->
     <section class="py-20 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between mb-12">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div>
             <span class="text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-sky font-semibold block mb-2">
-              ✦ JURNAL & INSPIRASI
+              ✦ CATATAN & CERITA ANGGOTA
             </span>
             <h2 class="section-title">{{ t('home.latest_blogs') }}</h2>
+            <p class="text-slate-600 dark:text-gray-400 text-sm sm:text-base mt-2 max-w-xl">
+              Tulisan santai, liputan kegiatan hunting, cerita seru kumpul bareng, dan pengalaman teman-teman DKV Merangin.
+            </p>
           </div>
-          <RouterLink to="/blog" class="text-sky-600 dark:text-sky hover:underline text-sm font-semibold hidden sm:flex items-center gap-1">
+          <RouterLink to="/blog" class="text-sky-600 dark:text-sky hover:underline text-sm font-semibold flex items-center gap-1 self-start sm:self-auto">
             <span>{{ t('home.see_all') }}</span>
             <ArrowRight :size="14" />
           </RouterLink>
