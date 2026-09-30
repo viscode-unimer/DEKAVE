@@ -5,23 +5,11 @@ import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import MemberCard from '../components/member/MemberCard.vue';
 import api from '../utils/api';
-import {
-  Users,
-  Crown,
-  ShieldCheck,
-  PenTool,
-  Coins,
-  Clock,
-  Sparkles,
-  GitBranch,
-} from 'lucide-vue-next';
+import { GitBranch } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const members = ref([]);
 const loading = ref(true);
-const activeDivision = ref('Semua');
-
-const divisions = ['Semua', 'Desain', 'Photography', 'Videography', 'Public Relation'];
 
 // Verified real member data from UKM DKV Universitas Merangin
 const defaultMembers = [
@@ -191,21 +179,7 @@ const bendaharaList = computed(() => {
     .sort(sortPositions);
 });
 
-// Level 5: Anggota Non Aktif / Demisioner / Founder
-const anggotaNonAktifList = computed(() => {
-  return members.value.filter((m) => {
-    const pos = (m.position || '').toLowerCase();
-    return (
-      m.isActive === false ||
-      pos.includes('non aktif') ||
-      pos.includes('nonaktif') ||
-      pos.includes('demisioner') ||
-      pos.includes('alumni')
-    );
-  });
-});
-
-// Level 4: Anggota Aktif (Excluding core officers & non-active)
+// Level 4: Anggota Aktif (Semua Anggota yang aktif selain pengurus inti)
 const allAnggotaAktif = computed(() => {
   return members.value.filter((m) => {
     const pos = (m.position || '').toLowerCase();
@@ -232,16 +206,17 @@ const allAnggotaAktif = computed(() => {
   });
 });
 
-// Level 4 filtered by active division
-const filteredAnggotaAktif = computed(() => {
-  if (activeDivision.value === 'Semua') return allAnggotaAktif.value;
-  return allAnggotaAktif.value.filter((m) => {
-    const div = (m.division || '').toLowerCase();
-    const target = activeDivision.value.toLowerCase();
-    if (target === 'public relation') {
-      return div.includes('public') || div.includes('pr') || div.includes('humas');
-    }
-    return div.includes(target);
+// Level 5: Anggota Non Aktif / Demisioner / Founder
+const anggotaNonAktifList = computed(() => {
+  return members.value.filter((m) => {
+    const pos = (m.position || '').toLowerCase();
+    return (
+      m.isActive === false ||
+      pos.includes('non aktif') ||
+      pos.includes('nonaktif') ||
+      pos.includes('demisioner') ||
+      pos.includes('alumni')
+    );
   });
 });
 </script>
@@ -249,7 +224,7 @@ const filteredAnggotaAktif = computed(() => {
 <template>
   <PublicLayout>
     <!-- Hero Header -->
-    <section class="relative pt-36 pb-12 md:pt-44 md:pb-16 overflow-hidden">
+    <section class="relative pt-36 pb-10 md:pt-44 md:pb-14 overflow-hidden">
       <div class="absolute inset-0 bg-grid-lines opacity-15 pointer-events-none"></div>
       <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium border border-cyan-500/30 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 mb-6 backdrop-blur-md">
@@ -265,246 +240,176 @@ const filteredAnggotaAktif = computed(() => {
       </div>
     </section>
 
-    <!-- Main Hierarchy Tree Section -->
-    <section class="py-8 pb-28 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Main Hierarchy Tree Section (Pure connected tree layout) -->
+    <section class="py-6 pb-32 relative">
+      <div class="max-w-7xl mx-auto px-2 sm:px-4">
         <LoadingSpinner v-if="loading" />
 
-        <div v-else class="flex flex-col items-center">
-          <!-- ============================================== -->
-          <!-- LEVEL 1: KETUA UMUM                            -->
-          <!-- ============================================== -->
-          <div class="flex flex-col items-center relative z-20">
-            <!-- Header Label -->
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30 mb-3 shadow-sm">
-              <Crown :size="13" class="text-amber-500" />
-              <span>KETUA UMUM</span>
-            </div>
+        <!-- Scrollable Tree Container for responsive horizontal panning without layout breakage -->
+        <div v-else class="w-full overflow-x-auto pb-12 pt-2 px-4 scrollbar-thin">
+          <div class="min-w-fit mx-auto flex flex-col items-center">
 
-            <div class="flex flex-wrap justify-center gap-6">
-              <MemberCard
-                v-for="m in ketuaList"
-                :key="m._id"
-                :member="m"
-                size="lg"
-              />
-            </div>
-          </div>
-
-          <!-- CONNECTOR: LEVEL 1 -> LEVEL 2 -->
-          <div class="flex flex-col items-center my-1 pointer-events-none">
-            <div class="w-0.5 h-10 sm:h-12 bg-slate-300 dark:bg-slate-700"></div>
-          </div>
-
-          <!-- ============================================== -->
-          <!-- LEVEL 2: WAKIL KETUA                           -->
-          <!-- ============================================== -->
-          <div class="flex flex-col items-center relative z-20">
-            <!-- Header Label -->
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-sky-500/10 text-sky-700 dark:text-cyan-300 border border-sky-500/30 mb-3 shadow-sm">
-              <ShieldCheck :size="13" class="text-sky-500 dark:text-cyan-400" />
-              <span>WAKIL KETUA</span>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-6">
-              <MemberCard
-                v-for="m in wakilList"
-                :key="m._id"
-                :member="m"
-                size="lg"
-              />
-            </div>
-          </div>
-
-          <!-- CONNECTOR: LEVEL 2 -> LEVEL 3 -->
-          <div class="flex flex-col items-center my-1 pointer-events-none">
-            <div class="w-0.5 h-10 sm:h-12 bg-slate-300 dark:bg-slate-700"></div>
-          </div>
-
-          <!-- ============================================== -->
-          <!-- LEVEL 3: PENGURUS INTI (SEKRETARIS & BENDAHARA) -->
-          <!-- ============================================== -->
-          <div class="relative w-full max-w-5xl mx-auto z-10 pt-2 pb-6">
-            <!-- Desktop Tree Horizontal Crossbar -->
-            <div class="hidden md:block absolute top-2 left-[25%] right-[25%] h-0.5 bg-slate-300 dark:bg-slate-700"></div>
-
-            <!-- Central Line Passing Straight Down to Level 4 -->
-            <div class="hidden md:block absolute top-2 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-slate-300 dark:bg-slate-700 pointer-events-none"></div>
-
-            <!-- Two Branches Container (Sekretaris on Left, Bendahara on Right) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 relative z-10">
-              <!-- Left Branch: SEKRETARIS -->
-              <div class="flex flex-col items-center">
-                <!-- Drop line from crossbar on desktop -->
-                <div class="hidden md:block w-0.5 h-6 bg-slate-300 dark:bg-slate-700 -mt-2 mb-2"></div>
-
-                <!-- Group Label -->
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 mb-3 shadow-sm">
-                  <PenTool :size="12" class="text-emerald-500" />
-                  <span>SEKRETARIAT</span>
-                </div>
-
-                <!-- Sub-branch lines if multiple Sekretaris -->
-                <div v-if="sekretarisList.length > 1" class="hidden sm:block w-full max-w-xs relative mb-2">
-                  <div class="absolute top-0 left-1/4 right-1/4 h-0.5 bg-slate-300 dark:bg-slate-700"></div>
-                  <div class="flex justify-around">
-                    <div class="w-0.5 h-3 bg-slate-300 dark:bg-slate-700"></div>
-                    <div class="w-0.5 h-3 bg-slate-300 dark:bg-slate-700"></div>
-                  </div>
-                </div>
-
-                <!-- Sekretaris Cards -->
-                <div class="flex flex-wrap justify-center gap-4 w-full">
-                  <MemberCard
-                    v-for="m in sekretarisList"
-                    :key="m._id"
-                    :member="m"
-                    size="md"
-                  />
-                  <div v-if="sekretarisList.length === 0" class="text-xs font-mono text-slate-400 py-4">
-                    Belum ada data sekretaris
-                  </div>
-                </div>
-              </div>
-
-              <!-- Right Branch: BENDAHARA -->
-              <div class="flex flex-col items-center">
-                <!-- Drop line from crossbar on desktop -->
-                <div class="hidden md:block w-0.5 h-6 bg-slate-300 dark:bg-slate-700 -mt-2 mb-2"></div>
-
-                <!-- Group Label -->
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/30 mb-3 shadow-sm">
-                  <Coins :size="12" class="text-rose-500" />
-                  <span>BENDAHARA</span>
-                </div>
-
-                <!-- Sub-branch lines if multiple Bendahara -->
-                <div v-if="bendaharaList.length > 1" class="hidden sm:block w-full max-w-xs relative mb-2">
-                  <div class="absolute top-0 left-1/4 right-1/4 h-0.5 bg-slate-300 dark:bg-slate-700"></div>
-                  <div class="flex justify-around">
-                    <div class="w-0.5 h-3 bg-slate-300 dark:bg-slate-700"></div>
-                    <div class="w-0.5 h-3 bg-slate-300 dark:bg-slate-700"></div>
-                  </div>
-                </div>
-
-                <!-- Bendahara Cards -->
-                <div class="flex flex-wrap justify-center gap-4 w-full">
-                  <MemberCard
-                    v-for="m in bendaharaList"
-                    :key="m._id"
-                    :member="m"
-                    size="md"
-                  />
-                  <div v-if="bendaharaList.length === 0" class="text-xs font-mono text-slate-400 py-4">
-                    Belum ada data bendahara
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CONNECTOR: LEVEL 3 -> LEVEL 4 -->
-          <div class="flex flex-col items-center my-1 pointer-events-none">
-            <div class="w-0.5 h-12 sm:h-14 bg-slate-300 dark:bg-slate-700"></div>
-          </div>
-
-          <!-- ============================================== -->
-          <!-- LEVEL 4: ANGGOTA AKTIF (DIVISI)                 -->
-          <!-- ============================================== -->
-          <div class="w-full relative z-20 flex flex-col items-center">
-            <!-- Header Label -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold bg-sky-500/10 text-sky-700 dark:text-cyan-300 border border-sky-500/30 mb-4 shadow-sm">
-              <Users :size="14" class="text-sky-500 dark:text-cyan-400" />
-              <span>DIVISI & ANGGOTA AKTIF</span>
-            </div>
-
-            <!-- Division Filter Pills -->
-            <div class="mb-8 flex flex-wrap items-center justify-center gap-2 max-w-2xl px-2">
-              <button
-                v-for="div in divisions"
-                :key="div"
-                @click="activeDivision = div"
-                class="px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all duration-200 border"
-                :class="activeDivision === div
-                  ? 'bg-sky-500/20 text-sky-700 dark:text-cyan-300 border-sky-500/50 shadow-sm font-semibold'
-                  : 'border-slate-300 dark:border-white/10 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'"
-              >
-                {{ div === 'Semua' ? 'Semua Divisi' : div }}
-              </button>
-            </div>
-
-            <!-- Tree Distributor Bar Above Active Members Grid (on large screens) -->
-            <div class="hidden lg:block relative w-full max-w-6xl mx-auto mb-6">
-              <div class="h-0.5 bg-slate-300 dark:bg-slate-700 w-full"></div>
-              <div class="w-0.5 h-4 bg-slate-300 dark:bg-slate-700 mx-auto -mt-0.5"></div>
-            </div>
-
-            <!-- Active Members Grid (Responsive 2 to 6 columns) -->
-            <div class="w-full max-w-6xl">
-              <div
-                v-if="filteredAnggotaAktif.length > 0"
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"
-              >
+            <!-- ============================================== -->
+            <!-- LEVEL 1: KETUA UMUM                            -->
+            <!-- ============================================== -->
+            <div class="flex flex-col items-center">
+              <div class="flex items-center justify-center">
                 <MemberCard
-                  v-for="m in filteredAnggotaAktif"
+                  v-for="m in ketuaList"
                   :key="m._id"
                   :member="m"
-                  size="sm"
                 />
               </div>
 
-              <!-- Empty state for division filter -->
-              <div
-                v-else
-                class="text-center py-12 border border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-8"
-              >
-                <Sparkles :size="36" class="mx-auto mb-2 opacity-30 text-sky-500 dark:text-cyan-400" />
-                <p class="text-sm font-mono text-slate-500 dark:text-gray-400">
-                  Belum ada anggota aktif di divisi "{{ activeDivision }}".
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- ============================================== -->
-          <!-- LEVEL 5: ANGGOTA NON AKTIF & DEMISIONER        -->
-          <!-- ============================================== -->
-          <div v-if="anggotaNonAktifList.length > 0" class="w-full relative z-10 flex flex-col items-center mt-12">
-            <!-- DOTTED VERTICAL CONNECTOR LINE (Matching Diagram) -->
-            <div class="w-0 h-16 border-l-2 border-dashed border-slate-400 dark:border-slate-600 mb-2 pointer-events-none"></div>
-
-            <!-- Header Label with Dotted Style -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold bg-slate-500/10 text-slate-700 dark:text-slate-300 border border-dashed border-slate-400 dark:border-slate-600 mb-6 shadow-sm">
-              <Clock :size="13" class="text-slate-500 dark:text-slate-400" />
-              <span>ANGGOTA NON AKTIF & DEMISIONER</span>
+              <!-- Direct solid line connecting bottom of Ketua to top of Wakil -->
+              <div class="w-0.5 h-12 bg-slate-300 dark:bg-slate-600"></div>
             </div>
 
-            <!-- Dotted Horizontal Distributor Bar (on sm and up) -->
-            <div class="hidden sm:block relative w-full max-w-3xl mx-auto mb-6">
-              <div class="border-t-2 border-dashed border-slate-400 dark:border-slate-600 w-full"></div>
-              <div class="flex justify-around">
-                <div
-                  v-for="(_, i) in anggotaNonAktifList.slice(0, 4)"
-                  :key="i"
-                  class="w-0 h-3 border-l-2 border-dashed border-slate-400 dark:border-slate-600"
-                ></div>
-              </div>
-            </div>
-
-            <!-- Non-Active Cards (Flex / Centered Grid) -->
-            <div class="flex flex-wrap justify-center gap-4 max-w-4xl w-full">
-              <div
-                v-for="m in anggotaNonAktifList"
-                :key="m._id"
-                class="w-44 sm:w-48"
-              >
+            <!-- ============================================== -->
+            <!-- LEVEL 2: WAKIL KETUA                           -->
+            <!-- ============================================== -->
+            <div class="flex flex-col items-center">
+              <div class="flex items-center justify-center">
                 <MemberCard
+                  v-for="m in wakilList"
+                  :key="m._id"
                   :member="m"
-                  size="sm"
-                  :is-inactive="true"
                 />
               </div>
+
+              <!-- Direct solid line connecting bottom of Wakil to Level 3 Branch -->
+              <div class="w-0.5 h-12 bg-slate-300 dark:bg-slate-600"></div>
             </div>
+
+            <!-- ============================================== -->
+            <!-- LEVEL 3: PENGURUS INTI (SEKRETARIAT & BENDAHARA)-->
+            <!-- ============================================== -->
+            <div class="relative flex items-start justify-center gap-12 sm:gap-16 lg:gap-20">
+              <!-- Central Trunk Line passing through the gap to Level 4 -->
+              <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-slate-300 dark:bg-slate-600 pointer-events-none"></div>
+
+              <!-- LEFT BRANCH: SEKRETARIAT -->
+              <div class="flex flex-col items-center relative">
+                <!-- Crossbar segment connecting Left Branch center to Container Center -->
+                <div class="absolute top-0 left-1/2 -right-6 sm:-right-8 lg:-right-10 h-0.5 bg-slate-300 dark:bg-slate-600"></div>
+                <!-- Vertical drop into Sekretaris sub-tree -->
+                <div class="w-0.5 h-8 bg-slate-300 dark:bg-slate-600"></div>
+
+                <!-- Sekretaris Sub-Tree -->
+                <div class="flex items-start justify-center">
+                  <div
+                    v-for="(m, idx) in sekretarisList"
+                    :key="m._id"
+                    class="flex flex-col items-center relative px-2.5 sm:px-3"
+                  >
+                    <!-- Horizontal line over Sekretaris cards -->
+                    <div
+                      v-if="sekretarisList.length > 1"
+                      class="absolute top-0 h-0.5 bg-slate-300 dark:bg-slate-600"
+                      :class="[
+                        idx === 0 ? 'left-1/2 right-0' : '',
+                        idx === sekretarisList.length - 1 ? 'left-0 right-1/2' : '',
+                        idx > 0 && idx < sekretarisList.length - 1 ? 'left-0 right-0' : ''
+                      ]"
+                    ></div>
+                    <!-- Drop line touching top of card -->
+                    <div class="w-0.5 h-8 bg-slate-300 dark:bg-slate-600"></div>
+                    <MemberCard :member="m" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT BRANCH: BENDAHARA -->
+              <div class="flex flex-col items-center relative">
+                <!-- Crossbar segment connecting Container Center to Right Branch center -->
+                <div class="absolute top-0 -left-6 sm:-left-8 lg:-left-10 right-1/2 h-0.5 bg-slate-300 dark:bg-slate-600"></div>
+                <!-- Vertical drop into Bendahara sub-tree -->
+                <div class="w-0.5 h-8 bg-slate-300 dark:bg-slate-600"></div>
+
+                <!-- Bendahara Sub-Tree -->
+                <div class="flex items-start justify-center">
+                  <div
+                    v-for="(m, idx) in bendaharaList"
+                    :key="m._id"
+                    class="flex flex-col items-center relative px-2.5 sm:px-3"
+                  >
+                    <!-- Horizontal line over Bendahara cards -->
+                    <div
+                      v-if="bendaharaList.length > 1"
+                      class="absolute top-0 h-0.5 bg-slate-300 dark:bg-slate-600"
+                      :class="[
+                        idx === 0 ? 'left-1/2 right-0' : '',
+                        idx === bendaharaList.length - 1 ? 'left-0 right-1/2' : '',
+                        idx > 0 && idx < bendaharaList.length - 1 ? 'left-0 right-0' : ''
+                      ]"
+                    ></div>
+                    <!-- Drop line touching top of card -->
+                    <div class="w-0.5 h-8 bg-slate-300 dark:bg-slate-600"></div>
+                    <MemberCard :member="m" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Central vertical line continuing from Level 3 into Level 4 -->
+            <div class="w-0.5 h-12 bg-slate-300 dark:bg-slate-600"></div>
+
+            <!-- ============================================== -->
+            <!-- LEVEL 4: ANGGOTA AKTIF                         -->
+            <!-- ============================================== -->
+            <div class="flex items-start justify-center">
+              <div
+                v-for="(m, idx) in allAnggotaAktif"
+                :key="m._id"
+                class="flex flex-col items-center relative px-2.5 sm:px-3"
+              >
+                <!-- Top horizontal bar across Anggota cards -->
+                <div
+                  v-if="allAnggotaAktif.length > 1"
+                  class="absolute top-0 h-0.5 bg-slate-300 dark:bg-slate-600"
+                  :class="[
+                    idx === 0 ? 'left-1/2 right-0' : '',
+                    idx === allAnggotaAktif.length - 1 ? 'left-0 right-1/2' : '',
+                    idx > 0 && idx < allAnggotaAktif.length - 1 ? 'left-0 right-0' : ''
+                  ]"
+                ></div>
+                <!-- Drop line touching top of Anggota card -->
+                <div class="w-0.5 h-8 bg-slate-300 dark:bg-slate-600"></div>
+                <MemberCard :member="m" />
+              </div>
+            </div>
+
+            <!-- ============================================== -->
+            <!-- LEVEL 5: ANGGOTA NON AKTIF & DEMISIONER        -->
+            <!-- ============================================== -->
+            <div v-if="anggotaNonAktifList.length > 0" class="flex flex-col items-center">
+              <!-- DOTTED VERTICAL CONNECTOR LINE (Matching Diagram) -->
+              <div class="w-0 h-14 border-l-2 border-dashed border-slate-400 dark:border-slate-500"></div>
+
+              <!-- DOTTED TREE SUB-BRANCH FOR NON-ACTIVE MEMBERS -->
+              <div class="flex items-start justify-center">
+                <div
+                  v-for="(m, idx) in anggotaNonAktifList"
+                  :key="m._id"
+                  class="flex flex-col items-center relative px-2.5 sm:px-3"
+                >
+                  <!-- Dotted horizontal line segment -->
+                  <div
+                    v-if="anggotaNonAktifList.length > 1"
+                    class="absolute top-0 border-t-2 border-dashed border-slate-400 dark:border-slate-500"
+                    :class="[
+                      idx === 0 ? 'left-1/2 right-0' : '',
+                      idx === anggotaNonAktifList.length - 1 ? 'left-0 right-1/2' : '',
+                      idx > 0 && idx < anggotaNonAktifList.length - 1 ? 'left-0 right-0' : ''
+                    ]"
+                  ></div>
+                  <!-- Dotted drop line touching top of non-active card -->
+                  <div class="w-0 h-8 border-l-2 border-dashed border-slate-400 dark:border-slate-500"></div>
+                  <MemberCard :member="m" :is-inactive="true" />
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

@@ -20,10 +20,6 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  size: {
-    type: String,
-    default: 'md', // 'lg' | 'md' | 'sm'
-  },
   isInactive: {
     type: Boolean,
     default: false,
@@ -172,12 +168,10 @@ const roleMeta = computed(() => {
 </script>
 
 <template>
+  <!-- Card Container: Exactly Uniform Dimensions for ALL Cards -->
   <div
-    class="group glass-card rounded-2xl border transition-all duration-300 text-center flex flex-col items-center justify-between relative overflow-hidden hover:-translate-y-1.5"
-    :class="[
-      roleMeta.cardClass,
-      size === 'lg' ? 'w-64 sm:w-72 p-6' : size === 'md' ? 'w-52 sm:w-60 p-5' : 'w-full p-4'
-    ]"
+    class="group glass-card rounded-2xl border transition-all duration-300 text-center flex flex-col items-center justify-between relative overflow-hidden hover:-translate-y-1.5 w-48 sm:w-52 h-[295px] p-4 flex-shrink-0"
+    :class="roleMeta.cardClass"
   >
     <!-- Top-Right Role Symbol Badge -->
     <div
@@ -185,18 +179,15 @@ const roleMeta = computed(() => {
       :class="roleMeta.cornerBadgeClass"
       :title="roleMeta.label"
     >
-      <component :is="roleMeta.icon" :size="size === 'lg' ? 15 : 13" />
+      <component :is="roleMeta.icon" :size="13" />
     </div>
 
     <!-- Main Card Body -->
     <div class="w-full flex flex-col items-center">
-      <!-- Profile Photo (Kotak Round Shape / Squircle rounded-2xl) -->
+      <!-- Profile Photo (Kotak Round Shape / Squircle rounded-2xl) - Uniform Size -->
       <div
-        class="rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 transition-all duration-300 shadow-md dark:shadow-lg dark:shadow-black/40 mb-3.5 relative"
-        :class="[
-          roleMeta.photoBorder,
-          size === 'lg' ? 'w-32 h-32 sm:w-36 sm:h-36' : size === 'md' ? 'w-24 h-24 sm:w-28 sm:h-28' : 'w-20 h-20 sm:w-24 sm:h-24'
-        ]"
+        class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 transition-all duration-300 shadow-md dark:shadow-lg dark:shadow-black/40 mb-3 relative"
+        :class="roleMeta.photoBorder"
       >
         <img
           v-if="member.photo"
@@ -207,10 +198,10 @@ const roleMeta = computed(() => {
         />
         <div
           v-else
-          class="w-full h-full flex items-center justify-center text-white font-bold bg-gradient-to-br"
+          class="w-full h-full flex items-center justify-center text-white font-bold bg-gradient-to-br text-2xl"
           :class="roleMeta.avatarBg"
         >
-          <span :class="size === 'lg' ? 'text-3xl' : 'text-xl'">
+          <span>
             {{ member.name ? member.name.charAt(0).toUpperCase() : '?' }}
           </span>
         </div>
@@ -218,15 +209,14 @@ const roleMeta = computed(() => {
 
       <!-- Member Name -->
       <h3
-        class="font-heading font-bold text-slate-900 dark:text-white leading-snug line-clamp-1 group-hover:text-sky-600 dark:group-hover:text-cyan-300 transition-colors w-full px-1"
-        :class="size === 'lg' ? 'text-lg sm:text-xl' : size === 'md' ? 'text-base' : 'text-sm'"
+        class="font-heading font-bold text-slate-900 dark:text-white leading-snug line-clamp-1 group-hover:text-sky-600 dark:group-hover:text-cyan-300 transition-colors w-full px-1 text-sm sm:text-base"
         :title="member.name"
       >
         {{ member.name }}
       </h3>
 
       <!-- Role & Details -->
-      <div class="mt-2 flex flex-col items-center gap-1 w-full">
+      <div class="mt-1.5 flex flex-col items-center gap-1 w-full">
         <!-- Role Badge with Symbol Icon -->
         <span
           class="inline-flex items-center gap-1.5 font-mono font-semibold px-2.5 py-0.5 rounded-full border text-[11px] max-w-full truncate"
@@ -253,7 +243,7 @@ const roleMeta = computed(() => {
     </div>
 
     <!-- Card Footer: Instagram Link / Label -->
-    <div class="mt-3.5 pt-2.5 border-t border-slate-200 dark:border-white/[0.06] w-full flex items-center justify-center">
+    <div class="mt-2.5 pt-2 border-t border-slate-200 dark:border-white/[0.06] w-full flex items-center justify-center">
       <a
         v-if="member.instagram"
         :href="`https://instagram.com/${member.instagram.replace('@', '')}`"
