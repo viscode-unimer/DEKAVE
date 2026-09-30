@@ -31,7 +31,7 @@ const latestBlogs = ref([]);
 const loading = ref(true);
 const activeFilter = ref('All');
 
-const categories = ['All', 'Branding', 'Illustration', 'UI/UX', 'Photography', 'Motion'];
+const categories = ['All', 'Desain', 'Photography', 'Videography', 'Public Relation'];
 
 onMounted(async () => {
   try {

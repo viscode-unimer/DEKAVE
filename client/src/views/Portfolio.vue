@@ -11,16 +11,15 @@ const { t } = useI18n();
 const portfolios = ref([]);
 const loading = ref(true);
 const activeFilter = ref('');
-const categories = ['Branding', 'Illustration', 'UI/UX', 'Photography', 'Motion'];
+const categories = ['Desain', 'Photography', 'Videography', 'Public Relation'];
 
 // Color palettes for Inspomcp signature touch
 const getPaletteForCategory = (cat) => {
   const map = {
-    'Branding': ['#0284C7', '#38BDF8', '#0EA5E9', '#0369A1'],
-    'Illustration': ['#38BDF8', '#818CF8', '#C084FC', '#06B6D4'],
-    'UI/UX': ['#0284C7', '#22D3EE', '#67E8F9', '#075985'],
-    'Photography': ['#1E293B', '#475569', '#94A3B8', '#38BDF8'],
-    'Motion': ['#2563EB', '#60A5FA', '#93C5FD', '#1D4ED8'],
+    'Desain': ['#0284C7', '#38BDF8', '#0EA5E9', '#0369A1'],
+    'Photography': ['#F59E0B', '#FBBF24', '#D97706', '#78350F'],
+    'Videography': ['#6366F1', '#818CF8', '#4F46E5', '#312E81'],
+    'Public Relation': ['#10B981', '#34D399', '#059669', '#064E3B'],
   };
   return map[cat] || ['#0284C7', '#38BDF8', '#67E8F9', '#1E40AF'];
 };

@@ -36,48 +36,48 @@ const seedData = async () => {
     if (portfolioCount === 0) {
       await Portfolio.create([
         {
-          title: 'Identitas Visual Festival Budaya Merangin',
-          description: 'Desain branding dan identitas visual komprehensif untuk merayakan kekayaan budaya dan tradisi lokal Merangin.',
-          category: 'Branding',
+          title: 'Poster & Identitas Festival Budaya Merangin',
+          description: 'Desain poster promosi dan materi visual komprehensif untuk merayakan kekayaan budaya dan tradisi lokal Merangin.',
+          category: 'Desain',
           images: [
             'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80',
           ],
           creator: 'Rian Pratama',
-          tags: ['branding', 'identity', 'culture', 'typography'],
+          tags: ['poster', 'identity', 'culture', 'desain'],
           isFeatured: true,
         },
         {
-          title: 'Ilustrasi Cerita Rakyat Danau Pauh',
-          description: 'Karya ilustrasi digital yang mengisahkan legenda eksotis Danau Pauh dengan perpaduan warna neon mistis.',
-          category: 'Illustration',
+          title: 'Dokumentasi Visual Hunting Senja Danau Pauh',
+          description: 'Rangkaian jepretan lanskap senja dan aktivitas nelayan lokal di Danau Pauh Merangin.',
+          category: 'Photography',
           images: [
-            'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
           ],
           creator: 'Siti Nurhaliza',
-          tags: ['illustration', 'digitalart', 'folklore'],
+          tags: ['photography', 'landscape', 'danau', 'merangin'],
           isFeatured: true,
         },
         {
-          title: 'Redesign UI/UX Mobile App Pariwisata Merangin',
-          description: 'Konsep antarmuka aplikasi mobile pariwisata yang ramah pengguna, modern, dan mudah dinavigasi wisatawan.',
-          category: 'UI/UX',
+          title: 'Video Profil Kreatif UKM DKV Universitas Merangin',
+          description: 'Produksi video sinematik pendek berdurasi 60 detik yang memperkenalkan dinamika dan semangat berkarya keluarga DKV.',
+          category: 'Videography',
           images: [
-            'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
           ],
           creator: 'Fikri Haikal',
-          tags: ['uiux', 'mobileapp', 'clean', 'modern'],
+          tags: ['videography', 'reels', 'cinematic', 'kampus'],
           isFeatured: true,
         },
         {
-          title: 'Eksplorasi Tipografi Geopark Merangin',
-          description: 'Karya tipografi eksperimental yang terinspirasi dari struktur batu fosil purba di Geopark Merangin.',
-          category: 'Branding',
+          title: 'Kampanye Media Sosial: DKV Ramah Pemula',
+          description: 'Rancangan materi feeds publikasi dan kampanye keterbukaan UKM DKV untuk seluruh mahasiswa baru Universitas Merangin.',
+          category: 'Public Relation',
           images: [
-            'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
           ],
           creator: 'Dewi Lestari',
-          tags: ['typography', 'geopark', 'design'],
-          isFeatured: false,
+          tags: ['humas', 'pr', 'campaign', 'medsos'],
+          isFeatured: true,
         },
       ]);
       console.log('🎨 Sample portfolios created.');

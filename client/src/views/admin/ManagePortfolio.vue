@@ -13,12 +13,12 @@ const loading = ref(true);
 const showForm = ref(false);
 const editing = ref(null);
 const saving = ref(false);
-const categories = ['Branding', 'Illustration', 'UI/UX', 'Photography', 'Motion'];
+const categories = ['Desain', 'Photography', 'Videography', 'Public Relation'];
 
 const form = reactive({
   title: '',
   description: '',
-  category: 'Branding',
+  category: 'Desain',
   creator: '',
   tags: '',
   isFeatured: false,
@@ -42,7 +42,7 @@ const openCreate = () => {
   Object.assign(form, {
     title: '',
     description: '',
-    category: 'Branding',
+    category: 'Desain',
     creator: '',
     tags: '',
     isFeatured: false,
