@@ -3,7 +3,7 @@ import { reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useToast } from 'vue-toastification';
 import PublicLayout from '../components/common/PublicLayout.vue';
-import { MapPin, Mail, Instagram, Youtube, Palette } from 'lucide-vue-next';
+import { MapPin, Mail, Instagram, Youtube, Palette, Send, Sparkles } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const toast = useToast();
@@ -12,8 +12,7 @@ const form = reactive({ name: '', email: '', message: '' });
 
 const handleSubmit = async () => {
   sending.value = true;
-  // Simulate sending — wire to API if needed
-  await new Promise((r) => setTimeout(r, 1000));
+  await new Promise((r) => setTimeout(r, 800));
   toast.success('Pesan berhasil dikirim! Kami akan segera menghubungimu.');
   form.name = '';
   form.email = '';
@@ -24,81 +23,118 @@ const handleSubmit = async () => {
 
 <template>
   <PublicLayout>
-    <section class="py-24 bg-gradient-to-br from-primary to-secondary text-white">
-      <div class="max-w-4xl mx-auto px-4 text-center">
-        <h1 class="font-heading text-5xl font-bold mb-4">{{ t('contact.title') }}</h1>
-        <p class="text-gray-300 text-xl">{{ t('contact.subtitle') }}</p>
+    <!-- Hero Header -->
+    <section class="relative pt-36 pb-16 md:pt-44 md:pb-20 overflow-hidden">
+      <div class="absolute inset-0 bg-grid-lines opacity-15 pointer-events-none"></div>
+      <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium border border-cyan-400/30 bg-cyan-500/10 text-cyan-300 mb-6 backdrop-blur-md">
+          <Mail :size="14" class="text-cyan-400" />
+          <span>DIRECT STUDIO INQUIRY</span>
+        </div>
+        <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-6">
+          {{ t('contact.title') }}
+        </h1>
+        <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+          {{ t('contact.subtitle') }}
+        </p>
       </div>
     </section>
 
-    <section class="py-16 bg-white dark:bg-primary">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <!-- Contact Form -->
-          <div>
-            <h2 class="font-heading text-3xl font-bold text-gray-900 dark:text-white mb-6">Kirim Pesan</h2>
-            <form @submit.prevent="handleSubmit" class="space-y-5">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.name') }}</label>
-                <input v-model="form.name" required type="text" class="input-field" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.email') }}</label>
-                <input v-model="form.email" required type="email" class="input-field" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ t('contact.message') }}</label>
-                <textarea v-model="form.message" required rows="5" class="input-field resize-none" />
-              </div>
-              <button
-                type="submit"
-                :disabled="sending"
-                class="btn-accent w-full py-3 disabled:opacity-60"
-              >
-                {{ sending ? 'Mengirim...' : t('contact.send') }}
-              </button>
-            </form>
+    <!-- Content -->
+    <section class="py-12 relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <!-- Form -->
+          <div class="lg:col-span-7">
+            <div class="glass-card rounded-3xl p-8 sm:p-10 border border-white/10">
+              <span class="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold mb-2 block">
+                // GET IN TOUCH
+              </span>
+              <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-6">
+                Kirim Pesan ke DEKAVE
+              </h2>
+
+              <form @submit.prevent="handleSubmit" class="space-y-5">
+                <div>
+                  <label class="block text-xs font-mono uppercase tracking-wider text-gray-300 mb-2">
+                    {{ t('contact.name') }} <span class="text-cyan-400">*</span>
+                  </label>
+                  <input v-model="form.name" required type="text" class="input-field" placeholder="Nama Lengkap" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono uppercase tracking-wider text-gray-300 mb-2">
+                    {{ t('contact.email') }} <span class="text-cyan-400">*</span>
+                  </label>
+                  <input v-model="form.email" required type="email" class="input-field" placeholder="nama@email.com" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono uppercase tracking-wider text-gray-300 mb-2">
+                    {{ t('contact.message') }} <span class="text-cyan-400">*</span>
+                  </label>
+                  <textarea v-model="form.message" required rows="5" class="input-field resize-none" placeholder="Tuliskan pertanyaan, kolaborasi, atau pesanmu..." />
+                </div>
+
+                <button
+                  type="submit"
+                  :disabled="sending"
+                  class="btn-accent w-full py-3.5 rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-2 text-sm shadow-lg shadow-cyan-500/25 disabled:opacity-60"
+                >
+                  <Send :size="16" />
+                  <span>{{ sending ? 'Mengirim...' : t('contact.send') }}</span>
+                </button>
+              </form>
+            </div>
           </div>
 
-          <!-- Contact Info -->
-          <div class="space-y-8">
-            <div>
-              <h3 class="font-heading text-xl font-bold text-gray-900 dark:text-white mb-4">
-                {{ t('contact.follow_us') }}
-              </h3>
-              <div class="space-y-3">
-                <a href="#" class="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-accent transition-colors">
-                  <div class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-accent">
-                    <Instagram :size="16" />
+          <!-- Info & Socials -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="glass-card rounded-3xl p-8 border border-white/10">
+              <h3 class="font-heading text-xl font-bold text-white mb-6">{{ t('contact.follow_us') }}</h3>
+              <div class="space-y-4">
+                <a href="#" class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-400/30 text-gray-300 hover:text-white transition-all group">
+                  <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-300">
+                    <Instagram :size="20" />
                   </div>
-                  <span>Instagram</span>
+                  <div>
+                    <span class="text-sm font-semibold block text-white">Instagram</span>
+                    <span class="text-xs font-mono text-gray-400">@dekave.unimer</span>
+                  </div>
                 </a>
-                <a href="#" class="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-accent transition-colors">
-                  <div class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-accent">
-                    <Youtube :size="16" />
+
+                <a href="#" class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-400/30 text-gray-300 hover:text-white transition-all group">
+                  <div class="w-10 h-10 rounded-lg bg-sky/10 flex items-center justify-center text-sky">
+                    <Youtube :size="20" />
                   </div>
-                  <span>YouTube</span>
+                  <div>
+                    <span class="text-sm font-semibold block text-white">YouTube</span>
+                    <span class="text-xs font-mono text-gray-400">DEKAVE Official</span>
+                  </div>
                 </a>
-                <a href="#" class="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-accent transition-colors">
-                  <div class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-accent">
-                    <Palette :size="16" />
+
+                <a href="#" class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-400/30 text-gray-300 hover:text-white transition-all group">
+                  <div class="w-10 h-10 rounded-lg bg-cyan-400/10 flex items-center justify-center text-cyan-400">
+                    <Palette :size="20" />
                   </div>
-                  <span>Behance</span>
+                  <div>
+                    <span class="text-sm font-semibold block text-white">Behance</span>
+                    <span class="text-xs font-mono text-gray-400">behance.net/dekave</span>
+                  </div>
                 </a>
               </div>
             </div>
-            <div class="bg-gray-50 dark:bg-secondary rounded-2xl p-6">
-              <h3 class="font-heading text-lg font-bold text-gray-900 dark:text-white mb-3">Informasi</h3>
-              <div class="space-y-2.5 text-sm text-gray-600 dark:text-gray-300">
-                <p class="flex items-center gap-2.5">
-                  <MapPin :size="16" class="text-accent flex-shrink-0" />
-                  <span>Universitas Merangin</span>
-                </p>
-                <p class="flex items-center gap-2.5">
-                  <Mail :size="16" class="text-accent flex-shrink-0" />
-                  <span>dekave@merangin.ac.id</span>
-                </p>
-              </div>
+
+            <div class="glass-card rounded-3xl p-8 border border-white/10 space-y-4">
+              <h3 class="font-heading text-lg font-bold text-white mb-2">Informasi Sekretariat</h3>
+              <p class="flex items-center gap-3 text-sm text-gray-300">
+                <MapPin :size="16" class="text-cyan-400 shrink-0" />
+                <span>Kampus Universitas Merangin, Bangko, Jambi</span>
+              </p>
+              <p class="flex items-center gap-3 text-sm text-gray-300">
+                <Mail :size="16" class="text-sky shrink-0" />
+                <span class="font-mono text-xs">dekave@merangin.ac.id</span>
+              </p>
             </div>
           </div>
         </div>

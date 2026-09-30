@@ -5,13 +5,25 @@ import { RouterLink } from 'vue-router';
 import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
-import { Image } from 'lucide-vue-next';
+import { Image, Sparkles, ArrowUpRight, Palette } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const portfolios = ref([]);
 const loading = ref(true);
 const activeFilter = ref('');
 const categories = ['Branding', 'Illustration', 'UI/UX', 'Photography', 'Motion'];
+
+// Color palettes for Inspomcp signature touch
+const getPaletteForCategory = (cat) => {
+  const map = {
+    'Branding': ['#0284C7', '#38BDF8', '#0EA5E9', '#0369A1'],
+    'Illustration': ['#38BDF8', '#818CF8', '#C084FC', '#06B6D4'],
+    'UI/UX': ['#0284C7', '#22D3EE', '#67E8F9', '#075985'],
+    'Photography': ['#1E293B', '#475569', '#94A3B8', '#38BDF8'],
+    'Motion': ['#2563EB', '#60A5FA', '#93C5FD', '#1D4ED8'],
+  };
+  return map[cat] || ['#0284C7', '#38BDF8', '#67E8F9', '#1E40AF'];
+};
 
 const fetchPortfolios = async () => {
   loading.value = true;
@@ -32,70 +44,120 @@ onMounted(fetchPortfolios);
 
 <template>
   <PublicLayout>
-    <section class="py-24 bg-gradient-to-br from-primary to-secondary text-white">
-      <div class="max-w-4xl mx-auto px-4 text-center">
-        <h1 class="font-heading text-5xl font-bold mb-4">{{ t('portfolio.title') }}</h1>
-        <p class="text-gray-300 text-xl">{{ t('portfolio.subtitle') }}</p>
+    <!-- Hero Header -->
+    <section class="relative pt-36 pb-16 md:pt-44 md:pb-20 overflow-hidden">
+      <div class="absolute inset-0 bg-grid-lines opacity-15 pointer-events-none"></div>
+      <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium border border-cyan-400/30 bg-cyan-500/10 text-cyan-300 mb-6 backdrop-blur-md">
+          <Palette :size="14" class="text-cyan-400" />
+          <span>CURATED CREATIVE INDEX</span>
+        </div>
+        <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-6">
+          {{ t('portfolio.title') }}
+        </h1>
+        <p class="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+          {{ t('portfolio.subtitle') }}
+        </p>
       </div>
     </section>
 
-    <section class="py-16 bg-white dark:bg-primary">
+    <!-- Gallery Section -->
+    <section class="py-12 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Filter Buttons -->
-        <div class="flex flex-wrap gap-3 mb-10">
-          <button
-            @click="activeFilter = ''"
-            :class="[
-              'px-4 py-2 rounded-full text-sm font-semibold border transition-colors',
-              activeFilter === ''
-                ? 'bg-accent border-accent text-white'
-                : 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-accent hover:text-accent'
-            ]"
-          >
-            {{ t('portfolio.filter_all') }}
-          </button>
-          <button
-            v-for="cat in categories"
-            :key="cat"
-            @click="activeFilter = cat"
-            :class="[
-              'px-4 py-2 rounded-full text-sm font-semibold border transition-colors',
-              activeFilter === cat
-                ? 'bg-accent border-accent text-white'
-                : 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-accent hover:text-accent'
-            ]"
-          >
-            {{ cat }}
-          </button>
+        <!-- Filter Tabs -->
+        <div class="flex items-center justify-center mb-12">
+          <div class="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-xl">
+            <button
+              @click="activeFilter = ''"
+              :class="[
+                'px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider font-semibold transition-all duration-300',
+                activeFilter === ''
+                  ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30'
+                  : 'text-gray-300 hover:text-white hover:bg-white/[0.06]'
+              ]"
+            >
+              {{ t('portfolio.filter_all') }}
+            </button>
+            <button
+              v-for="cat in categories"
+              :key="cat"
+              @click="activeFilter = cat"
+              :class="[
+                'px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider font-semibold transition-all duration-300',
+                activeFilter === cat
+                  ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30'
+                  : 'text-gray-300 hover:text-white hover:bg-white/[0.06]'
+              ]"
+            >
+              {{ cat }}
+            </button>
+          </div>
         </div>
 
         <LoadingSpinner v-if="loading" />
+
         <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <RouterLink
             v-for="item in portfolios"
             :key="item._id"
             :to="`/portfolio/${item._id}`"
-            class="group bg-gray-50 dark:bg-secondary rounded-2xl overflow-hidden shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            class="group glass-card rounded-2xl overflow-hidden border border-white/[0.08] hover:border-cyan-400/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col"
           >
-            <div class="aspect-square bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <!-- Thumbnail Area -->
+            <div class="aspect-4/3 bg-slate-900 overflow-hidden relative">
               <img
                 v-if="item.images?.[0]"
                 :src="item.images[0]"
                 :alt="item.title"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
+              <div v-else class="w-full h-full flex items-center justify-center text-gray-500">
                 <Image :size="36" class="opacity-40" />
               </div>
+
+              <!-- Floating Category Pill -->
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-semibold bg-slate-950/70 border border-white/20 text-cyan-300 backdrop-blur-md">
+                  {{ item.category }}
+                </span>
+              </div>
+
+              <!-- Hover Arrow -->
+              <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cyan-500 text-slate-950 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-2 transition-all duration-300">
+                <ArrowUpRight :size="16" />
+              </div>
             </div>
-            <div class="p-4">
-              <span class="text-xs text-accent font-bold uppercase">{{ item.category }}</span>
-              <h3 class="font-heading font-bold text-gray-900 dark:text-white mt-1">{{ item.title }}</h3>
-              <p class="text-sm text-gray-500">by {{ item.creator }}</p>
+
+            <!-- Card Content & Inspomcp Color Dots -->
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-heading font-bold text-white text-lg group-hover:text-cyan-300 transition-colors line-clamp-1">
+                  {{ item.title }}
+                </h3>
+                <p class="text-xs text-gray-400 font-mono mt-1">by {{ item.creator }}</p>
+              </div>
+
+              <!-- Bottom Palette & Tags -->
+              <div class="mt-4 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <div
+                    v-for="(hex, idx) in getPaletteForCategory(item.category)"
+                    :key="idx"
+                    class="w-3 h-3 rounded-full border border-white/20"
+                    :style="{ backgroundColor: hex }"
+                    :title="hex"
+                  ></div>
+                </div>
+                <span class="text-[11px] font-mono text-cyan-400/80 group-hover:text-cyan-300">
+                  Inspect &rarr;
+                </span>
+              </div>
             </div>
           </RouterLink>
-          <div v-if="portfolios.length === 0" class="col-span-full text-center text-gray-400 py-12">
-            {{ t('portfolio.no_data') }}
+
+          <div v-if="portfolios.length === 0" class="col-span-full text-center text-gray-400 py-16">
+            <Palette :size="48" class="mx-auto mb-3 opacity-30 text-cyan-400" />
+            <p class="text-lg font-medium">{{ t('portfolio.no_data') }}</p>
           </div>
         </div>
       </div>

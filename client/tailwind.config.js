@@ -45,8 +45,36 @@ export default {
         gold: '#38BDF8', // Remapped gold to sky blue for unified blue aesthetic
       },
       fontFamily: {
-        heading: ['Playfair Display', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        heading: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        display: ['Syne', 'Plus Jakarta Sans', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+        body: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+      },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'float-slow': 'float 10s ease-in-out infinite',
+        'float-reverse': 'float-reverse 8s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+        'shimmer': 'shimmer 2.5s linear infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-14px)' },
+        },
+        'float-reverse': {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(14px)' },
+        },
+        'pulse-glow': {
+          '0%, 100%': { opacity: '0.35', transform: 'scale(1)' },
+          '50%': { opacity: '0.7', transform: 'scale(1.08)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
       },
     },
   },
