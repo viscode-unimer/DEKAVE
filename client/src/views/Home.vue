@@ -81,13 +81,6 @@ const samplePalettes = [
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Hero Header Center Column -->
         <div class="max-w-4xl mx-auto text-center">
-          <!-- Official Logo Pill Badge -->
-          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-200/60 dark:bg-white/[0.04] border border-slate-300/80 dark:border-white/10 backdrop-blur-xl mb-8 shadow-sm hover:scale-105 transition-transform duration-300">
-            <img src="/logo-dkv-biru.png" alt="DKV" class="h-6 w-auto object-contain dark:hidden" />
-            <img src="/logo-dkv-putih.png" alt="DKV" class="h-6 w-auto object-contain hidden dark:block drop-shadow-[0_0_10px_rgba(56,189,248,0.4)]" />
-            <span class="text-xs font-mono font-medium text-slate-700 dark:text-gray-300 tracking-wider">UKM DKV UNIVERSITAS MERANGIN</span>
-          </div>
-
           <!-- Massive Editorial Display Typography -->
           <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.03] text-slate-900 dark:text-white mb-6">
             Ideas Become
