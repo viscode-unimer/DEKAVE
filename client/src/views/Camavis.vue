@@ -208,10 +208,10 @@ const handleSubmit = async () => {
                 Pilihan Divisi Peminatan <span class="text-sky-600 dark:text-cyan-400">*</span>
               </label>
               <select v-model="form.division" required class="input-field">
-                <option value="Desain">🎨 Divisi Desain (Grafis, Poster, Ilustrasi, Layout)</option>
-                <option value="Photography">📷 Divisi Photography (Kamera, Framing, Hunting Foto)</option>
-                <option value="Videography">🎥 Divisi Videography (Video Kreatif, Reels, Sinematik)</option>
-                <option value="Public Relation">📢 Divisi Public Relation / PR (Humas & Media Sosial)</option>
+                <option value="Desain">Divisi Desain (Grafis, Poster, Ilustrasi, Layout)</option>
+                <option value="Photography">Divisi Photography (Kamera, Framing, Hunting Foto)</option>
+                <option value="Videography">Divisi Videography (Video Kreatif, Reels, Sinematik)</option>
+                <option value="Public Relation">Divisi Public Relation / PR (Humas & Media Sosial)</option>
               </select>
             </div>
 
