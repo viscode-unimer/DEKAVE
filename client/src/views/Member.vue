@@ -120,8 +120,8 @@ const filteredMembers = computed(() => {
 
             <div>
               <div
-                class="w-24 h-24 mx-auto rounded-full overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 transition-colors duration-300 mb-4 shadow-md dark:shadow-lg dark:shadow-black/40"
-                :class="member.position?.toLowerCase().includes('ketua') ? 'border-amber-400' : 'border-slate-200 dark:border-white/10 group-hover:border-sky-500 dark:group-hover:border-cyan-400'"
+                class="w-28 h-28 mx-auto rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 transition-all duration-300 mb-4 shadow-md dark:shadow-lg dark:shadow-black/40"
+                :class="member.position?.toLowerCase().includes('ketua') ? 'border-amber-400 ring-2 ring-amber-400/30 shadow-amber-400/10' : 'border-slate-200 dark:border-white/10 group-hover:border-sky-500 dark:group-hover:border-cyan-400'"
               >
                 <img
                   v-if="member.photo"
