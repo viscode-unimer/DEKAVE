@@ -150,7 +150,6 @@ onMounted(fetchMembers);
             <option value="Photography" />
             <option value="Videography" />
             <option value="Public Relation" />
-            <option value="Badan Pengurus Harian" />
           </datalist>
         </div>
         <div>
