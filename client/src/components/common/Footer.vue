@@ -131,7 +131,7 @@ const { t } = useI18n();
         <p class="flex items-center gap-2">
           <span>© {{ new Date().getFullYear() }} DKV Univ. Merangin</span>
           <span class="text-slate-400 dark:text-gray-600">•</span>
-          <span class="text-sky-600 dark:text-sky font-medium">v0.6</span>
+          <span class="text-sky-600 dark:text-sky font-medium">v0.7</span>
         </p>
         <p class="text-slate-600 dark:text-gray-400 font-sans">
           Developed by <span class="text-sky-600 dark:text-sky font-semibold tracking-wide">XXaverius</span>

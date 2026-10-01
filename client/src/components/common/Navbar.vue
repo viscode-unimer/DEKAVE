@@ -62,7 +62,7 @@ const isActive = (path) => {
         <div class="flex flex-col">
           <span class="font-heading font-extrabold text-base tracking-wider text-slate-900 dark:text-white leading-none group-hover:text-sky transition-colors flex items-center gap-1">
             DKV
-            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-sky-500/15 dark:bg-sky/20 text-sky-700 dark:text-sky border border-sky-500/30 dark:border-sky/30">v0.6</span>
+            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-sky-500/15 dark:bg-sky/20 text-sky-700 dark:text-sky border border-sky-500/30 dark:border-sky/30">v0.7</span>
           </span>
           <span class="text-[10px] text-slate-500 dark:text-gray-400 tracking-tight leading-none mt-0.5 hidden sm:block">Univ. Merangin</span>
         </div>
