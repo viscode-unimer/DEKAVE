@@ -5,13 +5,24 @@ import { RouterLink } from 'vue-router';
 import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
-import { Image, Sparkles, ArrowUpRight, Palette } from 'lucide-vue-next';
+import { Image, Sparkles, ArrowUpRight, Palette, Play } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const portfolios = ref([]);
 const loading = ref(true);
 const activeFilter = ref('');
 const categories = ['Desain Grafis & Poster', 'Fotografi & Dokumentasi', 'Videografi & Sinematik', 'Konten Media & Publikasi'];
+
+const getCoverImage = (item) => {
+  if (item.images?.[0]) return item.images[0];
+  if (item.videoUrl) {
+    const ytMatch = item.videoUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/i);
+    if (ytMatch && ytMatch[1]) {
+      return `https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg`;
+    }
+  }
+  return '';
+};
 
 // Color palettes for Inspomcp signature touch
 const getPaletteForCategory = (cat) => {
@@ -109,8 +120,8 @@ onMounted(fetchPortfolios);
             <!-- Thumbnail Area (Locked 4:3 Aspect Ratio) -->
             <div class="aspect-[4/3] w-full bg-slate-100 dark:bg-slate-900 overflow-hidden relative shrink-0">
               <img
-                v-if="item.images?.[0]"
-                :src="item.images[0]"
+                v-if="getCoverImage(item)"
+                :src="getCoverImage(item)"
                 :alt="item.title"
                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -122,6 +133,14 @@ onMounted(fetchPortfolios);
               <div class="absolute top-3 left-3 z-10">
                 <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-semibold bg-white/90 dark:bg-slate-950/70 border border-slate-200 dark:border-white/20 text-sky-700 dark:text-cyan-300 backdrop-blur-md shadow-sm">
                   {{ item.category }}
+                </span>
+              </div>
+
+              <!-- Floating Video Play Badge -->
+              <div v-if="item.videoUrl" class="absolute bottom-3 right-3 z-10">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-slate-950/80 text-white border border-white/20 backdrop-blur-md shadow-md">
+                  <Play :size="10" class="fill-sky-400 text-sky-400" />
+                  <span>Video</span>
                 </span>
               </div>
 

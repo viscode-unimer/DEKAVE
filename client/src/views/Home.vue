@@ -21,7 +21,8 @@ import {
   Coffee,
   Compass,
   Video,
-  Megaphone
+  Megaphone,
+  Play
 } from 'lucide-vue-next';
 
 const { t } = useI18n();
@@ -32,6 +33,17 @@ const loading = ref(true);
 const activeFilter = ref('All');
 
 const categories = ['All', 'Desain Grafis & Poster', 'Fotografi & Dokumentasi', 'Videografi & Sinematik', 'Konten Media & Publikasi'];
+
+const getCoverImage = (item) => {
+  if (item.images && item.images[0]) return item.images[0];
+  if (item.videoUrl) {
+    const ytMatch = item.videoUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/i);
+    if (ytMatch && ytMatch[1]) {
+      return `https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg`;
+    }
+  }
+  return '';
+};
 
 onMounted(async () => {
   try {
@@ -369,13 +381,21 @@ const samplePalettes = [
             <!-- 16:10 Aspect Ratio Image Container -->
             <div class="aspect-[16/10] w-full bg-slate-100 dark:bg-[#050916] overflow-hidden relative shrink-0">
               <img
-                v-if="item.images && item.images[0]"
-                :src="item.images[0]"
+                v-if="getCoverImage(item)"
+                :src="getCoverImage(item)"
                 :alt="item.title"
                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div v-else class="absolute inset-0 flex items-center justify-center text-slate-400 dark:text-gray-500">
                 <Palette :size="40" class="opacity-40" />
+              </div>
+
+              <!-- Video Badge on Top-Left if videoUrl -->
+              <div v-if="item.videoUrl" class="absolute top-3 left-3 z-10">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-slate-950/85 text-white border border-white/20 backdrop-blur-md shadow-md">
+                  <Play :size="10" class="fill-sky-400 text-sky-400" />
+                  <span>Video</span>
+                </span>
               </div>
 
               <!-- Category Badge on Top-Right -->

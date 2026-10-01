@@ -1,10 +1,11 @@
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive, computed, onMounted } from 'vue';
 import { useToast } from 'vue-toastification';
 import { useI18n } from 'vue-i18n';
 import LoadingSpinner from '../../components/common/LoadingSpinner.vue';
 import api from '../../utils/api';
-import { Image, Star } from 'lucide-vue-next';
+import { Image, Star, Film, Play } from 'lucide-vue-next';
+import { parseVideo } from '../../utils/video';
 
 const { t } = useI18n();
 const toast = useToast();
@@ -21,9 +22,12 @@ const form = reactive({
   category: 'Desain Grafis & Poster',
   creator: '',
   tags: '',
+  videoUrl: '',
   isFeatured: false,
   images: null,
 });
+
+const parsedVideo = computed(() => parseVideo(form.videoUrl));
 
 const fetchPortfolios = async () => {
   loading.value = true;
@@ -45,6 +49,7 @@ const openCreate = () => {
     category: 'Desain Grafis & Poster',
     creator: '',
     tags: '',
+    videoUrl: '',
     isFeatured: false,
     images: null,
   });
@@ -59,6 +64,7 @@ const openEdit = (item) => {
     category: item.category,
     creator: item.creator,
     tags: item.tags?.join(', ') || '',
+    videoUrl: item.videoUrl || '',
     isFeatured: item.isFeatured,
     images: null,
   });
@@ -74,6 +80,7 @@ const handleSave = async () => {
     fd.append('category', form.category);
     fd.append('creator', form.creator);
     fd.append('tags', form.tags);
+    fd.append('videoUrl', form.videoUrl || '');
     fd.append('isFeatured', form.isFeatured);
     if (form.images) {
       Array.from(form.images).forEach((f) => fd.append('images', f));
@@ -149,9 +156,71 @@ onMounted(fetchPortfolios);
               placeholder="desain, branding (pisah dengan koma)"
             />
           </div>
+
+          <!-- Video URL Field (Khusus Videografi atau portfolio dengan video) -->
+          <div
+            v-if="form.category === 'Videografi & Sinematik' || form.videoUrl"
+            class="md:col-span-2 p-4 rounded-xl border border-sky-500/30 bg-sky-500/5 dark:bg-sky-500/10 space-y-3"
+          >
+            <div class="flex items-center justify-between">
+              <label class="block text-sm font-bold text-sky-700 dark:text-cyan-300">
+                <Film :size="15" class="inline mr-1 -mt-0.5 text-sky-600 dark:text-cyan-400" />
+                Link Video (YouTube / Instagram Reels)
+                <span v-if="form.category === 'Videografi & Sinematik'" class="text-accent">*</span>
+              </label>
+              <span class="text-[11px] px-2.5 py-0.5 rounded-full font-mono font-semibold bg-sky-500/20 text-sky-700 dark:text-cyan-300">
+                Videografi & Sinematik
+              </span>
+            </div>
+            <input
+              v-model="form.videoUrl"
+              type="url"
+              class="input-field"
+              placeholder="Contoh: https://www.youtube.com/watch?v=... atau https://www.instagram.com/reel/..."
+            />
+            <div class="text-xs text-slate-500 dark:text-gray-400 space-y-1">
+              <p class="flex items-center gap-1.5 text-sky-700 dark:text-cyan-300 font-medium">
+                <span>💡</span>
+                <span>Thumbnail Otomatis: Jika Anda memasukkan link YouTube dan tidak mengunggah gambar poster di bawah, sampul otomatis diambil dari YouTube!</span>
+              </p>
+              <p class="text-slate-500 dark:text-gray-400">
+                Mendukung video YouTube biasa, YouTube Shorts, dan Instagram Reels.
+              </p>
+            </div>
+
+            <!-- Live Preview Indicator -->
+            <div
+              v-if="parsedVideo.isValid"
+              class="mt-2 p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-white/10 flex items-center justify-between shadow-sm"
+            >
+              <div class="flex items-center gap-3 min-w-0">
+                <img
+                  v-if="parsedVideo.thumbnailUrl"
+                  :src="parsedVideo.thumbnailUrl"
+                  alt="YouTube Preview"
+                  class="w-16 h-10 object-cover rounded border border-slate-200 dark:border-white/10 shrink-0"
+                />
+                <div v-else class="w-16 h-10 bg-slate-200 dark:bg-slate-800 rounded flex items-center justify-center shrink-0 text-xs font-mono font-bold text-slate-600 dark:text-gray-300">
+                  {{ parsedVideo.type.toUpperCase() }}
+                </div>
+                <div class="min-w-0">
+                  <p class="text-xs font-bold text-slate-900 dark:text-white">
+                    {{ parsedVideo.type === 'youtube' ? (parsedVideo.isShort ? 'YouTube Shorts Terdeteksi' : 'YouTube Video Terdeteksi') : parsedVideo.type === 'instagram' ? 'Instagram Reel Terdeteksi' : 'Link Video Siap' }}
+                  </p>
+                  <p class="text-[11px] text-slate-500 dark:text-gray-400 font-mono truncate max-w-xs sm:max-w-md">
+                    {{ form.videoUrl }}
+                  </p>
+                </div>
+              </div>
+              <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full font-semibold shrink-0">
+                Valid ✓
+              </span>
+            </div>
+          </div>
+
           <div class="md:col-span-2">
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              Gambar {{ editing ? '(biarkan kosong jika tidak ingin mengganti)' : '*' }}
+              Gambar {{ form.category === 'Videografi & Sinematik' && form.videoUrl ? '(Opsional - Otomatis thumbnail YouTube jika kosong)' : editing ? '(biarkan kosong jika tidak ingin mengganti)' : '*' }}
             </label>
             <input
               type="file"
@@ -201,7 +270,7 @@ onMounted(fetchPortfolios);
         :key="item._id"
         class="bg-white dark:bg-secondary rounded-2xl overflow-hidden shadow"
       >
-        <div class="aspect-square bg-gray-100 dark:bg-gray-700 overflow-hidden">
+        <div class="aspect-square bg-gray-100 dark:bg-gray-700 overflow-hidden relative">
           <img
             v-if="item.images?.[0]"
             :src="item.images[0]"
@@ -210,6 +279,14 @@ onMounted(fetchPortfolios);
           />
           <div v-else class="w-full h-full flex items-center justify-center text-gray-400">
             <Image :size="32" class="opacity-40" />
+          </div>
+
+          <!-- Video badge if has videoUrl -->
+          <div v-if="item.videoUrl" class="absolute top-2 right-2 z-10">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-950/80 text-white backdrop-blur-md border border-white/20 shadow-sm">
+              <Play :size="10" class="fill-white text-white" />
+              <span>Video</span>
+            </span>
           </div>
         </div>
         <div class="p-3">
