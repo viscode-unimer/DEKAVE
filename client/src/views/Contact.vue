@@ -8,8 +8,6 @@ import {
   MapPin,
   Mail,
   Instagram,
-  Palette,
-  Send,
   ArrowUpRight,
 } from 'lucide-vue-next';
 
@@ -240,24 +238,6 @@ const handleSubmit = () => {
                   <ArrowUpRight :size="16" class="text-slate-400 group-hover:text-sky-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
 
-                <!-- Behance -->
-                <a
-                  href="https://behance.net"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] hover:border-blue-500/40 dark:hover:border-blue-400/30 text-slate-700 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white transition-all group"
-                >
-                  <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-105 transition-transform">
-                      <Palette :size="20" />
-                    </div>
-                    <div>
-                      <span class="text-sm font-semibold block text-slate-900 dark:text-white">Behance Showcase</span>
-                      <span class="text-xs font-mono text-slate-500 dark:text-gray-400">behance.net/dkv</span>
-                    </div>
-                  </div>
-                  <ArrowUpRight :size="16" class="text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
               </div>
             </div>
 
