@@ -309,14 +309,14 @@ const anggotaNonAktifList = computed(() => {
             <!-- ============================================== -->
             <!-- LEVEL 3: PENGURUS INTI (SEKRETARIAT & BENDAHARA)-->
             <!-- ============================================== -->
-            <div class="relative flex items-start justify-center gap-12 sm:gap-16 lg:gap-20">
+            <div class="relative flex items-start justify-center gap-16 lg:gap-20">
               <!-- Central Trunk Line passing through the gap to Level 4 -->
               <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-slate-300 dark:bg-slate-600 pointer-events-none"></div>
 
               <!-- LEFT BRANCH: SEKRETARIAT -->
               <div class="flex flex-col items-center relative">
                 <!-- Crossbar segment connecting Left Branch center to Container Center -->
-                <div class="absolute top-0 left-1/2 -right-6 sm:-right-8 lg:-right-10 h-0.5 bg-slate-300 dark:bg-slate-600"></div>
+                <div class="absolute top-0 left-1/2 -right-8 lg:-right-10 h-0.5 bg-slate-300 dark:bg-slate-600"></div>
                 <!-- Vertical drop into Sekretaris sub-tree -->
                 <div class="w-0.5 h-8 bg-slate-300 dark:bg-slate-600"></div>
 
@@ -325,7 +325,7 @@ const anggotaNonAktifList = computed(() => {
                   <div
                     v-for="(m, idx) in sekretarisList"
                     :key="m._id"
-                    class="flex flex-col items-center relative px-2.5 sm:px-3"
+                    class="flex flex-col items-center relative px-3"
                   >
                     <!-- Horizontal line over Sekretaris cards -->
                     <div
@@ -347,7 +347,7 @@ const anggotaNonAktifList = computed(() => {
               <!-- RIGHT BRANCH: BENDAHARA -->
               <div class="flex flex-col items-center relative">
                 <!-- Crossbar segment connecting Container Center to Right Branch center -->
-                <div class="absolute top-0 -left-6 sm:-left-8 lg:-left-10 right-1/2 h-0.5 bg-slate-300 dark:bg-slate-600"></div>
+                <div class="absolute top-0 -left-8 lg:-left-10 right-1/2 h-0.5 bg-slate-300 dark:bg-slate-600"></div>
                 <!-- Vertical drop into Bendahara sub-tree -->
                 <div class="w-0.5 h-8 bg-slate-300 dark:bg-slate-600"></div>
 
@@ -356,7 +356,7 @@ const anggotaNonAktifList = computed(() => {
                   <div
                     v-for="(m, idx) in bendaharaList"
                     :key="m._id"
-                    class="flex flex-col items-center relative px-2.5 sm:px-3"
+                    class="flex flex-col items-center relative px-3"
                   >
                     <!-- Horizontal line over Bendahara cards -->
                     <div
@@ -392,7 +392,7 @@ const anggotaNonAktifList = computed(() => {
                   <div
                     v-for="(m, idx) in row"
                     :key="m._id"
-                    class="flex flex-col items-center relative px-2 sm:px-2.5"
+                    class="flex flex-col items-center relative px-2.5"
                   >
                     <!-- Top horizontal bar across Anggota cards in this row -->
                     <div
@@ -436,7 +436,7 @@ const anggotaNonAktifList = computed(() => {
                 <div
                   v-for="(m, idx) in anggotaNonAktifList"
                   :key="m._id"
-                  class="flex flex-col items-center relative px-2.5 sm:px-3"
+                  class="flex flex-col items-center relative px-3"
                 >
                   <!-- Dotted horizontal line segment -->
                   <div

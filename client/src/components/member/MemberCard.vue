@@ -170,12 +170,12 @@ const roleMeta = computed(() => {
 <template>
   <!-- Card Container: Exactly Uniform Dimensions for ALL Cards (Fits 5 cards per row) -->
   <div
-    class="group glass-card rounded-2xl border transition-all duration-300 text-center flex flex-col items-center justify-between relative overflow-hidden hover:-translate-y-1.5 w-44 sm:w-48 h-[290px] p-3.5 sm:p-4 flex-shrink-0"
+    class="group glass-card rounded-2xl border transition-all duration-300 text-center flex flex-col items-center justify-between relative overflow-hidden hover:-translate-y-1.5 w-48 h-[290px] p-4 flex-shrink-0"
     :class="roleMeta.cardClass"
   >
     <!-- Top-Right Role Symbol Badge -->
     <div
-      class="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-10 w-6 h-6 sm:w-7 sm:h-7 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+      class="absolute top-2.5 right-2.5 z-10 w-7 h-7 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
       :class="roleMeta.cornerBadgeClass"
       :title="roleMeta.label"
     >
@@ -186,7 +186,7 @@ const roleMeta = computed(() => {
     <div class="w-full flex flex-col items-center">
       <!-- Profile Photo (Kotak Round Shape / Squircle rounded-2xl) - Uniform Size -->
       <div
-        class="w-24 h-24 sm:w-26 sm:h-26 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 transition-all duration-300 shadow-md dark:shadow-lg dark:shadow-black/40 mb-2.5 relative"
+        class="w-24 h-24 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 transition-all duration-300 shadow-md dark:shadow-lg dark:shadow-black/40 mb-2.5 relative"
         :class="roleMeta.photoBorder"
       >
         <img
@@ -209,7 +209,7 @@ const roleMeta = computed(() => {
 
       <!-- Member Name -->
       <h3
-        class="font-heading font-bold text-slate-900 dark:text-white leading-snug line-clamp-1 group-hover:text-sky-600 dark:group-hover:text-cyan-300 transition-colors w-full px-1 text-sm sm:text-base"
+        class="font-heading font-bold text-slate-900 dark:text-white leading-snug line-clamp-1 group-hover:text-sky-600 dark:group-hover:text-cyan-300 transition-colors w-full px-1 text-base"
         :title="member.name"
       >
         {{ member.name }}
