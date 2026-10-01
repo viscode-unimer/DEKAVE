@@ -90,7 +90,7 @@ const samplePalettes = [
         <!-- Hero Header Center Column -->
         <div class="max-w-4xl mx-auto text-center">
           <!-- Massive Editorial Display Typography -->
-          <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.03] text-slate-900 dark:text-white mb-6">
+          <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.03] text-slate-900 dark:text-white mb-8 sm:mb-10">
             Ideas Become
             <span class="font-serif italic font-normal text-gradient-cyan block sm:inline">Reality</span>,<br />
             Visuals Become
@@ -99,12 +99,6 @@ const samplePalettes = [
               <span class="absolute -bottom-1.5 left-0 right-0 h-1 sm:h-1.5 bg-gradient-to-r from-accent via-sky to-royal rounded-full"></span>
             </span>
           </h1>
-
-          <!-- High Contrast Subtitle -->
-          <p class="text-slate-600 dark:text-gray-300 text-base sm:text-xl leading-relaxed max-w-2xl mx-auto mb-10 font-normal">
-            Unit Kegiatan Mahasiswa Desain Komunikasi Visual Universitas Merangin.
-            Ruang eksplorasi tanpa batas untuk kreator visual, desainer identitas, dan perancang masa depan.
-          </p>
 
           <!-- Call to Action Button -->
           <div class="flex items-center justify-center">
