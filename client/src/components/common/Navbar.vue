@@ -59,14 +59,9 @@ const isActive = (path) => {
             class="h-7 sm:h-8 w-auto object-contain hidden dark:block group-hover:scale-105 transition-transform drop-shadow-[0_0_10px_rgba(56,189,248,0.35)]"
           />
         </div>
-        <div class="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
-          <span class="text-[11px] sm:text-xs font-normal text-slate-500 dark:text-gray-400 tracking-tight leading-none group-hover:text-slate-700 dark:group-hover:text-gray-300 transition-colors">
-            Universitas Merangin
-          </span>
-          <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/10 dark:bg-sky/15 text-sky-600 dark:text-sky border border-sky-500/20 dark:border-sky/20 leading-none shrink-0">
-            v0.7
-          </span>
-        </div>
+        <span class="text-[11px] sm:text-xs font-normal text-slate-500 dark:text-gray-400 tracking-tight leading-none group-hover:text-slate-700 dark:group-hover:text-gray-300 transition-colors whitespace-nowrap">
+          Universitas Merangin
+        </span>
       </RouterLink>
 
       <!-- Desktop Nav Links -->
