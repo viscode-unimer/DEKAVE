@@ -57,6 +57,10 @@ export default {
         },
         gold: '#38BDF8', // Remapped gold to sky blue for unified blue aesthetic
       },
+      aspectRatio: {
+        '4/3': '4 / 3',
+        '16/10': '16 / 10',
+      },
       fontFamily: {
         heading: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
         display: ['Syne', 'Plus Jakarta Sans', 'sans-serif'],

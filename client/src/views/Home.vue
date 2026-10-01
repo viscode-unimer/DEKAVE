@@ -367,19 +367,19 @@ const samplePalettes = [
             class="group glass-card overflow-hidden hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-500"
           >
             <!-- 16:10 Aspect Ratio Image Container -->
-            <div class="aspect-[16/10] bg-slate-100 dark:bg-[#050916] overflow-hidden relative">
+            <div class="aspect-[16/10] w-full bg-slate-100 dark:bg-[#050916] overflow-hidden relative shrink-0">
               <img
                 v-if="item.images && item.images[0]"
                 :src="item.images[0]"
                 :alt="item.title"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div v-else class="w-full h-full flex items-center justify-center text-slate-400 dark:text-gray-500">
+              <div v-else class="absolute inset-0 flex items-center justify-center text-slate-400 dark:text-gray-500">
                 <Palette :size="40" class="opacity-40" />
               </div>
 
               <!-- Category Badge on Top-Right -->
-              <div class="absolute top-3 right-3">
+              <div class="absolute top-3 right-3 z-10">
                 <span class="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/90 dark:bg-[#070E22]/90 border border-slate-200 dark:border-white/15 text-sky-700 dark:text-sky font-semibold backdrop-blur-md shadow-sm">
                   {{ item.category }}
                 </span>
@@ -452,17 +452,17 @@ const samplePalettes = [
             class="group glass-card p-6 flex flex-col justify-between hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-300"
           >
             <div>
-              <div class="aspect-video rounded-2xl overflow-hidden bg-slate-100 dark:bg-[#050916] mb-5 border border-slate-200 dark:border-white/10 relative">
+              <div class="aspect-video w-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-[#050916] mb-5 border border-slate-200 dark:border-white/10 relative shrink-0">
                 <img
                   v-if="event.poster"
                   :src="event.poster"
                   :alt="event.title"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div v-else class="w-full h-full flex items-center justify-center text-slate-400 dark:text-gray-600">
+                <div v-else class="absolute inset-0 flex items-center justify-center text-slate-400 dark:text-gray-600">
                   <Calendar :size="36" class="opacity-40" />
                 </div>
-                <div class="absolute top-2.5 left-2.5">
+                <div class="absolute top-2.5 left-2.5 z-10">
                   <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-white/90 dark:bg-[#070E22]/90 border border-slate-200 dark:border-white/15 text-sky-700 dark:text-sky font-semibold backdrop-blur-md shadow-sm">
                     {{ event.type }}
                   </span>
@@ -522,14 +522,14 @@ const samplePalettes = [
             class="group glass-card p-6 flex flex-col justify-between hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-300"
           >
             <div>
-              <div class="aspect-video rounded-2xl overflow-hidden bg-slate-100 dark:bg-[#050916] mb-5 border border-slate-200 dark:border-white/10">
+              <div class="aspect-video w-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-[#050916] mb-5 border border-slate-200 dark:border-white/10 relative shrink-0">
                 <img
                   v-if="blog.thumbnail"
                   :src="blog.thumbnail"
                   :alt="blog.title"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div v-else class="w-full h-full flex items-center justify-center text-slate-400 dark:text-gray-600">
+                <div v-else class="absolute inset-0 flex items-center justify-center text-slate-400 dark:text-gray-600">
                   <FileText :size="36" class="opacity-40" />
                 </div>
               </div>

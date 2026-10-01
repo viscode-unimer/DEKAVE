@@ -104,29 +104,29 @@ onMounted(fetchPortfolios);
             v-for="item in portfolios"
             :key="item._id"
             :to="`/portfolio/${item._id}`"
-            class="group glass-card rounded-2xl overflow-hidden border border-slate-200/80 dark:border-white/[0.08] hover:border-sky-500/50 dark:hover:border-cyan-400/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col"
+            class="group glass-card rounded-2xl overflow-hidden border border-slate-200/80 dark:border-white/[0.08] hover:border-sky-500/50 dark:hover:border-cyan-400/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full"
           >
-            <!-- Thumbnail Area -->
-            <div class="aspect-4/3 bg-slate-100 dark:bg-slate-900 overflow-hidden relative">
+            <!-- Thumbnail Area (Locked 4:3 Aspect Ratio) -->
+            <div class="aspect-[4/3] w-full bg-slate-100 dark:bg-slate-900 overflow-hidden relative shrink-0">
               <img
                 v-if="item.images?.[0]"
                 :src="item.images[0]"
                 :alt="item.title"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div v-else class="w-full h-full flex items-center justify-center text-slate-400 dark:text-gray-500">
+              <div v-else class="absolute inset-0 flex items-center justify-center text-slate-400 dark:text-gray-500">
                 <Image :size="36" class="opacity-40" />
               </div>
 
               <!-- Floating Category Pill -->
-              <div class="absolute top-3 left-3">
+              <div class="absolute top-3 left-3 z-10">
                 <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-semibold bg-white/90 dark:bg-slate-950/70 border border-slate-200 dark:border-white/20 text-sky-700 dark:text-cyan-300 backdrop-blur-md shadow-sm">
                   {{ item.category }}
                 </span>
               </div>
 
               <!-- Hover Arrow -->
-              <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cyan-500 text-slate-950 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-2 transition-all duration-300">
+              <div class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-cyan-500 text-slate-950 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-2 transition-all duration-300 shadow-md">
                 <ArrowUpRight :size="16" />
               </div>
             </div>
