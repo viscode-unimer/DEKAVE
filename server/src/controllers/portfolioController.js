@@ -5,7 +5,20 @@ const getPortfolios = async (req, res, next) => {
   try {
     const { category, featured, page = 1, limit = 12 } = req.query;
     const filter = {};
-    if (category) filter.category = category;
+    if (category) {
+      const trimmedCategory = category.trim();
+      if (trimmedCategory === 'Videografi & Sinematik' || trimmedCategory.startsWith('Videografi') || trimmedCategory === 'Videography') {
+        filter.category = { $in: ['Videografi & Sinematik', 'Videografi', 'Videography'] };
+      } else if (trimmedCategory === 'Desain Grafis & Poster' || trimmedCategory.startsWith('Desain Grafis') || trimmedCategory === 'Desain') {
+        filter.category = { $in: ['Desain Grafis & Poster', 'Desain'] };
+      } else if (trimmedCategory === 'Fotografi & Dokumentasi' || trimmedCategory.startsWith('Fotografi') || trimmedCategory === 'Photography') {
+        filter.category = { $in: ['Fotografi & Dokumentasi', 'Fotografi', 'Photography'] };
+      } else if (trimmedCategory === 'Konten Media & Publikasi' || trimmedCategory.startsWith('Konten Media') || trimmedCategory === 'Public Relation') {
+        filter.category = { $in: ['Konten Media & Publikasi', 'Public Relation'] };
+      } else {
+        filter.category = trimmedCategory;
+      }
+    }
     if (featured === 'true') filter.isFeatured = true;
     const skip = (page - 1) * limit;
     const [portfolios, total] = await Promise.all([

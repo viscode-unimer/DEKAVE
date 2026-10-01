@@ -42,8 +42,9 @@ const getPaletteForCategory = (cat) => {
 const fetchPortfolios = async () => {
   loading.value = true;
   try {
-    const params = activeFilter.value ? `?category=${activeFilter.value}` : '';
-    const res = await api.get(`/portfolios${params}`);
+    const res = await api.get('/portfolios', {
+      params: activeFilter.value ? { category: activeFilter.value } : {},
+    });
     portfolios.value = res.data.data;
   } catch (e) {
     console.error(e);
