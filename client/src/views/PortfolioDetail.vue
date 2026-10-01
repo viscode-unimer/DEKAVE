@@ -42,7 +42,7 @@ onMounted(async () => {
           class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider text-slate-700 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white bg-slate-100/80 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] hover:border-sky-500/40 dark:hover:border-cyan-400/40 transition-all duration-300 mb-8 shadow-sm"
         >
           <ArrowLeft :size="14" />
-          <span>{{ t('common.back') }} to Portfolio</span>
+          <span>{{ t('common.back') }} ke Portofolio</span>
         </RouterLink>
 
         <LoadingSpinner v-if="loading" />
@@ -163,7 +163,7 @@ onMounted(async () => {
         </div>
 
         <div v-else class="text-center text-slate-500 dark:text-gray-400 py-20">
-          <p class="text-lg">Portfolio tidak ditemukan.</p>
+          <p class="text-lg">Portofolio tidak ditemukan.</p>
         </div>
       </div>
     </div>

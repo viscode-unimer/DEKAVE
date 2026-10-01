@@ -30,7 +30,7 @@ const isSuperadmin = computed(() => auth.user?.role === 'superadmin');
 const navItems = computed(() => {
   const base = [
     { to: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { to: '/admin/portfolio', label: 'Portfolio', icon: Palette },
+    { to: '/admin/portfolio', label: 'Portofolio', icon: Palette },
     { to: '/admin/event', label: 'Event', icon: Calendar },
     { to: '/admin/blog', label: 'Blog', icon: FileText },
     { to: '/admin/member', label: 'Anggota', icon: Users },

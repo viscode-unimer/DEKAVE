@@ -90,12 +90,12 @@ const handleSave = async () => {
       await api.put(`/portfolios/${editing.value._id}`, fd, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
-      toast.success('Portfolio diperbarui!');
+      toast.success('Portofolio diperbarui!');
     } else {
       await api.post('/portfolios', fd, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
-      toast.success('Portfolio ditambahkan!');
+      toast.success('Portofolio ditambahkan!');
     }
     showForm.value = false;
     fetchPortfolios();
@@ -123,20 +123,20 @@ onMounted(fetchPortfolios);
 <template>
   <div>
     <div class="flex items-center justify-between mb-6">
-      <h1 class="font-heading text-2xl font-bold text-gray-900 dark:text-white">Kelola Portfolio</h1>
-      <button @click="openCreate" class="btn-accent">+ Tambah Portfolio</button>
+      <h1 class="font-heading text-2xl font-bold text-gray-900 dark:text-white">Kelola Portofolio</h1>
+      <button @click="openCreate" class="btn-accent">+ Tambah Portofolio</button>
     </div>
 
     <!-- Create / Edit Form -->
     <div v-if="showForm" class="bg-white dark:bg-secondary rounded-2xl p-6 shadow mb-6">
       <h2 class="font-heading text-xl font-bold text-gray-900 dark:text-white mb-5">
-        {{ editing ? 'Edit Portfolio' : 'Portfolio Baru' }}
+        {{ editing ? 'Edit Portofolio' : 'Portofolio Baru' }}
       </h2>
       <form @submit.prevent="handleSave" class="space-y-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Judul *</label>
-            <input v-model="form.title" required class="input-field" placeholder="Judul portfolio" />
+            <input v-model="form.title" required class="input-field" placeholder="Judul portofolio" />
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Pembuat *</label>
@@ -317,7 +317,7 @@ onMounted(fetchPortfolios);
         v-if="!loading && portfolios.length === 0"
         class="col-span-full text-center text-gray-400 py-12"
       >
-        Belum ada portfolio. Klik "+ Tambah Portfolio" untuk mulai.
+        Belum ada portofolio. Klik "+ Tambah Portofolio" untuk mulai.
       </div>
     </div>
   </div>

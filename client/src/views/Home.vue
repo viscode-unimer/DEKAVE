@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { RouterLink } from 'vue-router';
 import PublicLayout from '../components/common/PublicLayout.vue';
@@ -30,9 +30,6 @@ const featuredPortfolios = ref([]);
 const latestEvents = ref([]);
 const latestBlogs = ref([]);
 const loading = ref(true);
-const activeFilter = ref('All');
-
-const categories = ['All', 'Desain Grafis & Poster', 'Fotografi & Dokumentasi', 'Videografi & Sinematik', 'Konten Media & Publikasi'];
 
 const getCoverImage = (item) => {
   if (item.images && item.images[0]) return item.images[0];
@@ -60,11 +57,6 @@ onMounted(async () => {
   } finally {
     loading.value = false;
   }
-});
-
-const filteredPortfolios = computed(() => {
-  if (activeFilter.value === 'All') return featuredPortfolios.value;
-  return featuredPortfolios.value.filter(item => item.category === activeFilter.value);
 });
 
 // Color palettes for showcase cards (Inspomcp signature detail)
@@ -343,29 +335,15 @@ const samplePalettes = [
     <!-- ======================================================== -->
     <section class="py-20 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header with Category Tabs -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <span class="text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-sky font-semibold block mb-2">
-              ✦ KARYA PILIHAN
-            </span>
-            <h2 class="section-title">{{ t('home.featured_portfolio') }}</h2>
-          </div>
-
-          <!-- Category Pill Filters (Inspomcp style) -->
-          <div class="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none bg-slate-200/80 dark:bg-[#070E22] p-1.5 rounded-full border border-slate-300/80 dark:border-white/10 shadow-sm">
-            <button
-              v-for="cat in categories"
-              :key="cat"
-              @click="activeFilter = cat"
-              class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 whitespace-nowrap"
-              :class="activeFilter === cat
-                ? 'bg-sky-500/20 text-sky-700 dark:text-sky border border-sky-500/40 dark:border-sky/40 shadow-sm'
-                : 'text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5'"
-            >
-              {{ cat === 'All' ? 'Semua' : cat }}
-            </button>
-          </div>
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-12">
+          <span class="text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-sky font-semibold block mb-2">
+            ✦ KARYA PILIHAN
+          </span>
+          <h2 class="section-title">{{ t('home.featured_portfolio') }}</h2>
+          <p class="text-slate-600 dark:text-gray-400 text-base sm:text-lg mt-3">
+            Kumpulan karya pilihan dan eksplorasi visual terbaik yang lahir dari kreativitas serta kolaborasi anggota DKV Universitas Merangin.
+          </p>
         </div>
 
         <LoadingSpinner v-if="loading" />
@@ -373,7 +351,7 @@ const samplePalettes = [
         <!-- Cards Grid (Center-aligned) -->
         <div v-else class="flex flex-wrap justify-center gap-6">
           <RouterLink
-            v-for="(item, idx) in filteredPortfolios"
+            v-for="(item, idx) in featuredPortfolios"
             :key="item._id"
             :to="`/portfolio/${item._id}`"
             class="group glass-card overflow-hidden hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-500 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm flex flex-col"
@@ -430,7 +408,7 @@ const samplePalettes = [
           </RouterLink>
 
           <!-- Empty State -->
-          <div v-if="!loading && filteredPortfolios.length === 0" class="w-full glass-card p-12 text-center text-slate-500 dark:text-gray-400">
+          <div v-if="!loading && featuredPortfolios.length === 0" class="w-full glass-card p-12 text-center text-slate-500 dark:text-gray-400">
             <LayoutGrid :size="36" class="mx-auto text-slate-400 dark:text-gray-600 mb-3" />
             <p>{{ t('portfolio.no_data') }}</p>
           </div>

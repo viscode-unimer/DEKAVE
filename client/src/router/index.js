@@ -4,7 +4,7 @@ import { useAuthStore } from '../stores/auth';
 const routes = [
   { path: '/', component: () => import('../views/Home.vue'), meta: { title: 'Beranda' } },
   { path: '/about', component: () => import('../views/About.vue'), meta: { title: 'Tentang DKV' } },
-  { path: '/portfolio', component: () => import('../views/Portfolio.vue'), meta: { title: 'Portfolio' } },
+  { path: '/portfolio', component: () => import('../views/Portfolio.vue'), meta: { title: 'Portofolio' } },
   { path: '/portfolio/:id', component: () => import('../views/PortfolioDetail.vue') },
   { path: '/event', component: () => import('../views/Event.vue'), meta: { title: 'Event & Kegiatan' } },
   { path: '/event/:id', component: () => import('../views/EventDetail.vue') },
@@ -24,7 +24,7 @@ const routes = [
     meta: { requiresAuth: true },
     children: [
       { path: 'dashboard', component: () => import('../views/admin/Dashboard.vue'), meta: { title: 'Dashboard' } },
-      { path: 'portfolio', component: () => import('../views/admin/ManagePortfolio.vue'), meta: { title: 'Kelola Portfolio' } },
+      { path: 'portfolio', component: () => import('../views/admin/ManagePortfolio.vue'), meta: { title: 'Kelola Portofolio' } },
       { path: 'event', component: () => import('../views/admin/ManageEvent.vue'), meta: { title: 'Kelola Event' } },
       { path: 'blog', component: () => import('../views/admin/ManageBlog.vue'), meta: { title: 'Kelola Blog' } },
       { path: 'member', component: () => import('../views/admin/ManageMember.vue'), meta: { title: 'Kelola Anggota' } },

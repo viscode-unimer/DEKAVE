@@ -421,9 +421,9 @@ onMounted(() => {
               <p class="text-gray-900 dark:text-white font-mono text-xs">{{ selected.instagram }}</p>
             </div>
             <div v-if="selected.portfolioLink">
-              <span class="text-gray-400 text-xs">Portfolio:</span>
+              <span class="text-gray-400 text-xs">Portofolio:</span>
               <a :href="selected.portfolioLink" target="_blank" class="text-accent break-all block text-xs underline mt-0.5">
-                Buka Link Portfolio ↗
+                Buka Link Portofolio ↗
               </a>
             </div>
             <div>

@@ -333,7 +333,7 @@ onMounted(fetchUsers);
         <div class="text-xs">
           <strong class="text-blue-900 dark:text-blue-200 block text-sm mb-1">Contributor (Pengelola Konten)</strong>
           <span class="text-blue-700 dark:text-blue-300">
-            Dapat mendaftar mandiri via login atau dibuatkan: Dapat mengelola portfolio, event, artikel blog, dan data anggota.
+            Dapat mendaftar mandiri via login atau dibuatkan: Dapat mengelola portofolio, event, artikel blog, dan data anggota.
           </span>
         </div>
       </div>

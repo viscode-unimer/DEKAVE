@@ -2,7 +2,7 @@
   "nav": {
     "home": "Beranda",
     "about": "Tentang",
-    "portfolio": "Portfolio",
+    "portfolio": "Portofolio",
     "event": "Event",
     "blog": "Blog",
     "member": "Anggota",
@@ -13,9 +13,9 @@
     "hero_title": "Ideas Become Reality,",
     "hero_subtitle": "Visuals Become Stories",
     "hero_desc": "UKM Desain Komunikasi Visual Universitas Merangin — tempat kreativitas bertemu dengan tujuan.",
-    "hero_cta": "Lihat Portfolio",
+    "hero_cta": "Lihat Portofolio",
     "hero_join": "Gabung CAMAVIS",
-    "featured_portfolio": "Portfolio Unggulan",
+    "featured_portfolio": "Portofolio Unggulan",
     "latest_events": "Event Terbaru",
     "latest_blogs": "Artikel Terbaru",
     "see_all": "Lihat Semua"
@@ -37,10 +37,10 @@
     "org_structure": "Struktur Organisasi"
   },
   "portfolio": {
-    "title": "Portfolio",
+    "title": "Portofolio",
     "subtitle": "Karya-karya terbaik dari anggota DKV",
     "filter_all": "Semua",
-    "no_data": "Belum ada portfolio."
+    "no_data": "Belum ada portofolio."
   },
   "event": {
     "title": "Event & Kegiatan",
@@ -52,7 +52,7 @@
   },
   "blog": {
     "title": "Blog & Artikel",
-    "subtitle": "Tips, inspirasi, dan cerita dari dunia desain",
+    "subtitle": "Tips, inspirasi, dan cerita",
     "no_data": "Belum ada artikel.",
     "read_more": "Baca Selengkapnya",
     "by": "Oleh"
@@ -76,7 +76,7 @@
     "instagram": "Akun Instagram",
     "email": "Email",
     "motivation": "Motivasi Bergabung",
-    "portfolio_link": "Link Portfolio (Opsional)",
+    "portfolio_link": "Link Portofolio (Opsional)",
     "submit": "Kirim Pendaftaran",
     "submitting": "Mengirim...",
     "success_title": "Pendaftaran Berhasil!",
@@ -110,7 +110,7 @@
     "login": "Masuk",
     "logout": "Keluar",
     "dashboard": "Dashboard",
-    "total_portfolios": "Total Portfolio",
+    "total_portfolios": "Total Portofolio",
     "total_events": "Total Event",
     "total_blogs": "Total Artikel",
     "total_members": "Total Anggota",
