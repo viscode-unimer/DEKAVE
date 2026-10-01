@@ -37,14 +37,15 @@ const createUser = async (req, res, next) => {
       });
     }
 
+    const targetRole = role === 'superadmin' ? 'superadmin' : 'contributor';
     const user = await User.create({
       username: cleanUsername,
       fullName: (fullName || username).trim(),
       email: email.toLowerCase().trim(),
       password,
-      role: role === 'superadmin' ? 'superadmin' : 'contributor',
+      role: targetRole,
       status: 'active', // Direct creation by Superadmin is automatically active
-      division: division ? division.trim() : 'Desain',
+      division: targetRole === 'superadmin' ? '' : (division ? division.trim() : 'Desain'),
       notes: notes ? notes.trim() : '',
     });
 
@@ -86,7 +87,12 @@ const updateUser = async (req, res, next) => {
     if (status && ['active', 'pending', 'rejected'].includes(status)) {
       user.status = status;
     }
-    if (division !== undefined) user.division = division.trim();
+    // Superadmin has no division (top-level account)
+    if (user.role === 'superadmin') {
+      user.division = '';
+    } else if (division !== undefined) {
+      user.division = division.trim() || 'Desain';
+    }
     if (notes !== undefined) user.notes = notes.trim();
     if (password && password.trim().length >= 6) {
       user.password = password; // Trigger pre('save') hash

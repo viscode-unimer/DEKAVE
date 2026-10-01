@@ -96,7 +96,7 @@ const openEdit = (u) => {
   form.password = ''; // Blank = do not change
   form.role = u.role;
   form.status = u.status || 'active';
-  form.division = u.division || 'Desain';
+  form.division = u.role === 'superadmin' ? '' : (u.division || 'Desain');
   form.notes = u.notes || '';
   showForm.value = true;
 };
@@ -104,13 +104,14 @@ const openEdit = (u) => {
 const handleSave = async () => {
   saving.value = true;
   try {
+    const isSuper = form.role === 'superadmin';
     const payload = {
       username: form.username.trim().toLowerCase().replace(/\s+/g, '_'),
       fullName: form.fullName.trim(),
       email: form.email.trim(),
       role: form.role,
       status: form.status,
-      division: form.division,
+      division: isSuper ? '' : (form.division || 'Desain'),
       notes: form.notes.trim(),
     };
     if (form.password) {
@@ -399,15 +400,25 @@ onMounted(fetchUsers);
             </select>
           </div>
 
-          <div>
+          <!-- Divisi field: Only visible/applicable for Contributor -->
+          <div v-if="form.role === 'contributor'">
             <label class="block text-xs font-mono uppercase tracking-wider text-gray-700 dark:text-gray-300 mb-1">
-              Divisi
+              Divisi Contributor *
             </label>
             <select v-model="form.division" class="input-field text-sm">
               <option v-for="d in divisions" :key="d" :value="d">
                 Divisi {{ d }}
               </option>
             </select>
+          </div>
+          <div v-else>
+            <label class="block text-xs font-mono uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">
+              Divisi
+            </label>
+            <div class="px-3.5 py-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/20 border border-purple-200/50 dark:border-purple-800/30 text-xs text-purple-700 dark:text-purple-300 flex items-center gap-2">
+              <ShieldCheck :size="15" class="shrink-0 text-purple-600 dark:text-purple-400" />
+              <span>Tidak Ada Divisi (Superadmin level tertinggi / Semua Hak Akses)</span>
+            </div>
           </div>
 
           <div>
@@ -528,9 +539,19 @@ onMounted(fetchUsers);
               </td>
 
               <!-- Divisi Column -->
-              <td class="px-5 py-3.5 text-xs text-gray-600 dark:text-gray-300">
-                <span class="inline-block px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 font-mono text-[11px]">
-                  {{ u.division ? `Divisi ${u.division}` : '-' }}
+              <td class="px-5 py-3.5 text-xs">
+                <span
+                  v-if="u.role === 'superadmin'"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 border border-purple-200/60 dark:border-purple-800/40 font-mono text-[11px] font-semibold"
+                >
+                  <ShieldCheck :size="11" />
+                  <span>— (Level Superadmin)</span>
+                </span>
+                <span
+                  v-else
+                  class="inline-block px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 font-mono text-[11px] text-gray-700 dark:text-gray-300 font-medium"
+                >
+                  {{ u.division ? `Divisi ${u.division}` : 'Divisi Desain' }}
                 </span>
               </td>
 
