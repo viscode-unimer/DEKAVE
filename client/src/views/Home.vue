@@ -90,11 +90,11 @@ const samplePalettes = [
         <!-- Hero Header Center Column -->
         <div class="max-w-4xl mx-auto text-center">
           <!-- Massive Editorial Display Typography -->
-          <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.03] text-slate-900 dark:text-white mb-8 sm:mb-10">
-            Ideas Become
-            <span class="font-serif italic font-normal text-gradient-cyan block sm:inline">Reality</span>,<br />
-            Visuals Become
-            <span class="relative inline-block text-slate-900 dark:text-white">
+          <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.1] sm:leading-[1.03] text-slate-900 dark:text-white mb-8 sm:mb-10">
+            <span class="block sm:inline">Ideas Become</span>
+            <span class="font-serif italic font-normal text-gradient-cyan inline-block pr-2.5 pl-0.5 sm:ml-2">Reality,</span><br class="hidden sm:inline" />
+            <span class="block sm:inline mt-1 sm:mt-0">Visuals Become</span>
+            <span class="relative inline-block text-slate-900 dark:text-white ml-2 sm:ml-0">
               Stories
               <span class="absolute -bottom-1.5 left-0 right-0 h-1 sm:h-1.5 bg-gradient-to-r from-accent via-sky to-royal rounded-full"></span>
             </span>

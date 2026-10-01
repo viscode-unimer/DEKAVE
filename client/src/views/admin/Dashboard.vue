@@ -101,23 +101,25 @@ const cards = computed(() => {
     </div>
 
     <!-- Stat Cards -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-8">
       <div
         v-for="card in cards"
         :key="card.key"
-        :class="`bg-gradient-to-br ${card.color} rounded-2xl p-5 text-white shadow`"
+        :class="`bg-gradient-to-br ${card.color} rounded-2xl p-4 sm:p-5 text-white shadow flex flex-col justify-between`"
       >
-        <div class="mb-3 opacity-90">
-          <component :is="card.icon" :size="24" />
+        <div class="mb-2 sm:mb-3 opacity-90">
+          <component :is="card.icon" :size="22" class="sm:w-6 sm:h-6" />
         </div>
-        <div class="text-3xl font-bold font-heading">{{ stats[card.key] }}</div>
-        <div class="text-xs opacity-80 mt-1">{{ t(card.label) }}</div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-bold font-heading">{{ stats[card.key] }}</div>
+          <div class="text-[11px] sm:text-xs opacity-85 mt-1 leading-tight">{{ t(card.label) }}</div>
+        </div>
       </div>
     </div>
 
     <!-- Welcome & Quick Action Card -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div class="lg:col-span-2 bg-white dark:bg-secondary rounded-2xl p-6 shadow border border-gray-100 dark:border-gray-700">
+      <div class="lg:col-span-2 bg-white dark:bg-secondary rounded-2xl p-5 sm:p-6 shadow border border-gray-100 dark:border-gray-700">
         <h2 class="font-heading text-lg font-bold text-gray-900 dark:text-white mb-2">
           Selamat datang, {{ auth.user?.username || 'Pengurus' }}
         </h2>
@@ -129,17 +131,17 @@ const cards = computed(() => {
           }}
         </p>
 
-        <div v-if="isSuperadmin" class="pt-4 border-t border-gray-100 dark:border-gray-700 flex flex-wrap gap-3">
+        <div v-if="isSuperadmin" class="pt-4 border-t border-gray-100 dark:border-gray-700 flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3">
           <RouterLink
             to="/admin/users"
-            class="text-xs bg-purple-600 hover:bg-purple-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5"
+            class="text-xs bg-purple-600 hover:bg-purple-700 text-white font-semibold px-4 py-2.5 sm:py-2 rounded-lg transition-colors flex items-center justify-center sm:justify-start gap-1.5"
           >
             <ShieldCheck :size="15" />
             <span>Kelola Tim & Contributor ({{ stats.contributors }})</span>
           </RouterLink>
           <RouterLink
             to="/admin/camavis"
-            class="text-xs bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5"
+            class="text-xs bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2.5 sm:py-2 rounded-lg transition-colors flex items-center justify-center sm:justify-start gap-1.5"
           >
             <GraduationCap :size="15" />
             <span>Review CAMAVIS ({{ stats.pending }} Pending)</span>
