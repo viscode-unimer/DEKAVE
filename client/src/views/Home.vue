@@ -442,12 +442,12 @@ const samplePalettes = [
           </RouterLink>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="flex flex-wrap justify-center gap-6">
           <RouterLink
             v-for="event in latestEvents"
             :key="event._id"
             :to="`/event/${event._id}`"
-            class="group glass-card p-6 flex flex-col justify-between hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-300"
+            class="group glass-card p-6 flex flex-col justify-between hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-300 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
           >
             <div>
               <div class="aspect-video w-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-[#050916] mb-5 border border-slate-200 dark:border-white/10 relative shrink-0">
@@ -484,7 +484,7 @@ const samplePalettes = [
             </div>
           </RouterLink>
 
-          <div v-if="!loading && latestEvents.length === 0" class="col-span-3 glass-card p-12 text-center text-slate-500 dark:text-gray-400">
+          <div v-if="!loading && latestEvents.length === 0" class="w-full glass-card p-12 text-center text-slate-500 dark:text-gray-400">
             {{ t('event.no_data') }}
           </div>
         </div>
@@ -512,12 +512,12 @@ const samplePalettes = [
           </RouterLink>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="flex flex-wrap justify-center gap-6">
           <RouterLink
             v-for="blog in latestBlogs"
             :key="blog._id"
             :to="`/blog/${blog.slug}`"
-            class="group glass-card p-6 flex flex-col justify-between hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-300"
+            class="group glass-card p-6 flex flex-col justify-between hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-300 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
           >
             <div>
               <div class="aspect-video w-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-[#050916] mb-5 border border-slate-200 dark:border-white/10 relative shrink-0">
@@ -546,7 +546,7 @@ const samplePalettes = [
             </div>
           </RouterLink>
 
-          <div v-if="!loading && latestBlogs.length === 0" class="col-span-3 glass-card p-12 text-center text-slate-500 dark:text-gray-400">
+          <div v-if="!loading && latestBlogs.length === 0" class="w-full glass-card p-12 text-center text-slate-500 dark:text-gray-400">
             {{ t('blog.no_data') }}
           </div>
         </div>

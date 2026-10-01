@@ -47,12 +47,12 @@ onMounted(async () => {
     <section class="py-12 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <LoadingSpinner v-if="loading" />
-        <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div v-else class="flex flex-wrap justify-center gap-6">
           <RouterLink
             v-for="event in events"
             :key="event._id"
             :to="`/event/${event._id}`"
-            class="group glass-card rounded-2xl overflow-hidden border border-slate-200/80 dark:border-white/[0.08] hover:border-sky-500/50 dark:hover:border-cyan-400/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col"
+            class="group glass-card rounded-2xl overflow-hidden border border-slate-200/80 dark:border-white/[0.08] hover:border-sky-500/50 dark:hover:border-cyan-400/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
           >
             <div class="aspect-video bg-slate-100 dark:bg-slate-900 overflow-hidden relative">
               <img
@@ -103,7 +103,7 @@ onMounted(async () => {
             </div>
           </RouterLink>
 
-          <div v-if="events.length === 0" class="col-span-full text-center text-slate-500 dark:text-gray-400 py-16">
+          <div v-if="events.length === 0" class="w-full text-center text-slate-500 dark:text-gray-400 py-16">
             <Calendar :size="48" class="mx-auto mb-3 opacity-30 text-sky-600 dark:text-cyan-400" />
             <p class="text-lg font-medium">{{ t('event.no_data') }}</p>
           </div>
