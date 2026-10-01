@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n';
 import { RouterLink } from 'vue-router';
 import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
+import FluidHeroGradient from '../components/common/FluidHeroGradient.vue';
 import api from '../utils/api';
 import { formatDateShort } from '../utils/formatDate';
 import {
@@ -76,13 +77,16 @@ const samplePalettes = [
     <!-- 1. HERO SECTION (GSAP / Inspomcp Style)                   -->
     <!-- ======================================================== -->
     <section class="relative pt-32 sm:pt-40 pb-20 sm:pb-28 overflow-hidden">
+      <!-- Animated Fluid Wave Gradient (Neat / WebGL Flow) -->
+      <FluidHeroGradient />
+
       <!-- Background Ambient Dots Grid with Radial Mask -->
-      <div class="absolute inset-0 bg-grid-dots opacity-30 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]"></div>
+      <div class="absolute inset-0 bg-grid-dots opacity-20 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]"></div>
 
       <!-- Glowing Light Orbs -->
-      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-sky-400/25 via-accent/25 to-royal/20 dark:from-sky/20 dark:via-accent/25 dark:to-royal/20 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-sky-400/20 via-accent/20 to-royal/15 dark:from-sky/15 dark:via-accent/20 dark:to-royal/15 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Hero Header Center Column -->
         <div class="max-w-4xl mx-auto text-center">
           <!-- Massive Editorial Display Typography -->
