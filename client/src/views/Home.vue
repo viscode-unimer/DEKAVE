@@ -109,20 +109,22 @@ const samplePalettes = [
           </div>
 
           <!-- 4 Divisi Utama Quick Ribbon (Clean typography, no emojis) -->
-          <div class="mt-12 flex flex-wrap items-center justify-center gap-2 text-xs font-mono">
-            <span class="text-slate-500 dark:text-gray-400 font-semibold mr-1">4 Divisi Utama:</span>
-            <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
-              Desain
-            </span>
-            <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
-              Photography
-            </span>
-            <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
-              Videography
-            </span>
-            <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
-              Public Relation (PR)
-            </span>
+          <div class="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-2 text-xs font-mono">
+            <span class="text-slate-500 dark:text-gray-400 font-semibold sm:mr-1">4 Divisi Utama:</span>
+            <div class="flex flex-wrap items-center justify-center gap-2 max-w-xs sm:max-w-none">
+              <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
+                Desain
+              </span>
+              <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
+                Photography
+              </span>
+              <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
+                Videography
+              </span>
+              <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
+                Public Relation (PR)
+              </span>
+            </div>
           </div>
         </div>
 
