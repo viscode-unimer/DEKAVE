@@ -46,8 +46,8 @@ const isActive = (path) => {
       class="max-w-6xl mx-auto flex items-center justify-between pointer-events-auto rounded-full border border-slate-200/80 dark:border-white/[0.12] bg-white/85 dark:bg-[#070E22]/85 backdrop-blur-2xl px-3 sm:px-5 py-2 shadow-[0_12px_40px_rgba(15,23,42,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)] transition-all duration-300"
     >
       <!-- Brand Logo -->
-      <RouterLink to="/" class="flex items-center gap-2.5 group pl-1">
-        <div class="relative flex items-center justify-center">
+      <RouterLink to="/" class="flex items-center gap-2 sm:gap-2.5 group pl-1 shrink-0">
+        <div class="relative flex items-center justify-center shrink-0">
           <img
             src="/logo-dkv-biru.png"
             alt="Logo DKV Universitas Merangin"
@@ -59,11 +59,13 @@ const isActive = (path) => {
             class="h-7 sm:h-8 w-auto object-contain hidden dark:block group-hover:scale-105 transition-transform drop-shadow-[0_0_10px_rgba(56,189,248,0.35)]"
           />
         </div>
-        <div class="flex items-center gap-1.5 sm:gap-2">
-          <span class="font-heading font-bold text-xs sm:text-sm tracking-wide text-slate-900 dark:text-white leading-none group-hover:text-sky transition-colors">
+        <div class="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+          <span class="text-[11px] sm:text-xs font-normal text-slate-500 dark:text-gray-400 tracking-tight leading-none group-hover:text-slate-700 dark:group-hover:text-gray-300 transition-colors">
             Universitas Merangin
           </span>
-          <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/15 dark:bg-sky/20 text-sky-700 dark:text-sky border border-sky-500/30 dark:border-sky/30 shrink-0">v0.7</span>
+          <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-sky-500/10 dark:bg-sky/15 text-sky-600 dark:text-sky border border-sky-500/20 dark:border-sky/20 leading-none shrink-0">
+            v0.7
+          </span>
         </div>
       </RouterLink>
 
