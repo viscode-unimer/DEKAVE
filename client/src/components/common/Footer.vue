@@ -129,7 +129,7 @@ const { t } = useI18n();
       <!-- Bottom Bar -->
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-gray-400 font-mono">
         <p class="flex items-center gap-2">
-          <span>© {{ new Date().getFullYear() }} DKV Univ. Merangin</span>
+          <span>© {{ new Date().getFullYear() }} DKV Universitas Merangin</span>
           <span class="text-slate-400 dark:text-gray-600">•</span>
           <span class="text-sky-600 dark:text-sky font-medium">v0.7</span>
         </p>
