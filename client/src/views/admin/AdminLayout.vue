@@ -77,17 +77,15 @@ const isActive = (path) => route.path.startsWith(path);
     >
       <!-- Mobile Drawer Header -->
       <div class="flex items-center justify-between p-4 border-b border-gray-700 min-h-[64px]">
-        <RouterLink to="/" class="flex items-center gap-2">
+        <RouterLink to="/" class="flex items-center gap-2.5">
           <img src="/logo-dkv-putih.png" alt="DKV" class="h-6 w-auto object-contain" />
-          <span class="font-heading text-lg font-bold text-white tracking-wider">DKV</span>
           <span class="text-[10px] bg-accent/20 text-accent font-semibold px-2 py-0.5 rounded-full uppercase">
             {{ auth.user?.role || 'Admin' }}
           </span>
-          <span class="text-[10px] text-gray-400 font-mono">v0.7</span>
         </RouterLink>
         <button
           @click="mobileOpen = false"
-          class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+          class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
           title="Tutup Menu"
         >
           <X :size="20" />
