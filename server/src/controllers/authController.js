@@ -120,7 +120,7 @@ const registerContributor = async (req, res, next) => {
       password,
       role: 'contributor',
       status: 'pending', // Requires Superadmin ACC
-      division: division ? division.trim() : 'Umum',
+      division: division ? division.trim() : 'Desain',
       notes: notes ? notes.trim() : '',
     });
 

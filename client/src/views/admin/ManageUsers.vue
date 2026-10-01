@@ -49,7 +49,6 @@ const divisions = [
   'Photography',
   'Videography',
   'Public Relation',
-  'Umum / Pengurus',
 ];
 
 const fetchUsers = async () => {
@@ -263,7 +262,7 @@ onMounted(fetchUsers);
 
             <div class="text-xs space-y-1 text-gray-600 dark:text-gray-300 font-mono mb-3">
               <p class="truncate">✉️ {{ pu.email }}</p>
-              <p>🎨 Divisi {{ pu.division || 'Umum' }}</p>
+              <p>🎨 Divisi {{ pu.division || 'Desain' }}</p>
               <p v-if="pu.notes" class="text-[11px] text-gray-500 italic font-sans bg-gray-50 dark:bg-black/20 p-1.5 rounded-lg border border-gray-100 dark:border-white/5">
                 "{{ pu.notes }}"
               </p>
@@ -531,7 +530,7 @@ onMounted(fetchUsers);
               <!-- Divisi Column -->
               <td class="px-5 py-3.5 text-xs text-gray-600 dark:text-gray-300">
                 <span class="inline-block px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 font-mono text-[11px]">
-                  {{ u.division || 'Umum' }}
+                  {{ u.division ? `Divisi ${u.division}` : '-' }}
                 </span>
               </td>
 

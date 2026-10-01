@@ -44,7 +44,7 @@ const createUser = async (req, res, next) => {
       password,
       role: role === 'superadmin' ? 'superadmin' : 'contributor',
       status: 'active', // Direct creation by Superadmin is automatically active
-      division: division ? division.trim() : 'Umum',
+      division: division ? division.trim() : 'Desain',
       notes: notes ? notes.trim() : '',
     });
 

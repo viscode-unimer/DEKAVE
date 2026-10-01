@@ -59,7 +59,6 @@ const divisions = [
   'Photography',
   'Videography',
   'Public Relation',
-  'Umum / Pengurus',
 ];
 
 // Handle Login
@@ -87,7 +86,11 @@ const handleLogin = async () => {
       toast.error(msg);
     }
   } catch (err) {
-    const msg = err.response?.data?.message || 'Terjadi kesalahan sistem';
+    const msg =
+      err.response?.data?.message ||
+      (err.code === 'ERR_NETWORK' || !err.response
+        ? 'Gagal terhubung ke server backend (port 5000). Pastikan server backend sedang aktif.'
+        : 'Terjadi kesalahan sistem');
     loginErrorMsg.value = msg;
     if (msg.toLowerCase().includes('pending') || msg.toLowerCase().includes('acc')) {
       isPendingNotice.value = true;
@@ -135,10 +138,12 @@ const handleRegister = async () => {
     regSuccess.value = true;
     toast.success('Pendaftaran kontributor berhasil dikirim!');
   } catch (err) {
-    toast.error(
+    const errorMsg =
       err.response?.data?.message ||
-        'Gagal mendaftarkan akun kontributor. Coba lagi.'
-    );
+      (err.code === 'ERR_NETWORK' || !err.response
+        ? 'Gagal terhubung ke server backend (port 5000). Pastikan server backend sedang aktif.'
+        : 'Gagal mendaftarkan akun kontributor. Coba lagi.');
+    toast.error(errorMsg);
   } finally {
     regLoading.value = false;
   }
