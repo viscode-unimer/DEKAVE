@@ -41,5 +41,5 @@ export const useAuthStore = defineStore('auth', () => {
     localStorage.removeItem('dekave_user');
   };
 
-  return { user, token, isLoading, isAuthenticated, login, logout };
+  return { user, token, isLoading, isAuthenticated, login, registerContributor, logout };
 });

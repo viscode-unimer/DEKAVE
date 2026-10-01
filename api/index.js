@@ -10,6 +10,7 @@ require('../server/src/models/Event');
 require('../server/src/models/Blog');
 require('../server/src/models/Member');
 require('../server/src/models/Camavis');
+require('../server/src/models/Setting');
 
 const authRoutes = require('../server/src/routes/authRoutes');
 const portfolioRoutes = require('../server/src/routes/portfolioRoutes');

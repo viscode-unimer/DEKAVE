@@ -86,11 +86,14 @@ const handleLogin = async () => {
       toast.error(msg);
     }
   } catch (err) {
-    const msg =
-      err.response?.data?.message ||
-      (err.code === 'ERR_NETWORK' || !err.response
-        ? 'Gagal terhubung ke server backend (port 5000). Pastikan server backend sedang aktif.'
-        : 'Terjadi kesalahan sistem');
+    let msg = err.response?.data?.message;
+    if (!msg) {
+      if (err.code === 'ERR_NETWORK') {
+        msg = 'Gagal terhubung ke server backend. Periksa koneksi internet Anda.';
+      } else {
+        msg = err.message || 'Terjadi kesalahan sistem saat mencoba masuk.';
+      }
+    }
     loginErrorMsg.value = msg;
     if (msg.toLowerCase().includes('pending') || msg.toLowerCase().includes('acc')) {
       isPendingNotice.value = true;
@@ -138,11 +141,14 @@ const handleRegister = async () => {
     regSuccess.value = true;
     toast.success('Pendaftaran kontributor berhasil dikirim!');
   } catch (err) {
-    const errorMsg =
-      err.response?.data?.message ||
-      (err.code === 'ERR_NETWORK' || !err.response
-        ? 'Gagal terhubung ke server backend (port 5000). Pastikan server backend sedang aktif.'
-        : 'Gagal mendaftarkan akun kontributor. Coba lagi.');
+    let errorMsg = err.response?.data?.message;
+    if (!errorMsg) {
+      if (err.code === 'ERR_NETWORK') {
+        errorMsg = 'Gagal terhubung ke server backend. Periksa koneksi internet Anda.';
+      } else {
+        errorMsg = err.message || 'Gagal mendaftarkan akun kontributor. Coba lagi.';
+      }
+    }
     toast.error(errorMsg);
   } finally {
     regLoading.value = false;
