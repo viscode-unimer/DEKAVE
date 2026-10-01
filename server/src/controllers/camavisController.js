@@ -1,7 +1,58 @@
 const Camavis = require('../models/Camavis');
+const Setting = require('../models/Setting');
+
+const DEFAULT_SETTINGS = {
+  isOpen: false,
+  period: 'Semester Depan',
+  announcement: 'Pendaftaran Calon Mahasiswa Viscode (CAMAVIS) saat ini telah ditutup. Kami akan membuka pendaftaran kembali pada semester depan. Pantau terus linimasa media sosial kami agar tidak ketinggalan jadwal seleksi gelombang selanjutnya!',
+  whatsappNumber: '6282289456789',
+  instagramHandle: 'dekave_unimer',
+};
+
+const getCamavisSettings = async (req, res, next) => {
+  try {
+    let setting = await Setting.findOne({ key: 'camavis_settings' });
+    if (!setting) {
+      setting = await Setting.create({
+        key: 'camavis_settings',
+        value: DEFAULT_SETTINGS,
+      });
+    }
+    res.json({ success: true, data: setting.value });
+  } catch (error) { next(error); }
+};
+
+const updateCamavisSettings = async (req, res, next) => {
+  try {
+    const { isOpen, period, announcement, whatsappNumber, instagramHandle } = req.body;
+    const value = {
+      isOpen: Boolean(isOpen),
+      period: period || DEFAULT_SETTINGS.period,
+      announcement: announcement || DEFAULT_SETTINGS.announcement,
+      whatsappNumber: whatsappNumber || DEFAULT_SETTINGS.whatsappNumber,
+      instagramHandle: instagramHandle || DEFAULT_SETTINGS.instagramHandle,
+    };
+    const setting = await Setting.findOneAndUpdate(
+      { key: 'camavis_settings' },
+      { key: 'camavis_settings', value },
+      { new: true, upsert: true }
+    );
+    res.json({ success: true, data: setting.value, message: 'Pengaturan CAMAVIS berhasil diperbarui' });
+  } catch (error) { next(error); }
+};
 
 const submitCamavis = async (req, res, next) => {
   try {
+    // Check if registration is open
+    const setting = await Setting.findOne({ key: 'camavis_settings' });
+    const isOpen = setting ? setting.value?.isOpen : false;
+    if (isOpen === false) {
+      return res.status(400).json({
+        success: false,
+        message: 'Mohon maaf, pendaftaran CAMAVIS saat ini sedang ditutup dan akan dibuka kembali pada semester depan.',
+      });
+    }
+
     const { fullName, nickname, nim, faculty, major, phone, instagram, email, motivation, division, portfolioLink } = req.body;
     const existing = await Camavis.findOne({ $or: [{ nim }, { email }] });
     if (existing) {
@@ -54,4 +105,12 @@ const deleteCamavis = async (req, res, next) => {
   } catch (error) { next(error); }
 };
 
-module.exports = { submitCamavis, getCamavisList, getCamavisById, updateCamavisStatus, deleteCamavis };
+module.exports = {
+  getCamavisSettings,
+  updateCamavisSettings,
+  submitCamavis,
+  getCamavisList,
+  getCamavisById,
+  updateCamavisStatus,
+  deleteCamavis,
+};
