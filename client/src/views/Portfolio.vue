@@ -111,12 +111,12 @@ onMounted(fetchPortfolios);
 
         <LoadingSpinner v-if="loading" />
 
-        <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div v-else class="flex flex-wrap justify-center gap-6">
           <RouterLink
             v-for="item in portfolios"
             :key="item._id"
             :to="`/portfolio/${item._id}`"
-            class="group glass-card rounded-2xl overflow-hidden border border-slate-200/80 dark:border-white/[0.08] hover:border-sky-500/50 dark:hover:border-cyan-400/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full"
+            class="group glass-card rounded-2xl overflow-hidden border border-slate-200/80 dark:border-white/[0.08] hover:border-sky-500/50 dark:hover:border-cyan-400/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] max-w-sm"
           >
             <!-- Thumbnail Area (Locked 4:3 Aspect Ratio) -->
             <div class="aspect-[4/3] w-full bg-slate-100 dark:bg-slate-900 overflow-hidden relative shrink-0">
@@ -178,7 +178,7 @@ onMounted(fetchPortfolios);
             </div>
           </RouterLink>
 
-          <div v-if="portfolios.length === 0" class="col-span-full text-center text-slate-500 dark:text-gray-400 py-16">
+          <div v-if="portfolios.length === 0" class="w-full text-center text-slate-500 dark:text-gray-400 py-16">
             <Palette :size="48" class="mx-auto mb-3 opacity-30 text-sky-600 dark:text-cyan-400" />
             <p class="text-lg font-medium">{{ t('portfolio.no_data') }}</p>
           </div>

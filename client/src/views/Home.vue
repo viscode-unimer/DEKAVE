@@ -370,13 +370,13 @@ const samplePalettes = [
 
         <LoadingSpinner v-if="loading" />
 
-        <!-- Cards Grid -->
-        <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Cards Grid (Center-aligned) -->
+        <div v-else class="flex flex-wrap justify-center gap-6">
           <RouterLink
             v-for="(item, idx) in filteredPortfolios"
             :key="item._id"
             :to="`/portfolio/${item._id}`"
-            class="group glass-card overflow-hidden hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-500"
+            class="group glass-card overflow-hidden hover:border-sky-500/50 dark:hover:border-sky/50 transition-all duration-500 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm flex flex-col"
           >
             <!-- 16:10 Aspect Ratio Image Container -->
             <div class="aspect-[16/10] w-full bg-slate-100 dark:bg-[#050916] overflow-hidden relative shrink-0">
@@ -430,7 +430,7 @@ const samplePalettes = [
           </RouterLink>
 
           <!-- Empty State -->
-          <div v-if="!loading && filteredPortfolios.length === 0" class="col-span-full glass-card p-12 text-center text-slate-500 dark:text-gray-400">
+          <div v-if="!loading && filteredPortfolios.length === 0" class="w-full glass-card p-12 text-center text-slate-500 dark:text-gray-400">
             <LayoutGrid :size="36" class="mx-auto text-slate-400 dark:text-gray-600 mb-3" />
             <p>{{ t('portfolio.no_data') }}</p>
           </div>
