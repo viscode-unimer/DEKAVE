@@ -146,9 +146,8 @@ const isActive = (path) => route.path.startsWith(path);
     >
       <!-- Logo / Toggle -->
       <div class="flex items-center justify-between p-4 border-b border-gray-700 min-h-[64px]">
-        <RouterLink to="/" v-if="sidebarOpen" class="flex items-center gap-2 group">
+        <RouterLink to="/" v-if="sidebarOpen" class="flex items-center gap-2.5 group">
           <img src="/logo-dkv-putih.png" alt="DKV" class="h-6 w-auto object-contain group-hover:scale-105 transition-transform" />
-          <span class="font-heading text-lg font-bold text-white tracking-wider group-hover:text-sky transition-colors">DKV</span>
           <span class="text-[10px] bg-accent/20 text-accent font-semibold px-2 py-0.5 rounded-full uppercase">
             {{ auth.user?.role || 'Admin' }}
           </span>
