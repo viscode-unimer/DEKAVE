@@ -9,10 +9,15 @@ export const useAuthStore = defineStore('auth', () => {
 
   const isAuthenticated = () => !!token.value;
 
-  const login = async (email, password) => {
+  const login = async (identifier, password) => {
     isLoading.value = true;
     try {
-      const res = await api.post('/auth/login', { email, password });
+      const res = await api.post('/auth/login', {
+        identifier,
+        email: identifier,
+        username: identifier,
+        password,
+      });
       token.value = res.data.token;
       user.value = res.data.user;
       localStorage.setItem('dekave_token', res.data.token);
@@ -23,6 +28,10 @@ export const useAuthStore = defineStore('auth', () => {
     } finally {
       isLoading.value = false;
     }
+  };
+
+  const registerContributor = async (payload) => {
+    return await api.post('/auth/register-contributor', payload);
   };
 
   const logout = () => {
