@@ -256,7 +256,7 @@ const roleMeta = computed(() => {
         <span class="truncate">@{{ member.instagram.replace('@', '') }}</span>
       </a>
       <span v-else class="text-[10px] font-mono text-slate-400 dark:text-gray-600">
-        UKM DEKAVE
+        UKM DKV
       </span>
     </div>
   </div>

@@ -30,7 +30,7 @@ const settings = ref({
   announcement:
     'Pendaftaran Calon Mahasiswa Viscode (CAMAVIS) saat ini telah ditutup. Kami akan membuka pendaftaran kembali pada semester depan. Pantau terus linimasa media sosial kami agar tidak ketinggalan jadwal seleksi gelombang selanjutnya!',
   whatsappNumber: '6282289456789',
-  instagramHandle: 'dekave_unimer',
+  instagramHandle: 'dkv.unimer',
 });
 
 const form = reactive({
@@ -190,7 +190,7 @@ onMounted(() => {
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto">
             <!-- Instagram Button -->
             <a
-              :href="`https://instagram.com/${(settings.instagramHandle || 'dekave_unimer').replace('@', '')}`"
+              :href="`https://instagram.com/${(settings.instagramHandle || 'dkv.unimer').replace('@', '')}`"
               target="_blank"
               rel="noopener noreferrer"
               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white shadow-lg shadow-pink-500/25 transition-all duration-300"
@@ -202,7 +202,7 @@ onMounted(() => {
             <!-- WhatsApp Narahubung Button -->
             <a
               v-if="settings.whatsappNumber"
-              :href="`https://wa.me/${settings.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Halo Admin DEKAVE, saya ingin bertanya info pendaftaran CAMAVIS periode selanjutnya...')}`"
+              :href="`https://wa.me/${settings.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Halo Admin DKV, saya ingin bertanya info pendaftaran CAMAVIS periode selanjutnya...')}`"
               target="_blank"
               rel="noopener noreferrer"
               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-600/25 transition-all duration-300"
@@ -215,7 +215,7 @@ onMounted(() => {
           <!-- Secondary Links -->
           <div class="mt-8 pt-6 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-center gap-6 text-xs font-mono text-slate-500 dark:text-gray-400">
             <RouterLink to="/portfolio" class="hover:text-sky-600 dark:hover:text-cyan-400 transition-colors">
-              Lihat Karya DEKAVE →
+              Lihat Karya DKV →
             </RouterLink>
             <span>•</span>
             <RouterLink to="/member" class="hover:text-sky-600 dark:hover:text-cyan-400 transition-colors">

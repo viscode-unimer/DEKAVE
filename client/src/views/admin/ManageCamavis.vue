@@ -38,7 +38,7 @@ const settings = reactive({
   announcement:
     'Pendaftaran Calon Mahasiswa Viscode (CAMAVIS) saat ini telah ditutup. Kami akan membuka pendaftaran kembali pada semester depan. Pantau terus linimasa media sosial kami agar tidak ketinggalan jadwal seleksi gelombang selanjutnya!',
   whatsappNumber: '6282289456789',
-  instagramHandle: 'dekave_unimer',
+  instagramHandle: 'dkv.unimer',
 });
 
 const fetchSettings = async () => {
@@ -280,14 +280,14 @@ onMounted(() => {
 
             <div>
               <label class="block text-xs font-mono uppercase tracking-wider text-gray-600 dark:text-gray-300 mb-1.5">
-                Username Instagram DEKAVE
+                Username Instagram DKV
               </label>
               <input
                 v-model="settings.instagramHandle"
                 type="text"
                 required
                 class="input-field text-sm"
-                placeholder="Contoh: dekave_unimer"
+                placeholder="Contoh: dkv.unimer"
               />
             </div>
           </div>

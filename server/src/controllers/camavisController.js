@@ -6,7 +6,7 @@ const DEFAULT_SETTINGS = {
   period: 'Semester Depan',
   announcement: 'Pendaftaran Calon Mahasiswa Viscode (CAMAVIS) saat ini telah ditutup. Kami akan membuka pendaftaran kembali pada semester depan. Pantau terus linimasa media sosial kami agar tidak ketinggalan jadwal seleksi gelombang selanjutnya!',
   whatsappNumber: '6282289456789',
-  instagramHandle: 'dekave_unimer',
+  instagramHandle: 'dkv.unimer',
 };
 
 const getCamavisSettings = async (req, res, next) => {
