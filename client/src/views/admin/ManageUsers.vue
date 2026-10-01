@@ -104,9 +104,28 @@ const openEdit = (u) => {
 const handleSave = async () => {
   saving.value = true;
   try {
+    const rawUsername = form.username;
+    if (/\s/.test(rawUsername)) {
+      toast.error('Username tidak boleh menggunakan spasi! Hanya boleh menggunakan simbol underscore (_)');
+      saving.value = false;
+      return;
+    }
+
+    if (!/^[a-zA-Z0-9_]+$/.test(rawUsername.trim())) {
+      toast.error('Username hanya boleh menggunakan kombinasi huruf, angka, dan simbol underscore (_)');
+      saving.value = false;
+      return;
+    }
+
+    if (rawUsername.trim().length < 3) {
+      toast.error('Username minimal 3 karakter');
+      saving.value = false;
+      return;
+    }
+
     const isSuper = form.role === 'superadmin';
     const payload = {
-      username: form.username.trim().toLowerCase().replace(/\s+/g, '_'),
+      username: rawUsername.trim().toLowerCase(),
       fullName: form.fullName.trim(),
       email: form.email.trim(),
       role: form.role,
@@ -333,11 +352,15 @@ onMounted(fetchUsers);
             </label>
             <input
               v-model="form.username"
+              @keydown.space.prevent
               type="text"
               required
-              class="input-field text-sm"
-              placeholder="rian_media (tanpa spasi)"
+              class="input-field text-sm font-mono"
+              placeholder="nama_pengguna"
             />
+            <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1 font-mono">
+              * Hanya boleh huruf, angka, dan simbol underscore (<strong class="text-sky-600 dark:text-cyan-400 font-bold">_</strong>). Tanpa spasi.
+            </p>
           </div>
 
           <div>

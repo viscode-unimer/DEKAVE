@@ -85,7 +85,21 @@ const registerContributor = async (req, res, next) => {
       });
     }
 
-    const cleanUsername = username.trim().toLowerCase().replace(/\s+/g, '_');
+    if (/\s/.test(username)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Username tidak boleh mengandung spasi. Hanya boleh menggunakan simbol underscore (_)',
+      });
+    }
+
+    if (!/^[a-zA-Z0-9_]+$/.test(username.trim())) {
+      return res.status(400).json({
+        success: false,
+        message: 'Username hanya boleh menggunakan kombinasi huruf, angka, dan simbol underscore (_)',
+      });
+    }
+
+    const cleanUsername = username.trim().toLowerCase();
     if (cleanUsername.length < 3) {
       return res.status(400).json({
         success: false,

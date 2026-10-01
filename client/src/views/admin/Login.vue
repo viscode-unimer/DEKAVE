@@ -126,10 +126,26 @@ const handleRegister = async () => {
     return;
   }
 
+  const rawUsername = regForm.username;
+  if (/\s/.test(rawUsername)) {
+    toast.error('Username tidak boleh menggunakan spasi! Hanya boleh menggunakan simbol underscore (_)');
+    return;
+  }
+
+  if (!/^[a-zA-Z0-9_]+$/.test(rawUsername.trim())) {
+    toast.error('Username hanya boleh menggunakan kombinasi huruf, angka, dan simbol underscore (_)');
+    return;
+  }
+
+  if (rawUsername.trim().length < 3) {
+    toast.error('Username minimal 3 karakter.');
+    return;
+  }
+
   regLoading.value = true;
   try {
     const res = await auth.registerContributor({
-      username: regForm.username.trim().toLowerCase().replace(/\s+/g, '_'),
+      username: rawUsername.trim().toLowerCase(),
       fullName: regForm.fullName.trim(),
       email: regForm.email.trim(),
       division: regForm.division,
@@ -426,12 +442,16 @@ const resetToLogin = () => {
                   </div>
                   <input
                     v-model="regForm.username"
+                    @keydown.space.prevent
                     type="text"
                     required
-                    class="input-field pl-8 text-sm"
-                    placeholder="nama_pengguna (tanpa spasi)"
+                    class="input-field pl-8 text-sm font-mono"
+                    placeholder="nama_pengguna"
                   />
                 </div>
+                <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1 font-mono">
+                  * Hanya huruf, angka, dan simbol underscore (<strong class="text-sky-600 dark:text-cyan-400 font-bold">_</strong>). Tanpa spasi.
+                </p>
               </div>
 
               <!-- Full Name -->

@@ -23,7 +23,24 @@ const createUser = async (req, res, next) => {
       return res.status(400).json({ success: false, message: 'Password minimal 6 karakter' });
     }
 
-    const cleanUsername = username.trim().toLowerCase().replace(/\s+/g, '_');
+    if (/\s/.test(username)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Username tidak boleh mengandung spasi. Hanya boleh menggunakan simbol underscore (_)',
+      });
+    }
+
+    if (!/^[a-zA-Z0-9_]+$/.test(username.trim())) {
+      return res.status(400).json({
+        success: false,
+        message: 'Username hanya boleh menggunakan kombinasi huruf, angka, dan simbol underscore (_)',
+      });
+    }
+
+    const cleanUsername = username.trim().toLowerCase();
+    if (cleanUsername.length < 3) {
+      return res.status(400).json({ success: false, message: 'Username minimal 3 karakter' });
+    }
     const existing = await User.findOne({
       $or: [
         { email: email.toLowerCase().trim() },
@@ -78,7 +95,25 @@ const updateUser = async (req, res, next) => {
       return res.status(404).json({ success: false, message: 'User tidak ditemukan' });
     }
 
-    if (username) user.username = username.trim().toLowerCase().replace(/\s+/g, '_');
+    if (username) {
+      if (/\s/.test(username)) {
+        return res.status(400).json({
+          success: false,
+          message: 'Username tidak boleh mengandung spasi. Hanya boleh menggunakan simbol underscore (_)',
+        });
+      }
+      if (!/^[a-zA-Z0-9_]+$/.test(username.trim())) {
+        return res.status(400).json({
+          success: false,
+          message: 'Username hanya boleh menggunakan kombinasi huruf, angka, dan simbol underscore (_)',
+        });
+      }
+      const cleanUsername = username.trim().toLowerCase();
+      if (cleanUsername.length < 3) {
+        return res.status(400).json({ success: false, message: 'Username minimal 3 karakter' });
+      }
+      user.username = cleanUsername;
+    }
     if (fullName !== undefined) user.fullName = fullName.trim();
     if (email) user.email = email.toLowerCase().trim();
     if (role && ['superadmin', 'contributor', 'admin'].includes(role)) {

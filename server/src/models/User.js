@@ -2,7 +2,13 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true, trim: true },
+  username: { 
+    type: String, 
+    required: true, 
+    unique: true, 
+    trim: true,
+    match: [/^[a-zA-Z0-9_]+$/, 'Username hanya boleh berupa huruf, angka, dan simbol underscore (_) tanpa spasi']
+  },
   fullName: { type: String, trim: true, default: '' },
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },
   password: { type: String, required: true, minlength: 6 },
