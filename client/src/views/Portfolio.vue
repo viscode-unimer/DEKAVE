@@ -53,6 +53,13 @@ const fetchPortfolios = async () => {
   }
 };
 
+const setFilter = (cat, event) => {
+  activeFilter.value = cat;
+  if (event?.currentTarget) {
+    event.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+};
+
 watch(activeFilter, fetchPortfolios);
 onMounted(fetchPortfolios);
 </script>
@@ -80,32 +87,65 @@ onMounted(fetchPortfolios);
     <section class="py-12 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Filter Tabs -->
-        <div class="flex items-center justify-center mb-12">
-          <div class="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-full bg-slate-200/80 dark:bg-white/[0.04] border border-slate-300/80 dark:border-white/[0.08] backdrop-blur-xl shadow-sm">
-            <button
-              @click="activeFilter = ''"
-              :class="[
-                'px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider font-semibold transition-all duration-300',
-                activeFilter === ''
-                  ? 'bg-sky-500 text-white dark:bg-cyan-500 dark:text-slate-950 shadow-md shadow-sky-500/30 dark:shadow-cyan-500/30'
-                  : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.06]'
-              ]"
-            >
-              {{ t('portfolio.filter_all') }}
-            </button>
-            <button
-              v-for="cat in categories"
-              :key="cat"
-              @click="activeFilter = cat"
-              :class="[
-                'px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider font-semibold transition-all duration-300',
-                activeFilter === cat
-                  ? 'bg-sky-500 text-white dark:bg-cyan-500 dark:text-slate-950 shadow-md shadow-sky-500/30 dark:shadow-cyan-500/30'
-                  : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.06]'
-              ]"
-            >
-              {{ cat }}
-            </button>
+        <div class="mb-8 md:mb-12">
+          <!-- Mobile View (Horizontal Scrollable Precision Chips) -->
+          <div class="md:hidden">
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth px-4 -mx-4 pb-2 scroll-px-4">
+              <button
+                @click="setFilter('', $event)"
+                :class="[
+                  'px-4 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider font-semibold whitespace-nowrap shrink-0 transition-all duration-200 border backdrop-blur-md',
+                  activeFilter === ''
+                    ? 'bg-sky-500 text-white border-sky-400 dark:bg-cyan-500 dark:text-slate-950 dark:border-cyan-400 shadow-md shadow-sky-500/25 dark:shadow-cyan-500/30'
+                    : 'bg-slate-200/80 dark:bg-white/[0.05] text-slate-700 dark:text-gray-300 border-slate-300/80 dark:border-white/10 active:scale-95'
+                ]"
+              >
+                {{ t('portfolio.filter_all') }}
+              </button>
+              <button
+                v-for="cat in categories"
+                :key="cat"
+                @click="setFilter(cat, $event)"
+                :class="[
+                  'px-4 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider font-semibold whitespace-nowrap shrink-0 transition-all duration-200 border backdrop-blur-md',
+                  activeFilter === cat
+                    ? 'bg-sky-500 text-white border-sky-400 dark:bg-cyan-500 dark:text-slate-950 dark:border-cyan-400 shadow-md shadow-sky-500/25 dark:shadow-cyan-500/30'
+                    : 'bg-slate-200/80 dark:bg-white/[0.05] text-slate-700 dark:text-gray-300 border-slate-300/80 dark:border-white/10 active:scale-95'
+                ]"
+              >
+                {{ cat }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Desktop View (Unchanged original pill container) -->
+          <div class="hidden md:flex items-center justify-center">
+            <div class="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-full bg-slate-200/80 dark:bg-white/[0.04] border border-slate-300/80 dark:border-white/[0.08] backdrop-blur-xl shadow-sm">
+              <button
+                @click="activeFilter = ''"
+                :class="[
+                  'px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider font-semibold transition-all duration-300',
+                  activeFilter === ''
+                    ? 'bg-sky-500 text-white dark:bg-cyan-500 dark:text-slate-950 shadow-md shadow-sky-500/30 dark:shadow-cyan-500/30'
+                    : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.06]'
+                ]"
+              >
+                {{ t('portfolio.filter_all') }}
+              </button>
+              <button
+                v-for="cat in categories"
+                :key="cat"
+                @click="activeFilter = cat"
+                :class="[
+                  'px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider font-semibold transition-all duration-300',
+                  activeFilter === cat
+                    ? 'bg-sky-500 text-white dark:bg-cyan-500 dark:text-slate-950 shadow-md shadow-sky-500/30 dark:shadow-cyan-500/30'
+                    : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.06]'
+                ]"
+              >
+                {{ cat }}
+              </button>
+            </div>
           </div>
         </div>
 
