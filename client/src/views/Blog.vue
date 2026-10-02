@@ -6,7 +6,7 @@ import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
 import { formatDateShort } from '../utils/formatDate';
-import { BookOpen, Sparkles, Tag, ArrowUpRight, Heart, MessageSquare } from 'lucide-vue-next';
+import { BookOpen, Sparkles, Tag, ArrowUpRight } from 'lucide-vue-next';
 import { defaultBlogs } from '../data/defaultBlogs';
 
 const { t } = useI18n();
@@ -23,11 +23,48 @@ const filterCategories = [
   'Cerita PR'
 ];
 
+const getExcerpt = (blog) => {
+  if (blog.excerpt) return blog.excerpt;
+  const match = defaultBlogs.find(d => d.slug === blog.slug || d.title === blog.title);
+  if (match?.excerpt) return match.excerpt;
+  if (blog.content) {
+    const text = blog.content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    return text.slice(0, 140) + '...';
+  }
+  return 'Eksplorasi wawasan, karya, dan dinamika kreatif dari UKM DKV Universitas Merangin.';
+};
+
 onMounted(async () => {
   try {
     const res = await api.get('/blogs');
     if (res.data?.data && res.data.data.length > 0) {
-      blogs.value = res.data.data;
+      const dbBlogs = res.data.data;
+      // Enrich DB blogs with division & excerpt from defaultBlogs if missing
+      const enriched = dbBlogs.map(b => {
+        const found = defaultBlogs.find(d => 
+          d.slug === b.slug || 
+          d.title.toLowerCase() === b.title?.toLowerCase()
+        );
+        return {
+          ...b,
+          division: b.division || found?.division || (
+            b.author?.includes('Desain') ? 'Desain' :
+            b.author?.includes('Photo') ? 'Photography' :
+            b.author?.includes('Video') ? 'Videography' :
+            (b.author?.includes('Public') || b.slug?.includes('pr')) ? 'Public Relation' : 'Desain'
+          ),
+          excerpt: b.excerpt || found?.excerpt || '',
+        };
+      });
+
+      // Ensure all 6 default division & story articles are present
+      for (const def of defaultBlogs) {
+        if (!enriched.some(b => b.slug === def.slug || b.title.toLowerCase() === def.title.toLowerCase())) {
+          enriched.unshift(def);
+        }
+      }
+
+      blogs.value = enriched;
     } else {
       blogs.value = defaultBlogs;
     }
@@ -154,6 +191,11 @@ const filteredBlogs = computed(() => {
                 </h3>
                 <p class="text-xs font-mono text-slate-500 dark:text-gray-400">
                   {{ t('blog.by') }} {{ blog.author }} &bull; {{ formatDateShort(blog.createdAt) }}
+                </p>
+
+                <!-- Article Excerpt Preview -->
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-300 line-clamp-3 mt-3 leading-relaxed font-light">
+                  {{ getExcerpt(blog) }}
                 </p>
               </div>
 

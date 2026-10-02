@@ -5,11 +5,12 @@ export const defaultBlogs = [
   {
     _id: 'blog-1-divisi-desain',
     title: 'Eksplorasi Visual: Dari Sketsa Kasar Menuju Identitas Desain yang Berkarakter',
-    slug: 'eksplorasi-visual-sketsa-menuju-identitas-desain',
+    slug: 'eksplorasi-visual-dari-sketsa-kasar-menuju-identitas-desain-yang-berkarakter',
     division: 'Desain',
     author: 'Mutia Chandra (Divisi Desain)',
     thumbnail: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80',
     tags: ['Desain Grafis', 'Tipografi', 'Branding', 'Kreatif'],
+    excerpt: 'Mengupas proses kreatif di balik layar Divisi Desain: dari kebebasan coretan sketsa manual di sketchbook hingga melahirkan karya visual dan identitas brand yang berkarakter kuat.',
     isPublished: true,
     createdAt: '2026-09-18T10:00:00.000Z',
     content: `
@@ -41,11 +42,12 @@ export const defaultBlogs = [
   {
     _id: 'blog-2-divisi-photography',
     title: 'Menangkap Esensi di Balik Lensa: Komposisi, Cahaya, dan Cerita Tanpa Kata',
-    slug: 'menangkap-esensi-dibalik-lensa-komposisi-cahaya-cerita',
+    slug: 'menangkap-esensi-di-balik-lensa-komposisi-cahaya-dan-cerita-tanpa-kata',
     division: 'Photography',
     author: 'Zhelicha Ayu Joya (Divisi Photography)',
     thumbnail: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80',
     tags: ['Photography', 'Komposisi', 'Lensa', 'Hunting Foto'],
+    excerpt: 'Melihat dunia lewat jendela viewfinder kamera: cara fotografer DEKAVE membaca arah cahaya alami, mengatur leading lines, dan menangkap momen spontan yang jujur.',
     isPublished: true,
     createdAt: '2026-09-22T14:30:00.000Z',
     content: `
@@ -75,11 +77,12 @@ export const defaultBlogs = [
   {
     _id: 'blog-3-divisi-videography',
     title: 'Ritme Sinematik: Bagaimana Kami Menghidupkan Cerita Lewat Visual Bergerak',
-    slug: 'ritme-sinematik-menghidupkan-cerita-visual-bergerak',
+    slug: 'ritme-sinematik-bagaimana-kami-menghidupkan-cerita-lewat-visual-bergerak',
     division: 'Videography',
     author: 'Suci Nabiha (Divisi Videography)',
     thumbnail: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
     tags: ['Videography', 'Sinematik', 'Editing', 'Reels'],
+    excerpt: 'Membongkar alur produksi video kreatif di DEKAVE: dari storyboard pra-produksi yang matang, pergerakan dinamis kamera, hingga sihir sound design yang menyentuh emosi.',
     isPublished: true,
     createdAt: '2026-09-25T08:15:00.000Z',
     content: `
@@ -109,11 +112,12 @@ export const defaultBlogs = [
   {
     _id: 'blog-4-divisi-public-relation',
     title: 'Membangun Suara Komunitas: Strategi Humas DKV di Tengah Arus Informasi Digital',
-    slug: 'membangun-suara-komunitas-strategi-humas-dkv',
+    slug: 'membangun-suara-komunitas-strategi-humas-dkv-di-tengah-arus-informasi-digital',
     division: 'Public Relation',
     author: 'Desri Yanti Safitri (Divisi Public Relation)',
     thumbnail: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
     tags: ['Public Relation', 'Branding', 'Komunikasi', 'Medsos'],
+    excerpt: 'Humas bukan sekadar penyebar pengumuman. Inilah strategi Divisi PR DKV dalam merancang tone of voice bersahabat, editorial calendar medsos, dan diplomasi kolaborasi kampus.',
     isPublished: true,
     createdAt: '2026-09-27T16:00:00.000Z',
     content: `
@@ -143,11 +147,12 @@ export const defaultBlogs = [
   {
     _id: 'blog-5-cerita-pr-admin-medsos',
     title: 'Catatan Tengah Malam Sang Admin: Dinamika di Balik Layar Medsos & Liputan Kilat DKV',
-    slug: 'catatan-tengah-malam-sang-admin-cerita-anak-pr',
+    slug: 'catatan-tengah-malam-sang-admin-dinamika-di-balik-layar-medsos-liputan-kilat-dkv',
     division: 'Public Relation',
     author: 'Citra Dunanti (Divisi Public Relation)',
     thumbnail: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
     tags: ['Cerita PR', 'Behind The Scenes', 'Diary Humas', 'Kisah Nyata'],
+    excerpt: 'Kisah seru dan haru di balik layar admin akun @viscode_um: kepanikan baterai 5% saat pameran akbar kampus, begadang menunggu render aftermovie, dan senyum di kolom notifikasi.',
     isPublished: true,
     createdAt: '2026-09-29T23:15:00.000Z',
     content: `
@@ -174,11 +179,12 @@ export const defaultBlogs = [
   {
     _id: 'blog-6-cerita-pr-kolaborasi-pertama',
     title: 'Dari Gugup Menjadi Bangga: Cerita Pertama Kali Menjalin Kolaborasi untuk Viscode',
-    slug: 'dari-gugup-menjadi-bangga-cerita-kolaborasi-pr',
+    slug: 'dari-gugup-menjadi-bangga-cerita-pertama-kali-menjalin-kolaborasi-untuk-viscode',
     division: 'Public Relation',
     author: 'Desri Yanti Safitri (Divisi Public Relation)',
     thumbnail: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80',
     tags: ['Cerita PR', 'Kolaborasi', 'Jejak Langkah', 'Pengalaman'],
+    excerpt: 'Catatan personal pertama kali membawa map proposal sponsorship DKV ke instansi luar: mengatasi rasa gemetar di ruang rapat hingga bangga membawa pulang kesepakatan kerjasama.',
     isPublished: true,
     createdAt: '2026-10-01T11:45:00.000Z',
     content: `
@@ -207,5 +213,13 @@ export const defaultBlogs = [
 ];
 
 export const getBlogBySlug = (slug) => {
-  return defaultBlogs.find(b => b.slug === slug || b._id === slug) || null;
+  if (!slug) return null;
+  const s = String(slug).toLowerCase().trim();
+  return defaultBlogs.find(b => 
+    b.slug === s || 
+    b._id === s ||
+    s.includes(b.slug) ||
+    b.slug.includes(s) ||
+    b.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') === s
+  ) || null;
 };

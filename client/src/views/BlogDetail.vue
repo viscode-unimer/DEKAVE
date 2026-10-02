@@ -18,14 +18,22 @@ const loading = ref(true);
 
 onMounted(async () => {
   try {
-    const res = await api.get(`/blogs/${route.params.slug}`);
-    if (res.data?.data) {
-      blog.value = res.data.data;
+    const slug = route.params.slug;
+    const res = await api.get(`/blogs/${slug}`);
+    const apiBlog = res.data?.data;
+    const def = getBlogBySlug(slug) || defaultBlogs.find(d => d.title?.toLowerCase() === apiBlog?.title?.toLowerCase());
+
+    if (apiBlog && apiBlog.content && apiBlog.content.trim().length > 10) {
+      blog.value = {
+        ...apiBlog,
+        division: apiBlog.division || def?.division || '',
+      };
+    } else if (def) {
+      blog.value = def;
     } else {
-      blog.value = getBlogBySlug(route.params.slug);
+      blog.value = apiBlog;
     }
   } catch (e) {
-    // Fallback to default blog entries
     blog.value = getBlogBySlug(route.params.slug);
   } finally {
     loading.value = false;
