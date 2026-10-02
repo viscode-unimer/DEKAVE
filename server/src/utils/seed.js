@@ -112,18 +112,9 @@ const seedData = async () => {
     // 4. Seed Sample Blog if empty
     const blogCount = await Blog.countDocuments();
     if (blogCount === 0) {
-      await Blog.create([
-        {
-          title: 'Mengapa Komposisi Visual Menentukan Keberhasilan Desain Kamu',
-          slug: 'mengapa-komposisi-visual-menentukan-keberhasilan-desain-kamu',
-          content: '<h2>Fondasi Komposisi Visual</h2><p>Komposisi adalah susunan elemen-elemen visual dalam suatu karya. Tanpa komposisi yang terencana, pesan yang ingin disampaikan bisa hilang atau membingungkan audiens.</p><h3>1. Rule of Thirds</h3><p>Membagi kanvas menjadi sembilan bagian yang sama dan meletakkan elemen kunci pada titik potong untuk menciptakan keseimbangan alami.</p><h3>2. Hierarki Visual</h3><p>Menentukan elemen apa yang pertama kali harus dilihat mata pengguna, melalui perbedaan ukuran, warna kontras, atau posisi.</p><blockquote>"Ideas become reality, visuals become stories — setiap garis dan warna punya arti tersendiri."</blockquote>',
-          thumbnail: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80',
-          author: 'Divisi Edukasi DKV',
-          tags: ['tips', 'komposisi', 'visual', 'tutorial'],
-          isPublished: true,
-        },
-      ]);
-      console.log('✍️ Sample blogs created.');
+      const defaultBlogs = require('./defaultBlogs');
+      await Blog.create(defaultBlogs);
+      console.log(`✍️ ${defaultBlogs.length} sample blogs created (4 divisions + 2 PR stories).`);
     }
 
     // 5. Seed Sample Members if empty

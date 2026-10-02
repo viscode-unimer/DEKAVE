@@ -25,6 +25,7 @@ import {
   Megaphone,
   Play
 } from 'lucide-vue-next';
+import { defaultBlogs } from '../data/defaultBlogs';
 
 const { t } = useI18n();
 const featuredPortfolios = ref([]);
@@ -52,9 +53,16 @@ onMounted(async () => {
     ]);
     featuredPortfolios.value = portfolioRes.data.data;
     latestEvents.value = eventRes.data.data;
-    latestBlogs.value = blogRes.data.data;
+    if (blogRes.data?.data && blogRes.data.data.length > 0) {
+      latestBlogs.value = blogRes.data.data;
+    } else {
+      latestBlogs.value = defaultBlogs.slice(0, 3);
+    }
   } catch (e) {
     console.error(e);
+    if (!latestBlogs.value || latestBlogs.value.length === 0) {
+      latestBlogs.value = defaultBlogs.slice(0, 3);
+    }
   } finally {
     loading.value = false;
   }

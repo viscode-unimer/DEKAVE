@@ -1,26 +1,59 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { RouterLink } from 'vue-router';
 import PublicLayout from '../components/common/PublicLayout.vue';
 import LoadingSpinner from '../components/common/LoadingSpinner.vue';
 import api from '../utils/api';
 import { formatDateShort } from '../utils/formatDate';
-import { BookOpen, Sparkles, Tag, ArrowUpRight } from 'lucide-vue-next';
+import { BookOpen, Sparkles, Tag, ArrowUpRight, Heart, MessageSquare } from 'lucide-vue-next';
+import { defaultBlogs } from '../data/defaultBlogs';
 
 const { t } = useI18n();
 const blogs = ref([]);
 const loading = ref(true);
+const activeFilter = ref('Semua');
+
+const filterCategories = [
+  'Semua',
+  'Desain',
+  'Photography',
+  'Videography',
+  'Public Relation',
+  'Cerita PR'
+];
 
 onMounted(async () => {
   try {
     const res = await api.get('/blogs');
-    blogs.value = res.data.data;
+    if (res.data?.data && res.data.data.length > 0) {
+      blogs.value = res.data.data;
+    } else {
+      blogs.value = defaultBlogs;
+    }
   } catch (e) {
-    console.error(e);
+    console.error('Error fetching blogs from API, using default blogs:', e);
+    blogs.value = defaultBlogs;
   } finally {
     loading.value = false;
   }
+});
+
+const filteredBlogs = computed(() => {
+  if (activeFilter.value === 'Semua') {
+    return blogs.value;
+  }
+  if (activeFilter.value === 'Cerita PR') {
+    return blogs.value.filter(b => 
+      b.tags?.some(tag => tag.toLowerCase().includes('cerita') || tag.toLowerCase().includes('diary')) ||
+      b.slug?.includes('cerita')
+    );
+  }
+  return blogs.value.filter(b => 
+    b.division === activeFilter.value || 
+    b.author?.toLowerCase().includes(activeFilter.value.toLowerCase()) ||
+    b.tags?.some(tag => tag.toLowerCase().includes(activeFilter.value.toLowerCase()))
+  );
 });
 </script>
 
@@ -32,14 +65,32 @@ onMounted(async () => {
       <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium border border-cyan-500/30 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 mb-6 backdrop-blur-md">
           <BookOpen :size="14" class="text-cyan-600 dark:text-cyan-400" />
-          <span>DKV EDITORIAL JOURNAL</span>
+          <span>DKV EDITORIAL JOURNAL & STORIES</span>
         </div>
         <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-6">
           {{ t('blog.title') }}
         </h1>
         <p class="text-slate-600 dark:text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto font-light leading-relaxed">
-          {{ t('blog.subtitle') }}
+          Kumpulan wawasan, perspektif berkarya 4 divisi utama, serta kisah inspiratif di balik layar UKM DKV Universitas Merangin.
         </p>
+
+        <!-- Division Filter Pills -->
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-8">
+          <button
+            v-for="cat in filterCategories"
+            :key="cat"
+            @click="activeFilter = cat"
+            :class="[
+              'px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border flex items-center gap-1.5',
+              activeFilter === cat
+                ? 'bg-sky-600 dark:bg-cyan-500 text-white dark:text-slate-950 border-sky-600 dark:border-cyan-400 shadow-md shadow-sky-500/25 dark:shadow-cyan-400/20 scale-105'
+                : 'bg-slate-100/80 dark:bg-white/[0.04] text-slate-700 dark:text-gray-300 border-slate-200 dark:border-white/[0.08] hover:border-sky-500/40 dark:hover:border-cyan-400/40 hover:text-slate-950 dark:hover:text-white'
+            ]"
+          >
+            <span v-if="cat === 'Cerita PR'" class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+            <span>{{ cat }}</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -49,7 +100,7 @@ onMounted(async () => {
         <LoadingSpinner v-if="loading" />
         <div v-else class="flex flex-wrap justify-center gap-6">
           <RouterLink
-            v-for="blog in blogs"
+            v-for="blog in filteredBlogs"
             :key="blog._id"
             :to="`/blog/${blog.slug}`"
             class="group glass-card rounded-2xl overflow-hidden border border-slate-200/80 dark:border-white/[0.08] hover:border-sky-500/50 dark:hover:border-cyan-400/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm"
@@ -63,6 +114,22 @@ onMounted(async () => {
               />
               <div v-else class="w-full h-full flex items-center justify-center text-slate-400 dark:text-gray-500">
                 <BookOpen :size="40" class="opacity-40" />
+              </div>
+
+              <!-- Division or Story Pill -->
+              <div class="absolute top-3 left-3">
+                <span
+                  v-if="blog.tags?.some(t => t.toLowerCase().includes('cerita')) || blog.slug?.includes('cerita')"
+                  class="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-pink-500 text-white shadow-md backdrop-blur-md"
+                >
+                  Cerita Humas
+                </span>
+                <span
+                  v-else-if="blog.division"
+                  class="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-sky-600/90 dark:bg-cyan-500/90 text-white dark:text-slate-950 shadow-md backdrop-blur-md"
+                >
+                  Divisi {{ blog.division }}
+                </span>
               </div>
 
               <!-- Arrow -->
@@ -94,13 +161,16 @@ onMounted(async () => {
                 <span class="text-xs font-mono text-sky-600 dark:text-cyan-400 font-semibold group-hover:underline">
                   {{ t('blog.read_more') }} &rarr;
                 </span>
+                <span class="text-[11px] font-mono text-slate-400 dark:text-gray-500">
+                  DKV Journal
+                </span>
               </div>
             </div>
           </RouterLink>
 
-          <div v-if="blogs.length === 0" class="w-full text-center text-slate-500 dark:text-gray-400 py-16">
+          <div v-if="filteredBlogs.length === 0" class="w-full text-center text-slate-500 dark:text-gray-400 py-16">
             <BookOpen :size="48" class="mx-auto mb-3 opacity-30 text-sky-600 dark:text-cyan-400" />
-            <p class="text-lg font-medium">{{ t('blog.no_data') }}</p>
+            <p class="text-lg font-medium">Belum ada artikel untuk kategori ini.</p>
           </div>
         </div>
       </div>

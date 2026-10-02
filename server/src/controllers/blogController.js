@@ -1,8 +1,21 @@
 const Blog = require('../models/Blog');
 const { uploadToCloudinary } = require('../config/cloudinary');
+const defaultBlogs = require('../utils/defaultBlogs');
+
+const ensureDefaultBlogs = async () => {
+  try {
+    const count = await Blog.countDocuments();
+    if (count === 0) {
+      await Blog.insertMany(defaultBlogs);
+    }
+  } catch (err) {
+    // ignore
+  }
+};
 
 const getBlogs = async (req, res, next) => {
   try {
+    await ensureDefaultBlogs();
     const { page = 1, limit = 9, tag } = req.query;
     const filter = { isPublished: true };
     if (tag) filter.tags = tag;
@@ -17,6 +30,7 @@ const getBlogs = async (req, res, next) => {
 
 const getAllBlogsAdmin = async (req, res, next) => {
   try {
+    await ensureDefaultBlogs();
     const blogs = await Blog.find().sort({ createdAt: -1 }).select('-content');
     res.json({ success: true, data: blogs });
   } catch (error) { next(error); }
@@ -24,7 +38,11 @@ const getAllBlogsAdmin = async (req, res, next) => {
 
 const getBlogBySlug = async (req, res, next) => {
   try {
-    const blog = await Blog.findOne({ slug: req.params.slug, isPublished: true });
+    let blog = await Blog.findOne({ slug: req.params.slug, isPublished: true });
+    if (!blog) {
+      await ensureDefaultBlogs();
+      blog = await Blog.findOne({ slug: req.params.slug, isPublished: true });
+    }
     if (!blog) return res.status(404).json({ success: false, message: 'Blog not found' });
     res.json({ success: true, data: blog });
   } catch (error) { next(error); }
