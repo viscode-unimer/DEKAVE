@@ -11,6 +11,7 @@ require('../server/src/models/Blog');
 require('../server/src/models/Member');
 require('../server/src/models/Camavis');
 require('../server/src/models/Setting');
+require('../server/src/models/PageContent');
 
 const authRoutes = require('../server/src/routes/authRoutes');
 const portfolioRoutes = require('../server/src/routes/portfolioRoutes');
@@ -19,6 +20,7 @@ const blogRoutes = require('../server/src/routes/blogRoutes');
 const memberRoutes = require('../server/src/routes/memberRoutes');
 const camavisRoutes = require('../server/src/routes/camavisRoutes');
 const userRoutes = require('../server/src/routes/userRoutes');
+const pageContentRoutes = require('../server/src/routes/pageContentRoutes');
 const { errorHandler, notFound } = require('../server/src/middleware/errorHandler');
 
 const app = express();
@@ -62,6 +64,7 @@ app.use('/api/blogs', blogRoutes);
 app.use('/api/members', memberRoutes);
 app.use('/api/camavis', camavisRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/page-content', pageContentRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
