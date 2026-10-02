@@ -102,7 +102,7 @@ const samplePalettes = [
             <span class="block sm:inline">Ideas Become</span>
             <span class="font-serif italic font-normal text-gradient-cyan inline-block pr-2.5 pl-0.5 sm:ml-2 sm:pr-4 sm:pl-1 sm:pb-2.5 sm:pt-0.5">Reality,</span><br class="hidden sm:inline" />
             <span class="block sm:inline mt-1 sm:mt-0">Visuals Become</span>
-            <span class="relative inline-block text-slate-900 dark:text-white ml-2 sm:ml-0">
+            <span class="relative inline-block text-slate-900 dark:text-white ml-2 sm:ml-3">
               Stories
               <span class="absolute -bottom-1.5 left-0 right-0 h-1 sm:h-1.5 bg-gradient-to-r from-accent via-sky to-royal rounded-full"></span>
             </span>
