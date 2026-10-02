@@ -19,16 +19,12 @@ const pageContent = ref({
   badge: 'HUBUNGI KAMI & FAST CONNECT',
   title: 'Hubungi Kami',
   subtitle: 'Ada pertanyaan, ingin berkolaborasi, atau butuh konsultasi desain? Hubungi tim pengurus DKV Universitas Merangin sekarang.',
-  instantResponseTitle: 'Ingin Respons Cepat Tanpa Menunggu?',
-  instantResponseDesc: 'Langsung terhubung dengan narahubung resmi DKV Unimer melalui WhatsApp.',
-  instantResponseButtonText: 'Chat Langsung via WhatsApp',
   formTitle: 'Kirim Pesan ke DKV',
   formSubtitle: 'Isi pesan dan kami akan otomatis mengarahkan ke WhatsApp resmi DKV dengan format yang rapi.',
   campusAddress: 'Kampus Universitas Merangin, Bangko, Jambi',
   email: 'viscode0um@gmail.com',
   whatsappNumber: '6282289656828',
   whatsappDisplay: '+62 822-8965-6828',
-  whatsappDefaultMessage: 'Halo Pengurus DKV / Viscode Universitas Merangin, saya ingin bertanya info seputar UKM DKV...',
   instagramHandle: '@viscode_um',
   instagramUrl: 'https://www.instagram.com/viscode_um/',
   tiktokHandle: '@viscode_univmerangin',
@@ -64,14 +60,6 @@ onMounted(async () => {
     // fallback default
   }
 });
-
-const openDirectWhatsApp = () => {
-  const text = encodeURIComponent(
-    pageContent.value.whatsappDefaultMessage || 'Halo Pengurus DKV / Viscode Universitas Merangin, saya ingin bertanya info seputar UKM DKV...'
-  );
-  window.open(`https://wa.me/${whatsappNumber.value}?text=${text}`, '_blank');
-  toast.success('Membuka WhatsApp...');
-};
 
 const handleSubmit = () => {
   if (!form.name.trim() || !form.message.trim()) {
@@ -124,46 +112,18 @@ const handleSubmit = () => {
     <section class="py-12 relative">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          <!-- Form & Quick Action (7 cols) -->
-          <div class="lg:col-span-7 space-y-6">
-            <!-- Quick Action Hub (Opsi 1) -->
-            <div class="glass-card rounded-3xl p-6 sm:p-7 border border-emerald-500/30 dark:border-emerald-500/20 bg-gradient-to-br from-emerald-500/[0.06] via-transparent to-sky-500/[0.04]">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div class="space-y-1">
-                  <span class="text-[11px] font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>Respon Instan</span>
-                  </span>
-                  <h3 class="font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-                    {{ pageContent.instantResponseTitle }}
-                  </h3>
-                  <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400">
-                    {{ pageContent.instantResponseDesc }}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  @click="openDirectWhatsApp"
-                  class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-emerald-600/25 hover:shadow-emerald-600/40 hover:-translate-y-0.5 active:translate-y-0 transition-all flex-shrink-0"
-                >
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                  </svg>
-                  <span>{{ pageContent.instantResponseButtonText }}</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- WhatsApp Message Generator Form (Opsi 2) -->
+          <!-- Form Section (7 cols) -->
+          <div class="lg:col-span-7">
+            <!-- WhatsApp Message Generator Form -->
             <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-200/80 dark:border-white/10">
               <span class="text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-cyan-400 font-semibold mb-2 block">
                 // FORMULIR PESAN & INQUIRY
               </span>
               <h2 class="font-heading text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2">
-                Kirim Pesan ke DKV
+                {{ pageContent.formTitle || 'Kirim Pesan ke DKV' }}
               </h2>
               <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 mb-6">
-                Isi form di bawah, lalu klik kirim untuk langsung meneruskannya ke WhatsApp pengurus dengan format pesan otomatis.
+                {{ pageContent.formSubtitle || 'Isi form di bawah, lalu klik kirim untuk langsung meneruskannya ke WhatsApp pengurus dengan format pesan otomatis.' }}
               </p>
 
               <form @submit.prevent="handleSubmit" class="space-y-5">

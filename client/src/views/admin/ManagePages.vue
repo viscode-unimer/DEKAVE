@@ -8,6 +8,7 @@ import {
   Home,
   Info,
   PhoneCall,
+  Mail,
   Save,
   RotateCcw,
   Plus,
@@ -81,16 +82,12 @@ const defaultContents = {
     badge: 'HUBUNGI KAMI & FAST CONNECT',
     title: 'Hubungi Kami',
     subtitle: 'Ada pertanyaan, ingin berkolaborasi, atau butuh konsultasi desain? Hubungi tim pengurus DKV Universitas Merangin sekarang.',
-    instantResponseTitle: 'Ingin Respons Cepat Tanpa Menunggu?',
-    instantResponseDesc: 'Langsung terhubung dengan narahubung resmi DKV Unimer melalui WhatsApp.',
-    instantResponseButtonText: 'Chat Langsung via WhatsApp',
     formTitle: 'Kirim Pesan ke DKV',
     formSubtitle: 'Isi pesan dan kami akan otomatis mengarahkan ke WhatsApp resmi DKV dengan format yang rapi.',
     campusAddress: 'Kampus Universitas Merangin, Bangko, Jambi',
     email: 'viscode0um@gmail.com',
     whatsappNumber: '6282289656828',
     whatsappDisplay: '+62 822-8965-6828',
-    whatsappDefaultMessage: 'Halo Pengurus DKV / Viscode Universitas Merangin, saya ingin bertanya info seputar UKM DKV...',
     instagramHandle: '@viscode_um',
     instagramUrl: 'https://www.instagram.com/viscode_um/',
     tiktokHandle: '@viscode_univmerangin',
@@ -666,15 +663,86 @@ onMounted(() => {
       <!-- TAB 3: KONTAK (CONTACT)                                        -->
       <!-- ============================================================== -->
       <div v-if="activeTab === 'contact'" class="space-y-8">
-        <!-- WhatsApp Narahubung & Template -->
+        <!-- Header & Judul Formulir Kontak -->
+        <div class="bg-slate-900/80 rounded-3xl p-6 sm:p-8 border border-slate-700/80 space-y-6">
+          <div class="border-b border-slate-800 pb-4">
+            <h2 class="text-lg font-bold font-heading text-white flex items-center gap-2">
+              <Mail :size="18" class="text-sky-400" />
+              <span>Header & Judul Formulir Kontak</span>
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">
+              Sesuaikan teks label atas, judul utama, dan pengantar formulir pesan kontak.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider mb-2">
+                Badge / Kategori Tag
+              </label>
+              <input
+                v-model="contactForm.badge"
+                type="text"
+                class="input-field"
+                placeholder="HUBUNGI KAMI & FAST CONNECT"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-mono font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                Judul Utama Halaman
+              </label>
+              <input
+                v-model="contactForm.title"
+                type="text"
+                class="input-field"
+                placeholder="Hubungi Kami"
+              />
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-xs font-mono font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                Subjudul Deskripsi Halaman
+              </label>
+              <textarea
+                v-model="contactForm.subtitle"
+                rows="2"
+                class="input-field resize-none"
+                placeholder="Ada pertanyaan, ingin berkolaborasi, atau butuh konsultasi desain?..."
+              ></textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-mono font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                Judul Kotak Formulir
+              </label>
+              <input
+                v-model="contactForm.formTitle"
+                type="text"
+                class="input-field"
+                placeholder="Kirim Pesan ke DKV"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-mono font-semibold text-slate-300 uppercase tracking-wider mb-2">
+                Deskripsi Singkat Formulir
+              </label>
+              <input
+                v-model="contactForm.formSubtitle"
+                type="text"
+                class="input-field"
+                placeholder="Isi form di bawah, lalu klik kirim..."
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp Narahubung -->
         <div class="bg-slate-900/80 rounded-3xl p-6 sm:p-8 border border-slate-700/80 space-y-6">
           <div class="border-b border-slate-800 pb-4">
             <h2 class="text-lg font-bold font-heading text-white flex items-center gap-2">
               <PhoneCall :size="18" class="text-emerald-400" />
-              <span>Narahubung & WhatsApp Fast Response</span>
+              <span>Narahubung & WhatsApp Form Penerima</span>
             </h2>
             <p class="text-xs text-slate-400 mt-1">
-              Nomor WhatsApp ini digunakan untuk tombol "Chat Langsung via WhatsApp" dan formulir pesan cepat.
+              Nomor WhatsApp tujuan untuk menerima kiriman pesan dari formulir kontak website.
             </p>
           </div>
 
@@ -704,18 +772,6 @@ onMounted(() => {
                 class="input-field font-mono"
                 placeholder="Contoh: +62 822-8965-6828"
               />
-            </div>
-
-            <div class="md:col-span-2">
-              <label class="block text-xs font-mono font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                Pesan Default Tombol "Chat Langsung via WhatsApp"
-              </label>
-              <textarea
-                v-model="contactForm.whatsappDefaultMessage"
-                rows="2"
-                class="input-field resize-none"
-                placeholder="Pesan pembuka yang otomatis muncul di WA..."
-              ></textarea>
             </div>
           </div>
         </div>
