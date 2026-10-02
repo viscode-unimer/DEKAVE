@@ -8,7 +8,7 @@ import api from '../utils/api';
 import { formatDate } from '../utils/formatDate';
 import { ArrowLeft, Tag, User, Calendar, BookOpen, Share2 } from 'lucide-vue-next';
 import { useToast } from 'vue-toastification';
-import { getBlogBySlug } from '../data/defaultBlogs';
+import { defaultBlogs, getBlogBySlug } from '../data/defaultBlogs';
 
 const { t } = useI18n();
 const route = useRoute();
@@ -26,7 +26,7 @@ onMounted(async () => {
     if (apiBlog && apiBlog.content && apiBlog.content.trim().length > 10) {
       blog.value = {
         ...apiBlog,
-        division: apiBlog.division || def?.division || '',
+        content: apiBlog.content,
       };
     } else if (def) {
       blog.value = def;
@@ -69,7 +69,7 @@ const handleShare = () => {
           <button
             v-if="blog"
             @click="handleShare"
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono text-slate-600 dark:text-gray-400 hover:text-sky-600 dark:hover:text-cyan-400 bg-slate-100/80 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] transition-colors"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono text-slate-600 dark:text-gray-400 hover:text-sky-600 dark:hover:text-cyan-400 bg-slate-100/80 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] transition-colors"
           >
             <Share2 :size="13" />
             <span>Bagikan</span>
@@ -90,26 +90,10 @@ const handleShare = () => {
             <div v-else class="w-full h-full flex items-center justify-center text-slate-400">
               <BookOpen :size="48" class="opacity-30" />
             </div>
-
-            <!-- Division / Story Pill -->
-            <div class="absolute top-4 left-4">
-              <span
-                v-if="blog.tags?.some(t => t.toLowerCase().includes('cerita')) || blog.slug?.includes('cerita')"
-                class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-pink-500 text-white shadow-lg backdrop-blur-md"
-              >
-                📖 Cerita & Catatan Humas
-              </span>
-              <span
-                v-else-if="blog.division"
-                class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-sky-600 dark:bg-cyan-500 text-white dark:text-slate-950 shadow-lg backdrop-blur-md"
-              >
-                Divisi {{ blog.division }}
-              </span>
-            </div>
           </div>
 
           <!-- Tags -->
-          <div class="flex flex-wrap gap-2">
+          <div v-if="blog.tags && blog.tags.length" class="flex flex-wrap gap-2">
             <span
               v-for="tag in blog.tags"
               :key="tag"
@@ -137,9 +121,9 @@ const handleShare = () => {
             </span>
           </div>
 
-          <!-- HTML Content -->
+          <!-- HTML Content (Rata Kanan-Kiri / Justified Editorial Content) -->
           <div
-            class="prose dark:prose-invert max-w-none text-slate-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg prose-headings:font-heading prose-headings:text-slate-900 dark:prose-headings:text-white prose-a:text-sky-600 dark:prose-a:text-cyan-400 prose-blockquote:border-l-4 prose-blockquote:border-sky-500 prose-blockquote:bg-sky-500/5 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-xl prose-img:rounded-2xl"
+            class="blog-content-body text-slate-700 dark:text-gray-300 text-base sm:text-lg"
             v-html="blog.content"
           />
 
@@ -175,3 +159,97 @@ const handleShare = () => {
     </div>
   </PublicLayout>
 </template>
+
+<style scoped>
+/* Rata Kanan-Kiri (Justified) Editorial Formatting */
+.blog-content-body {
+  line-height: 1.9;
+}
+
+.blog-content-body :deep(p) {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  line-height: 1.95;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.01em;
+}
+
+.blog-content-body :deep(h2) {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 2.75rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.35;
+}
+:global(.dark) .blog-content-body :deep(h2) {
+  color: #ffffff;
+}
+
+.blog-content-body :deep(h3) {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0284c7;
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+:global(.dark) .blog-content-body :deep(h3) {
+  color: #38bdf8;
+}
+
+.blog-content-body :deep(blockquote) {
+  font-style: italic;
+  border-left: 4px solid #0284c7;
+  background-color: rgba(2, 132, 199, 0.08);
+  padding: 1.25rem 1.75rem;
+  margin: 2.25rem 0;
+  border-radius: 0 1rem 1rem 0;
+  line-height: 1.8;
+  color: #0f172a;
+  text-align: justify;
+  text-justify: inter-word;
+}
+:global(.dark) .blog-content-body :deep(blockquote) {
+  background-color: rgba(56, 189, 248, 0.08);
+  border-left-color: #38bdf8;
+  color: #f1f5f9;
+}
+
+.blog-content-body :deep(ul) {
+  list-style-type: disc;
+  padding-left: 1.75rem;
+  margin-bottom: 1.6rem;
+}
+
+.blog-content-body :deep(li) {
+  margin-bottom: 0.75rem;
+  line-height: 1.85;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.blog-content-body :deep(strong) {
+  font-weight: 700;
+  color: #0f172a;
+}
+:global(.dark) .blog-content-body :deep(strong) {
+  color: #ffffff;
+}
+
+.blog-content-body :deep(code) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875em;
+  background-color: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.375rem;
+}
+:global(.dark) .blog-content-body :deep(code) {
+  background-color: rgba(56, 189, 248, 0.15);
+  color: #67e8f9;
+}
+</style>
