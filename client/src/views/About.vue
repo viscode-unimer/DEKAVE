@@ -1,21 +1,51 @@
 <script setup>
-import { computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import PublicLayout from '../components/common/PublicLayout.vue';
+import api from '../utils/api';
 import { Sparkles, Target, Rocket, Users, Palette, Camera, Video, Megaphone, HeartHandshake, Sprout, Coffee, GraduationCap } from 'lucide-vue-next';
 
 const { t, tm } = useI18n();
 
-const missionItems = computed(() => {
-  const items = tm('about.mission_items');
-  if (Array.isArray(items) && items.length > 0) return items;
-  return [
+const pageContent = ref({
+  badge: 'DKV PHILOSOPHY & IDENTITY',
+  title: 'Tentang DKV Universitas Merangin',
+  subtitle: 'Wadah eksplorasi visual, inovasi desain, dan karya kreatif mahasiswa Universitas Merangin.',
+  introTitle: 'Mengenal DKV Universitas Merangin',
+  introDesc1: 'DEKAVE (DKV Universitas Merangin) adalah Unit Kegiatan Mahasiswa yang berfokus pada pengembangan bakat, kreativitas, dan wawasan profesional dalam Desain Komunikasi Visual. Kami mewadahi mahasiswa dari berbagai latar belakang yang memiliki minat mendalam pada desain grafis, ilustrasi, fotografi, videografi, serta media komunikasi kreatif.',
+  introDesc2: 'Di UKM DKV, kami bergerak bersama dalam 4 divisi spesialisasi: Desain, Photography, Videography, dan Public Relation (PR). Setiap divisi saling berkolaborasi dari tahap ide, produksi visual, hingga publikasi ke audiens kampus dan masyarakat luas.',
+  quoteText: 'Ideas Become Reality, Visuals Become Stories',
+  quoteAuthor: 'Motto Resmi DKV Universitas Merangin',
+  visionTitle: 'Visi Kami',
+  visionText: 'Menjadi wadah kreativitas visual terdepan di lingkungan kampus yang adaptif terhadap perkembangan teknologi dan industri kreatif, serta menghasilkan karya-karya visual berdaya saing tinggi.',
+  missionTitle: 'Misi Kami',
+  missionItems: [
     'Membangun unit kegiatan yang aktif dan kolaboratif untuk saling berbagi ilmu serta pengalaman di bidang DKV.',
     'Meningkatkan kualitas serta daya saing anggota melalui kompetisi, pameran, dan proyek kreatif.',
     'Menjalin kerja sama dengan pihak eksternal, termasuk industri kreatif, untuk membuka peluang magang dan proyek bersama.',
     'Mendorong inovasi dan eksplorasi desain yang tidak hanya estetis, tetapi juga memiliki nilai komunikasi yang kuat.',
     'Menjadi wadah bagi mahasiswa untuk menyalurkan minat dan bakat di bidang desain grafis, animasi, fotografi, videografi dan media interaktif.'
-  ];
+  ],
+});
+
+onMounted(async () => {
+  try {
+    const res = await api.get('/page-content/about');
+    if (res.data?.data) {
+      pageContent.value = { ...pageContent.value, ...res.data.data };
+    }
+  } catch {
+    // Keep fallback
+  }
+});
+
+const missionList = computed(() => {
+  if (Array.isArray(pageContent.value.missionItems) && pageContent.value.missionItems.length > 0) {
+    return pageContent.value.missionItems;
+  }
+  const items = tm('about.mission_items');
+  if (Array.isArray(items) && items.length > 0) return items;
+  return pageContent.value.missionItems || [];
 });
 </script>
 
@@ -43,13 +73,13 @@ const missionItems = computed(() => {
 
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium border border-cyan-500/30 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 mb-6 backdrop-blur-md">
           <Sparkles :size="14" class="text-cyan-600 dark:text-cyan-400" />
-          <span>DKV PHILOSOPHY & IDENTITY</span>
+          <span>{{ pageContent.badge }}</span>
         </div>
         <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-6">
-          {{ t('about.title') }}
+          {{ pageContent.title }}
         </h1>
         <p class="text-slate-600 dark:text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto font-light leading-relaxed">
-          {{ t('about.subtitle') }}
+          {{ pageContent.subtitle }}
         </p>
       </div>
     </section>
@@ -63,20 +93,20 @@ const missionItems = computed(() => {
               // WHO WE ARE
             </span>
             <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-6">
-              Mengenal DKV Universitas Merangin
+              {{ pageContent.introTitle }}
             </h2>
             <p class="text-slate-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg mb-4">
-              {{ t('about.desc') }}
+              {{ pageContent.introDesc1 }}
             </p>
             <p class="text-slate-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base mb-8">
-              Di UKM DKV, kami bergerak bersama dalam 4 divisi spesialisasi: <strong class="text-sky-600 dark:text-sky font-semibold">Desain</strong>, <strong class="text-amber-600 dark:text-amber-400 font-semibold">Photography</strong>, <strong class="text-indigo-600 dark:text-indigo-400 font-semibold">Videography</strong>, dan <strong class="text-emerald-600 dark:text-emerald-400 font-semibold">Public Relation (PR)</strong>. Setiap divisi saling berkolaborasi dari tahap ide, produksi visual, hingga publikasi ke audiens kampus dan masyarakat luas.
+              {{ pageContent.introDesc2 }}
             </p>
             <div class="glass-card rounded-2xl p-6 border-l-4 border-l-cyan-500 relative overflow-hidden">
               <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
               <p class="italic text-cyan-800 dark:text-cyan-200 font-medium text-lg leading-snug">
-                "Ideas Become Reality, Visuals Become Stories"
+                "{{ pageContent.quoteText }}"
               </p>
-              <span class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-2 block">Motto</span>
+              <span class="text-xs text-slate-500 dark:text-gray-400 font-mono mt-2 block">{{ pageContent.quoteAuthor }}</span>
             </div>
           </div>
 
@@ -171,7 +201,7 @@ const missionItems = computed(() => {
             </span>
             <h3 class="font-heading text-2xl font-bold text-slate-900 dark:text-white mb-4">{{ t('about.vision') }}</h3>
             <p class="text-slate-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
-              {{ t('about.vision_text') }}
+              {{ pageContent.visionText }}
             </p>
           </div>
 
@@ -186,7 +216,7 @@ const missionItems = computed(() => {
             <h3 class="font-heading text-2xl font-bold text-slate-900 dark:text-white mb-4">{{ t('about.mission') }}</h3>
             <ul class="space-y-4">
               <li
-                v-for="(item, i) in missionItems"
+                v-for="(item, i) in missionList"
                 :key="i"
                 class="flex items-start gap-3.5 text-slate-700 dark:text-gray-300"
               >

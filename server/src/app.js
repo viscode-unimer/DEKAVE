@@ -14,6 +14,7 @@ const blogRoutes = require('./routes/blogRoutes');
 const memberRoutes = require('./routes/memberRoutes');
 const camavisRoutes = require('./routes/camavisRoutes');
 const userRoutes = require('./routes/userRoutes');
+const pageContentRoutes = require('./routes/pageContentRoutes');
 
 const app = express();
 
@@ -58,6 +59,7 @@ app.use('/api/blogs', blogRoutes);
 app.use('/api/members', memberRoutes);
 app.use('/api/camavis', camavisRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/page-content', pageContentRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

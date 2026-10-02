@@ -34,6 +34,11 @@ const routes = [
         component: () => import('../views/admin/ManageUsers.vue'),
         meta: { title: 'Kelola Tim & Contributor', superadminOnly: true },
       },
+      {
+        path: 'pages',
+        component: () => import('../views/admin/ManagePages.vue'),
+        meta: { title: 'Editor Halaman', superadminOnly: true },
+      },
     ],
   },
   { path: '/:pathMatch(.*)*', redirect: '/' },

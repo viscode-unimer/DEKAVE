@@ -33,6 +33,23 @@ const latestEvents = ref([]);
 const latestBlogs = ref([]);
 const loading = ref(true);
 
+const pageContent = ref({
+  heroBadge: 'UKM DKV — Universitas Merangin',
+  heroTitle1: 'Ideas Become',
+  heroTitle1Highlight: 'Reality,',
+  heroTitle2: 'Visuals Become',
+  heroTitle2Highlight: 'Stories',
+  heroCtaText: 'Eksplorasi Portofolio',
+  heroCtaLink: '/portfolio',
+  divisionRibbonTitle: '4 Divisi Utama:',
+  divisionRibbonItems: ['Desain', 'Photography', 'Videography', 'Public Relation (PR)'],
+  camavisBannerTag: 'REGISTRASI ANGGOTA BARU',
+  camavisBannerTitle: 'Siap Melangkah Menjadi Kreator Visual Berdampak?',
+  camavisBannerDesc: 'Bergabunglah dengan keluarga besar DKV Universitas Merangin. Dapatkan mentorship langsung, akses workshop eksklusif, dan wujudkan portofolio kreatif kelas industri.',
+  camavisBannerCtaText: 'Daftar Sekarang — Formulir Terbuka',
+  camavisBannerCtaLink: '/camavis',
+});
+
 const getCoverImage = (item) => {
   if (item.images && item.images[0]) return item.images[0];
   if (item.videoUrl) {
@@ -46,10 +63,11 @@ const getCoverImage = (item) => {
 
 onMounted(async () => {
   try {
-    const [portfolioRes, eventRes, blogRes] = await Promise.all([
+    const [portfolioRes, eventRes, blogRes, pageRes] = await Promise.all([
       api.get('/portfolios?featured=true&limit=6'),
       api.get('/events?limit=3'),
       api.get('/blogs?limit=3'),
+      api.get('/page-content/home').catch(() => null),
     ]);
     featuredPortfolios.value = portfolioRes.data.data;
     latestEvents.value = eventRes.data.data;
@@ -57,6 +75,9 @@ onMounted(async () => {
       latestBlogs.value = blogRes.data.data;
     } else {
       latestBlogs.value = defaultBlogs.slice(0, 3);
+    }
+    if (pageRes?.data?.data) {
+      pageContent.value = { ...pageContent.value, ...pageRes.data.data };
     }
   } catch (e) {
     console.error(e);
@@ -99,38 +120,33 @@ const samplePalettes = [
         <div class="max-w-4xl mx-auto text-center">
           <!-- Massive Editorial Display Typography -->
           <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.1] sm:leading-[1.12] text-slate-900 dark:text-white mb-8 sm:mb-10">
-            <span class="block sm:inline">Ideas Become</span>
-            <span class="font-serif italic font-normal text-gradient-cyan inline-block pr-2.5 pl-0.5 sm:ml-2 sm:pr-4 sm:pl-1 sm:pb-2.5 sm:pt-0.5">Reality,</span><br class="hidden sm:inline" />
-            <span class="block sm:inline mt-1 sm:mt-0">Visuals Become</span>
+            <span class="block sm:inline">{{ pageContent.heroTitle1 }}</span>
+            <span class="font-serif italic font-normal text-gradient-cyan inline-block pr-2.5 pl-0.5 sm:ml-2 sm:pr-4 sm:pl-1 sm:pb-2.5 sm:pt-0.5">{{ pageContent.heroTitle1Highlight }}</span><br class="hidden sm:inline" />
+            <span class="block sm:inline mt-1 sm:mt-0">{{ pageContent.heroTitle2 }}</span>
             <span class="relative inline-block text-slate-900 dark:text-white ml-2 sm:ml-3">
-              Stories
+              {{ pageContent.heroTitle2Highlight }}
               <span class="absolute -bottom-1.5 left-0 right-0 h-1 sm:h-1.5 bg-gradient-to-r from-accent via-sky to-royal rounded-full"></span>
             </span>
           </h1>
 
           <!-- Call to Action Button -->
           <div class="flex items-center justify-center">
-            <RouterLink to="/portfolio" class="btn-accent px-8 py-3.5 text-sm sm:text-base font-bold shadow-lg shadow-sky-500/20 group">
-              <span>Eksplorasi Portofolio</span>
+            <RouterLink :to="pageContent.heroCtaLink || '/portfolio'" class="btn-accent px-8 py-3.5 text-sm sm:text-base font-bold shadow-lg shadow-sky-500/20 group">
+              <span>{{ pageContent.heroCtaText }}</span>
               <ArrowUpRight :size="18" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </RouterLink>
           </div>
 
           <!-- 4 Divisi Utama Quick Ribbon (Clean typography, no emojis) -->
           <div class="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-2 text-xs font-mono">
-            <span class="text-slate-500 dark:text-gray-400 font-semibold sm:mr-1">4 Divisi Utama:</span>
+            <span class="text-slate-500 dark:text-gray-400 font-semibold sm:mr-1">{{ pageContent.divisionRibbonTitle }}</span>
             <div class="flex flex-wrap items-center justify-center gap-2 max-w-xs sm:max-w-none">
-              <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
-                Desain
-              </span>
-              <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
-                Photography
-              </span>
-              <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
-                Videography
-              </span>
-              <span class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium">
-                Public Relation (PR)
+              <span
+                v-for="divItem in pageContent.divisionRibbonItems"
+                :key="divItem"
+                class="px-3.5 py-1 rounded-full bg-slate-200/80 dark:bg-white/5 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-gray-300 font-medium"
+              >
+                {{ divItem }}
               </span>
             </div>
           </div>
@@ -573,23 +589,23 @@ const samplePalettes = [
           <div class="relative max-w-3xl space-y-6">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/20 text-sky-800 dark:text-sky text-xs font-mono font-semibold border border-sky-500/40 dark:border-sky/40">
               <Sparkles :size="13" />
-              <span>REGISTRASI ANGGOTA BARU</span>
+              <span>{{ pageContent.camavisBannerTag }}</span>
             </span>
 
             <h2 class="font-heading font-black text-3xl sm:text-5xl text-slate-900 dark:text-white tracking-tight leading-tight">
-              Siap Melangkah Menjadi Kreator Visual Berdampak?
+              {{ pageContent.camavisBannerTitle }}
             </h2>
 
             <p class="text-slate-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
-              Bergabunglah dengan keluarga besar DKV Universitas Merangin. Dapatkan mentorship langsung, akses workshop eksklusif, dan wujudkan portofolio kreatif kelas industri.
+              {{ pageContent.camavisBannerDesc }}
             </p>
 
             <div class="flex flex-wrap items-center gap-4 pt-2">
               <RouterLink
-                to="/camavis"
+                :to="pageContent.camavisBannerCtaLink || '/camavis'"
                 class="btn-accent px-8 py-3.5 text-base font-bold shadow-[0_0_30px_rgba(56,189,248,0.4)] group"
               >
-                <span>Daftar Sekarang — Formulir Terbuka</span>
+                <span>{{ pageContent.camavisBannerCtaText }}</span>
                 <ArrowRight :size="16" class="group-hover:translate-x-1 transition-transform" />
               </RouterLink>
 

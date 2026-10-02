@@ -12,6 +12,7 @@ import {
   Users,
   GraduationCap,
   ShieldCheck,
+  Sliders,
   LogOut,
   Sun,
   Moon,
@@ -45,6 +46,7 @@ const navItems = computed(() => {
   ];
 
   if (isSuperadmin.value) {
+    base.push({ to: '/admin/pages', label: 'Editor Halaman', icon: Sliders });
     base.push({ to: '/admin/users', label: 'Kelola Tim / Contributor', icon: ShieldCheck });
   }
 
