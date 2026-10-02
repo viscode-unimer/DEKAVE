@@ -1,4 +1,4 @@
-// Default seed data for DEKAVE Journal / Blogs
+// Default seed data for DKV Journal / Blogs
 // Represents all 4 official divisions plus 2 storytelling articles for Divisi Public Relation (PR)
 
 export const defaultBlogs = [
@@ -15,7 +15,7 @@ export const defaultBlogs = [
     createdAt: '2026-09-18T10:00:00.000Z',
     content: `
       <h2>Menemukan Titik Temu Antara Ide dan Eksekusi Visual</h2>
-      <p>Dalam dunia Desain Komunikasi Visual (DKV), sebuah karya yang memikat tidak pernah lahir secara instan dalam satu klik software. Di Divisi Desain DEKAVE Universitas Merangin, kami selalu meyakini bahwa software seperti Adobe Illustrator, Photoshop, maupun Figma hanyalah kuas modern—sementara jiwa dari karya tersebut terletak pada proses eksplorasi konseptual yang mendalam.</p>
+      <p>Dalam dunia Desain Komunikasi Visual (DKV), sebuah karya yang memikat tidak pernah lahir secara instan dalam satu klik software. Di Divisi Desain DKV Universitas Merangin, kami selalu meyakini bahwa software seperti Adobe Illustrator, Photoshop, maupun Figma hanyalah kuas modern—sementara jiwa dari karya tersebut terletak pada proses eksplorasi konseptual yang mendalam.</p>
       
       <h3>1. Kekuatan Sketsa Manual di Atas Kertas</h3>
       <p>Sebelum menyentuh kursor dan kanvas digital, langkah sakral pertama setiap anggota divisi desain adalah membuka sketchbook fisik. Sketsa manual memberikan kebebasan berpikir tanpa distraksi shortcut tools atau batasan grid digital. Garis-garis kasar, coretan ide tak beraturan, dan thumbnail sketches membantu kita mengevaluasi puluhan sudut pandang komposisi dalam hitungan menit.</p>
@@ -33,10 +33,10 @@ export const defaultBlogs = [
 
       <blockquote>
         "Desain yang baik bukan tentang menambahkan sebanyak mungkin ornamen, melainkan ketika tidak ada lagi elemen yang bisa dihilangkan tanpa merusak pesan intinya."
-        <br><span style="font-size: 0.85em; opacity: 0.8;">— Tim Divisi Desain DEKAVE</span>
+        <br><span style="font-size: 0.85em; opacity: 0.8;">— Tim Divisi Desain DKV</span>
       </blockquote>
 
-      <p>Melalui proses inilah, setiap poster, visual identity, dan merchandise yang dirilis oleh DEKAVE bukan hanya enak dipandang, tetapi memiliki bobot narasi yang kuat dan berkarakter.</p>
+      <p>Melalui proses inilah, setiap poster, visual identity, dan merchandise yang dirilis oleh DKV bukan hanya enak dipandang, tetapi memiliki bobot narasi yang kuat dan berkarakter.</p>
     `
   },
   {
@@ -47,12 +47,12 @@ export const defaultBlogs = [
     author: 'Zhelicha Ayu Joya (Divisi Photography)',
     thumbnail: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80',
     tags: ['Photography', 'Komposisi', 'Lensa', 'Hunting Foto'],
-    excerpt: 'Melihat dunia lewat jendela viewfinder kamera: cara fotografer DEKAVE membaca arah cahaya alami, mengatur leading lines, dan menangkap momen spontan yang jujur.',
+    excerpt: 'Melihat dunia lewat jendela viewfinder kamera: cara fotografer DKV membaca arah cahaya alami, mengatur leading lines, dan menangkap momen spontan yang jujur.',
     isPublished: true,
     createdAt: '2026-09-22T14:30:00.000Z',
     content: `
       <h2>Dunia Lewat Jendela Viewfinder</h2>
-      <p>Bagi Divisi Photography DEKAVE Universitas Merangin, kamera adalah perpanjangan dari cara kami mengamati kehidupan di sekitar kita. Fotografi bukan semata-mata tentang spesifikasi megapixel atau lensa bernilai jutaan rupiah, melainkan tentang kepekaan mata dan ketajaman rasa dalam membekukan sepersekian detik momen yang tidak akan pernah terulang.</p>
+      <p>Bagi Divisi Photography DKV Universitas Merangin, kamera adalah perpanjangan dari cara kami mengamati kehidupan di sekitar kita. Fotografi bukan semata-mata tentang spesifikasi megapixel atau lensa bernilai jutaan rupiah, melainkan tentang kepekaan mata dan ketajaman rasa dalam membekukan sepersekian detik momen yang tidak akan pernah terulang.</p>
 
       <h3>1. Berburu Keajaiban Cahaya Alami (The Magic of Natural Light)</h3>
       <p>Cahaya adalah bahan baku utama fotografer. Dalam agenda rutin photo-hunting anak DKV—baik di sudut kampus Universitas Merangin maupun lanskap alam Merangin seperti Danau Pauh—kami selalu memperhatikan pergerakan matahari:</p>
@@ -82,12 +82,12 @@ export const defaultBlogs = [
     author: 'Suci Nabiha (Divisi Videography)',
     thumbnail: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
     tags: ['Videography', 'Sinematik', 'Editing', 'Reels'],
-    excerpt: 'Membongkar alur produksi video kreatif di DEKAVE: dari storyboard pra-produksi yang matang, pergerakan dinamis kamera, hingga sihir sound design yang menyentuh emosi.',
+    excerpt: 'Membongkar alur produksi video kreatif di DKV: dari storyboard pra-produksi yang matang, pergerakan dinamis kamera, hingga sihir sound design yang menyentuh emosi.',
     isPublished: true,
     createdAt: '2026-09-25T08:15:00.000Z',
     content: `
       <h2>Sihir 24 Frame per Detik</h2>
-      <p>Dalam rentang satu dekade terakhir, video telah berkembang menjadi medium komunikasi paling berpengaruh di dunia digital. Di Divisi Videography DEKAVE, kami tidak hanya merekam aktivitas dengan tripod dan menekan tombol record. Misi kami adalah meramu gambar bergerak, warna, ritme potongan (editing cut), dan tata suara menjadi pengalaman visual yang menggetarkan penonton.</p>
+      <p>Dalam rentang satu dekade terakhir, video telah berkembang menjadi medium komunikasi paling berpengaruh di dunia digital. Di Divisi Videography DKV, kami tidak hanya merekam aktivitas dengan tripod dan menekan tombol record. Misi kami adalah meramu gambar bergerak, warna, ritme potongan (editing cut), dan tata suara menjadi pengalaman visual yang menggetarkan penonton.</p>
 
       <h3>1. Pra-Produksi: Mematangkan Storyboard Sebelum Syuting</h3>
       <p>Pepatah di ruang editing kami berbunyi: <em>'70% keberhasilan video ditentukan di atas meja pra-produksi.'</em> Sebelum membawa gear ke lokasi, kami menyusun shot list dan storyboard terperinci:</p>
@@ -105,7 +105,7 @@ export const defaultBlogs = [
 
       <blockquote>
         "Visual memikat mata, tetapi ritme dan suara adalah sayap yang menerbangkan pesan langsung ke dalam hati audiens."
-        <br><span style="font-size: 0.85em; opacity: 0.8;">— Tim Videografi DEKAVE</span>
+        <br><span style="font-size: 0.85em; opacity: 0.8;">— Tim Videografi DKV</span>
       </blockquote>
     `
   },
@@ -140,7 +140,7 @@ export const defaultBlogs = [
 
       <blockquote>
         "Karya yang luar biasa tanpa komunikasi yang baik akan terkubur dalam sunyi. Tugas kami adalah memastikan setiap tetes kreativitas kawan-kawan didengar dan diapresiasi dunia."
-        <br><span style="font-size: 0.85em; opacity: 0.8;">— Desri Yanti Safitri, Koordinator PR DEKAVE</span>
+        <br><span style="font-size: 0.85em; opacity: 0.8;">— Desri Yanti Safitri, Koordinator PR DKV</span>
       </blockquote>
     `
   },
@@ -171,7 +171,7 @@ export const defaultBlogs = [
       <p>Di balik lelahnya begadang dan layar smartphone yang tak pernah tidur, ada rasa hangat yang sulit diungkapkan dengan kata-kata. Saat postingan karya kawan-kawan kita tembus ratusan likes, saat ada maba yang berkata, <em>'Kak, berkat postingan DKV aku jadi berani belajar desain'</em>—semua rasa lelah itu menguap seketika.</p>
 
       <blockquote>
-        "Bagi orang luar, ini mungkin hanya postingan medsos 15 detik. Namun bagi kami anak PR, ini adalah rangkuman tawa, keringat, dan dedikasi kami untuk keluarga kecil bernama DEKAVE."
+        "Bagi orang luar, ini mungkin hanya postingan medsos 15 detik. Namun bagi kami anak PR, ini adalah rangkuman tawa, keringat, dan dedikasi kami untuk keluarga kecil bernama DKV."
         <br><span style="font-size: 0.85em; opacity: 0.8;">— Catatan Harian Citra Dunanti, Tim Humas & Medsos</span>
       </blockquote>
     `
@@ -207,7 +207,7 @@ export const defaultBlogs = [
       <p>Melangkah keluar dari gedung pertemuan dengan surat kerjasama yang telah ditandatangani adalah momen paling membanggakan dalam perjalanan organisasiku. Dari pengalaman berharga ini, aku belajar satu hal penting:</p>
       <p>Public Relation bukan tentang kefasihan berbicara tanpa arah atau sekadar merayu sponsor. Humas adalah tentang rasa percaya diri terhadap nilai karya kawan-kawan sendiri, keberanian untuk mengetuk pintu peluang, dan kemampuan menyulut keyakinan orang lain bahwa mimpi kreatif anak-anak muda pantas diberi ruang untuk bersinar.</p>
 
-      <p>Dan hari itu, nama DEKAVE / Viscode Universitas Merangin kembali melangkah satu tapak lebih maju.</p>
+      <p>Dan hari itu, nama DKV / Viscode Universitas Merangin kembali melangkah satu tapak lebih maju.</p>
     `
   }
 ];

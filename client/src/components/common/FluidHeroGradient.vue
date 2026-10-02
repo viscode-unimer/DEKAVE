@@ -5,7 +5,7 @@ import { useThemeStore } from '../../stores/theme';
 const canvasRef = ref(null);
 const themeStore = useThemeStore();
 
-// Palet warna resmi DEKAVE
+// Palet warna resmi DKV
 // Dark Mode: Deep Navy, Midnight Blue, Royal Blue, Sky Blue, Cyan Glow
 const darkPalette = [
   [0.024, 0.043, 0.098], // #060B19 - Dark Navy Base

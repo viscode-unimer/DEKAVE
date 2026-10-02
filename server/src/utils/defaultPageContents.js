@@ -20,7 +20,7 @@ const defaultPageContents = {
     title: 'Tentang DKV Universitas Merangin',
     subtitle: 'Wadah eksplorasi visual, inovasi desain, dan karya kreatif mahasiswa Universitas Merangin.',
     introTitle: 'Mengenal DKV Universitas Merangin',
-    introDesc1: 'DEKAVE (DKV Universitas Merangin) adalah Unit Kegiatan Mahasiswa yang berfokus pada pengembangan bakat, kreativitas, dan wawasan profesional dalam Desain Komunikasi Visual. Kami mewadahi mahasiswa dari berbagai latar belakang yang memiliki minat mendalam pada desain grafis, ilustrasi, fotografi, videografi, serta media komunikasi kreatif.',
+    introDesc1: 'DKV Universitas Merangin adalah Unit Kegiatan Mahasiswa yang berfokus pada pengembangan bakat, kreativitas, dan wawasan profesional dalam Desain Komunikasi Visual. Kami mewadahi mahasiswa dari berbagai latar belakang yang memiliki minat mendalam pada desain grafis, ilustrasi, fotografi, videografi, serta media komunikasi kreatif.',
     introDesc2: 'Di UKM DKV, kami bergerak bersama dalam 4 divisi spesialisasi: Desain, Photography, Videography, dan Public Relation (PR). Setiap divisi saling berkolaborasi dari tahap ide, produksi visual, hingga publikasi ke audiens kampus dan masyarakat luas.',
     quoteText: 'Ideas Become Reality, Visuals Become Stories',
     quoteAuthor: 'Motto Resmi DKV Universitas Merangin',

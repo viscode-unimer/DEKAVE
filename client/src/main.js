@@ -10,7 +10,7 @@ import './style.css';
 import id from './locales/id.json';
 import en from './locales/en.json';
 
-const savedLang = localStorage.getItem('dekave_lang') || 'id';
+const savedLang = localStorage.getItem('dkv_lang') || localStorage.getItem('dekave_lang') || 'id';
 
 const i18n = createI18n({
   legacy: false,

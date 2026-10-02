@@ -70,11 +70,11 @@ const handleSubmit = () => {
   sending.value = true;
 
   const formattedMsg =
-    `*PESAN DARI WEBSITE DEKAVE / VISCODE*\n\n` +
-    `👤 *Nama:* ${form.name.trim()}\n` +
-    `📱 *Kontak Pengirim:* ${form.contact.trim() || '-'}\n` +
-    `📌 *Topik:* ${form.topic}\n\n` +
-    `💬 *Isi Pesan:*\n${form.message.trim()}`;
+    `*PESAN DARI WEBSITE DKV / VISCODE*\n\n` +
+    `• *Nama:* ${form.name.trim()}\n` +
+    `• *Kontak Pengirim:* ${form.contact.trim() || '-'}\n` +
+    `• *Topik:* ${form.topic}\n\n` +
+    `*Isi Pesan:*\n${form.message.trim()}`;
 
   const url = `https://wa.me/${whatsappNumber.value}?text=${encodeURIComponent(formattedMsg)}`;
   window.open(url, '_blank');

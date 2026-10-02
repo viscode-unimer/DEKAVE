@@ -26,7 +26,7 @@ const navLinks = computed(() => [
 
 const toggleLang = () => {
   locale.value = locale.value === 'id' ? 'en' : 'id';
-  localStorage.setItem('dekave_lang', locale.value);
+  localStorage.setItem('dkv_lang', locale.value);
 };
 
 const handleLogout = () => {
