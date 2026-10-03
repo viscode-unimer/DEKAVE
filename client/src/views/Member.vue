@@ -206,8 +206,8 @@ const allAnggotaAktif = computed(() => {
   });
 });
 
-// Chunk active members into rows of up to 5 cards (to prevent 6-card cutoff)
-const CHUNK_SIZE = 5;
+// Chunk active members into rows of up to 6 cards (fits all active members in one row)
+const CHUNK_SIZE = 6;
 const anggotaAktifRows = computed(() => {
   const rows = [];
   const list = allAnggotaAktif.value;
@@ -387,12 +387,12 @@ const anggotaNonAktifList = computed(() => {
                 <!-- Connector line between multiple rows of Anggota -->
                 <div v-if="rIdx > 0" class="w-0.5 h-10 bg-slate-300 dark:bg-slate-600"></div>
 
-                <!-- Row of Active Members (Max 5 cards per row) -->
+                <!-- Row of Active Members (Max 6 cards per row) -->
                 <div class="flex items-start justify-center">
                   <div
                     v-for="(m, idx) in row"
                     :key="m._id"
-                    class="flex flex-col items-center relative px-2.5"
+                    class="flex flex-col items-center relative px-2 sm:px-2.5"
                   >
                     <!-- Top horizontal bar across Anggota cards in this row -->
                     <div
