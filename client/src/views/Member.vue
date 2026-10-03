@@ -190,29 +190,35 @@ const bendaharaList = computed(() => {
 
 // Level 4: Anggota Aktif (Semua Anggota yang aktif selain pengurus inti)
 const allAnggotaAktif = computed(() => {
-  return members.value.filter((m) => {
-    const pos = (m.position || '').toLowerCase();
-    // Exclude non-active
-    if (
-      m.isActive === false ||
-      pos.includes('non aktif') ||
-      pos.includes('nonaktif') ||
-      pos.includes('demisioner') ||
-      pos.includes('alumni')
-    ) {
-      return false;
-    }
-    // Exclude core leadership
-    if (
-      pos.includes('ketua') ||
-      pos.includes('wakil') ||
-      pos.includes('sekretaris') ||
-      pos.includes('bendahara')
-    ) {
-      return false;
-    }
-    return true;
-  });
+  return members.value
+    .filter((m) => {
+      const pos = (m.position || '').toLowerCase();
+      // Exclude non-active
+      if (
+        m.isActive === false ||
+        pos.includes('non aktif') ||
+        pos.includes('nonaktif') ||
+        pos.includes('demisioner') ||
+        pos.includes('alumni')
+      ) {
+        return false;
+      }
+      // Exclude core leadership
+      if (
+        pos.includes('ketua') ||
+        pos.includes('wakil') ||
+        pos.includes('sekretaris') ||
+        pos.includes('bendahara')
+      ) {
+        return false;
+      }
+      return true;
+    })
+    .sort((a, b) => {
+      const cleanA = (a.name || '').replace(/[\u200B-\u200D\uFEFF\u2060]/g, '').trim();
+      const cleanB = (b.name || '').replace(/[\u200B-\u200D\uFEFF\u2060]/g, '').trim();
+      return cleanA.localeCompare(cleanB, 'id', { sensitivity: 'base' });
+    });
 });
 
 // Chunk active members into rows of up to 4 cards

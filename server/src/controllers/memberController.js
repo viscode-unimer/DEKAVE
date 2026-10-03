@@ -15,13 +15,21 @@ const getMembers = async (req, res, next) => {
   } catch (error) { next(error); }
 };
 
+const sanitizeField = (val) => typeof val === 'string' ? val.replace(/[\u200B-\u200D\uFEFF\u2060]/g, '').trim() : val;
+
 const createMember = async (req, res, next) => {
   try {
     let photo = '';
     if (req.file) {
       photo = await uploadToCloudinary(req.file.buffer, 'dekave/members');
     }
-    const member = await Member.create({ ...req.body, photo });
+    const data = { ...req.body, photo };
+    if (data.name) data.name = sanitizeField(data.name);
+    if (data.position) data.position = sanitizeField(data.position);
+    if (data.division) data.division = sanitizeField(data.division);
+    if (data.major) data.major = sanitizeField(data.major);
+
+    const member = await Member.create(data);
     res.status(201).json({ success: true, data: member });
   } catch (error) { next(error); }
 };
@@ -32,6 +40,11 @@ const updateMember = async (req, res, next) => {
     if (req.file) {
       update.photo = await uploadToCloudinary(req.file.buffer, 'dekave/members');
     }
+    if (update.name) update.name = sanitizeField(update.name);
+    if (update.position) update.position = sanitizeField(update.position);
+    if (update.division) update.division = sanitizeField(update.division);
+    if (update.major) update.major = sanitizeField(update.major);
+
     const member = await Member.findByIdAndUpdate(req.params.id, update, { new: true, runValidators: true });
     if (!member) return res.status(404).json({ success: false, message: 'Member not found' });
     res.json({ success: true, data: member });
