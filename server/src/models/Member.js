@@ -6,6 +6,7 @@ const memberSchema = new mongoose.Schema({
   division: { type: String, required: true },
   photo: { type: String },
   major: { type: String, default: '' },
+  genMavis: { type: String, default: '' },
   year: { type: Number, required: false },
   instagram: { type: String },
   isActive: { type: Boolean, default: true },

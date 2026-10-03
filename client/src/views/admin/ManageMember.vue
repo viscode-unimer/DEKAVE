@@ -4,7 +4,7 @@ import { useToast } from 'vue-toastification';
 import { useI18n } from 'vue-i18n';
 import LoadingSpinner from '../../components/common/LoadingSpinner.vue';
 import api from '../../utils/api';
-import { User, Crop, ZoomIn, ZoomOut, RotateCcw } from 'lucide-vue-next';
+import { User, Crop, ZoomIn, ZoomOut, RotateCcw, ChevronDown } from 'lucide-vue-next';
 
 const { t } = useI18n();
 const toast = useToast();
@@ -14,11 +14,42 @@ const showForm = ref(false);
 const editing = ref(null);
 const saving = ref(false);
 
+const genOptions = ['MAVIS GEN I', 'MAVIS GEN II', 'MAVIS GEN III'];
+
+const majorOptions = [
+  'PGSD',
+  'PGPAUD',
+  'Matematika',
+  'Biologi',
+  'Ekonomi',
+  'Bahasa Inggris',
+  'Luar Sekolah',
+  'Bahasa & Sastra Indonesia',
+  'Hukum',
+  'Hukum Bisnis',
+  'Sistem Informasi',
+  'Teknologi Informasi',
+  'Bisnis Digital',
+  'Kewirausahaan',
+  'Pendidikan Profesi Guru',
+];
+
+const positionOptions = [
+  'Ketua Umum',
+  'Wakil Ketua',
+  'Sekretaris I',
+  'Sekretaris II',
+  'Bendahara I',
+  'Bendahara II',
+  'Anggota',
+];
+
 const form = reactive({
   name: '',
   position: '',
   division: '',
   major: '',
+  genMavis: '',
   instagram: '',
   isActive: true,
   photo: null,
@@ -213,6 +244,7 @@ const openCreate = () => {
     position: '',
     division: '',
     major: '',
+    genMavis: '',
     instagram: '',
     isActive: true,
     photo: null,
@@ -228,6 +260,7 @@ const openEdit = (m) => {
     position: m.position,
     division: m.division,
     major: m.major || (m.year ? String(m.year) : ''),
+    genMavis: m.genMavis || '',
     instagram: m.instagram || '',
     isActive: m.isActive,
     photo: null,
@@ -245,6 +278,7 @@ const handleSave = async () => {
     fd.append('position', form.position);
     fd.append('division', form.division);
     fd.append('major', form.major);
+    fd.append('genMavis', form.genMavis);
     fd.append('instagram', form.instagram);
     fd.append('isActive', form.isActive);
     if (form.photo) fd.append('photo', form.photo);
@@ -302,12 +336,34 @@ onMounted(fetchMembers);
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Kedudukan *</label>
-          <input
-            v-model="form.position"
-            required
-            class="input-field"
-            placeholder="Ketua, Wakil, Sekretaris, Anggota..."
-          />
+          <div class="relative">
+            <select
+              v-model="form.position"
+              required
+              class="input-field appearance-none pr-10 cursor-pointer"
+            >
+              <option value="" disabled>-- Pilih Kedudukan --</option>
+              <option
+                v-for="pos in positionOptions"
+                :key="pos"
+                :value="pos"
+                class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              >
+                {{ pos }}
+              </option>
+              <option
+                v-if="form.position && !positionOptions.includes(form.position)"
+                :value="form.position"
+                class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              >
+                {{ form.position }}
+              </option>
+            </select>
+            <ChevronDown
+              :size="16"
+              class="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-400"
+            />
+          </div>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Divisi *</label>
@@ -327,14 +383,66 @@ onMounted(fetchMembers);
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Program Studi *</label>
-          <input
-            v-model="form.major"
-            required
-            class="input-field"
-            placeholder="Contoh: Desain Komunikasi Visual, Sistem Informasi..."
-          />
+          <div class="relative">
+            <select
+              v-model="form.major"
+              required
+              class="input-field appearance-none pr-10 cursor-pointer"
+            >
+              <option value="" disabled>-- Pilih Program Studi --</option>
+              <option
+                v-for="m in majorOptions"
+                :key="m"
+                :value="m"
+                class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              >
+                {{ m }}
+              </option>
+              <option
+                v-if="form.major && !majorOptions.includes(form.major)"
+                :value="form.major"
+                class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              >
+                {{ form.major }}
+              </option>
+            </select>
+            <ChevronDown
+              :size="16"
+              class="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-400"
+            />
+          </div>
         </div>
-        <div class="md:col-span-2">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Gen Mavis</label>
+          <div class="relative">
+            <select
+              v-model="form.genMavis"
+              class="input-field appearance-none pr-10 cursor-pointer"
+            >
+              <option value="">-- Pilih Gen Mavis --</option>
+              <option
+                v-for="gen in genOptions"
+                :key="gen"
+                :value="gen"
+                class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              >
+                {{ gen }}
+              </option>
+              <option
+                v-if="form.genMavis && !genOptions.includes(form.genMavis)"
+                :value="form.genMavis"
+                class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              >
+                {{ form.genMavis }}
+              </option>
+            </select>
+            <ChevronDown
+              :size="16"
+              class="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-400"
+            />
+          </div>
+        </div>
+        <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Instagram</label>
           <input v-model="form.instagram" class="input-field" placeholder="@username" />
         </div>
@@ -438,6 +546,9 @@ onMounted(fetchMembers);
         <p class="text-xs text-accent font-medium">{{ m.position }}</p>
         <p class="text-xs text-gray-400">{{ m.division }}</p>
         <p v-if="m.major" class="text-[11px] text-gray-500 dark:text-gray-400 truncate mt-0.5">{{ m.major }}</p>
+        <span v-if="m.genMavis" class="inline-block mt-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 font-medium">
+          {{ m.genMavis }}
+        </span>
         <div class="flex gap-1 mt-3">
           <button
             @click="openEdit(m)"

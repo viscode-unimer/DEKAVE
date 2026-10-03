@@ -170,7 +170,7 @@ const roleMeta = computed(() => {
 <template>
   <!-- Card Container: Exactly Uniform Dimensions for ALL Cards (Fits 5 cards per row) -->
   <div
-    class="group glass-card rounded-2xl border transition-all duration-300 text-center flex flex-col items-center justify-between relative overflow-hidden hover:-translate-y-1.5 w-48 h-[290px] p-4 flex-shrink-0"
+    class="group glass-card rounded-2xl border transition-all duration-300 text-center flex flex-col items-center justify-between relative overflow-hidden hover:-translate-y-1.5 w-48 h-[305px] p-4 flex-shrink-0"
     :class="roleMeta.cardClass"
   >
     <!-- Top-Right Role Symbol Badge -->
@@ -238,6 +238,15 @@ const roleMeta = computed(() => {
           :title="member.major"
         >
           {{ member.major }}
+        </span>
+
+        <!-- Gen Mavis if available -->
+        <span
+          v-if="member.genMavis"
+          class="text-[10px] font-mono text-slate-400 dark:text-gray-400 font-medium tracking-wider truncate max-w-full uppercase"
+          :title="member.genMavis"
+        >
+          {{ member.genMavis }}
         </span>
       </div>
     </div>
