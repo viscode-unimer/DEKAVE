@@ -170,7 +170,7 @@ const roleMeta = computed(() => {
 <template>
   <!-- Card Container: Exactly Uniform Dimensions for ALL Cards (Fits 5 cards per row) -->
   <div
-    class="group glass-card rounded-2xl border transition-all duration-300 text-center flex flex-col items-center justify-between relative overflow-hidden hover:-translate-y-1.5 w-48 h-[305px] p-4 flex-shrink-0"
+    class="group glass-card rounded-2xl border transition-all duration-300 text-center flex flex-col items-center justify-between relative overflow-hidden hover:-translate-y-1.5 w-48 h-[280px] p-3.5 flex-shrink-0"
     :class="roleMeta.cardClass"
   >
     <!-- Top-Right Role Symbol Badge -->
@@ -186,7 +186,7 @@ const roleMeta = computed(() => {
     <div class="w-full flex flex-col items-center">
       <!-- Profile Photo (Kotak Round Shape / Squircle rounded-2xl) - Uniform Size -->
       <div
-        class="w-24 h-24 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 transition-all duration-300 shadow-md dark:shadow-lg dark:shadow-black/40 mb-2.5 relative"
+        class="w-24 h-24 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border-2 transition-all duration-300 shadow-md dark:shadow-lg dark:shadow-black/40 mb-2 relative"
         :class="roleMeta.photoBorder"
       >
         <img
@@ -216,7 +216,7 @@ const roleMeta = computed(() => {
       </h3>
 
       <!-- Role & Details -->
-      <div class="mt-1.5 flex flex-col items-center gap-1 w-full">
+      <div class="mt-1 flex flex-col items-center gap-0.5 w-full">
         <!-- Role Badge with Symbol Icon -->
         <span
           class="inline-flex items-center gap-1.5 font-mono font-semibold px-2.5 py-0.5 rounded-full border text-[11px] max-w-full truncate"
@@ -252,7 +252,7 @@ const roleMeta = computed(() => {
     </div>
 
     <!-- Card Footer: Instagram Link / Label -->
-    <div class="mt-2.5 pt-2 border-t border-slate-200 dark:border-white/[0.06] w-full flex items-center justify-center">
+    <div class="mt-1.5 pt-1.5 border-t border-slate-200 dark:border-white/[0.06] w-full flex items-center justify-center">
       <a
         v-if="member.instagram"
         :href="`https://instagram.com/${member.instagram.replace('@', '')}`"
