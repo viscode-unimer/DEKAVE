@@ -45,6 +45,13 @@ const positionOptions = [
   'Anggota',
 ];
 
+const divisionOptions = [
+  'Desain',
+  'Photography',
+  'Videography',
+  'Public Relation',
+];
+
 const form = reactive({
   name: '',
   position: '',
@@ -368,19 +375,34 @@ onMounted(fetchMembers);
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Divisi *</label>
-          <input
-            v-model="form.division"
-            required
-            list="division-options"
-            class="input-field"
-            placeholder="Pilih atau ketik divisi..."
-          />
-          <datalist id="division-options">
-            <option value="Desain" />
-            <option value="Photography" />
-            <option value="Videography" />
-            <option value="Public Relation" />
-          </datalist>
+          <div class="relative">
+            <select
+              v-model="form.division"
+              required
+              class="input-field appearance-none pr-10 cursor-pointer"
+            >
+              <option value="" disabled>-- Pilih Divisi --</option>
+              <option
+                v-for="div in divisionOptions"
+                :key="div"
+                :value="div"
+                class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              >
+                {{ div }}
+              </option>
+              <option
+                v-if="form.division && !divisionOptions.includes(form.division)"
+                :value="form.division"
+                class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              >
+                {{ form.division }}
+              </option>
+            </select>
+            <ChevronDown
+              :size="16"
+              class="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-400"
+            />
+          </div>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Program Studi *</label>
